@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="asset/logo_small.png" type="image/x-icon">
     {{-- <link rel="icon" type="image/x-icon" href="/asset/logo_small.png"> --}}
     <title>Nomad Service Desk</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
     @livewireStyles
 </head>
 
@@ -21,7 +22,7 @@
 
         <main class="col-span-10 overflow-y-scroll">
             <x-layout.navbar />
-            <div class=" p-5 overflow-y-scroll">
+            <div class=" p-8">
                 {{ $slot }}
             </div>
         </main>
@@ -31,6 +32,7 @@
     <x-layout.footer />
 
     <script src="https://kit.fontawesome.com/57bd6dffc2.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @livewireScripts
 </body>
 
