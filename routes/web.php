@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CovreportController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SivController;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,13 @@ Route::post('/siv-request/store',[SivController::class,'store'])->name('siv.stor
 Route::delete('siv-request/delete/{siv}',[SivController::class,'destroy'])->name('siv.destroy');
 Route::get('siv-request/edit/{siv}',[SivController::class,'edit'])->name('siv.edit');
 Route::put('siv-request/update/{siv}',[SivController::class,'update'])->name('siv.update');
+
+//* COV REPORT
+Route::get('/cov-report',[CovreportController::class,'index'])->name('cov.index');
+Route::get('cov-report/creaate', [CovreportController::class,'create'])->name('cov.create');
+Route::post('cov-report/store',[CovreportController::class,'store'])->name('cov.store');
+
+
 
 
 Route::get('/obn-validate',[PublicController::class, 'obncheck'])->name('obn.check');

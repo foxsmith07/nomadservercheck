@@ -1,7 +1,7 @@
 <x-layout>
 
 
-    <div class="flex justify-between">
+    <div class="flex justify-between mb-5">
         <h1 class="text-3xl">SIV REQUEST</h1>
         <a href="{{ route('siv.create') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md">
             <i class="fa-solid fa-circle-plus me-2 text-lg"></i>
@@ -10,22 +10,22 @@
     </div>
 
     <p>total request: {{ $sivsCount }}</p>
-    <div class="overflow-x-auto my-5">
+    <div class="overflow-x-auto mt-2 rounded-box border border-base-content/5 bg-base-100">
         <table class="table">
             <!-- head -->
             <thead>
                 <tr>
-                    <th>Train</th>
-                    <th>Description</th>
-                    <th>Action</th>
+                    <th class=" w-1/12 text-center">Train</th>
+                    <th class="w-8/12">Description</th>
+                    <th class="w-2/12 text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($sivs as $siv)
-                    <tr class="hover:bg-blue-200">
-                        <th>{{ $siv->train }}</th>
+                    <tr class="hover:bg-blue-100">
+                        <th class="text-center">{{ $siv->train }}</th>
                         <td>{{ $siv->description }}</td>
-                        <td>
+                        <td class="text-center">
                             <a href="{{route('siv.edit', $siv->id)}}">
                                 <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl me-4"></i>
                             </a>
