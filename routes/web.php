@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CovreportController;
-use App\Http\Controllers\PublicController;
-use App\Http\Controllers\SivController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SivController;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\CovreportController;
 
 Route::get('/',[PublicController::class, 'index'])->name('index');
 
@@ -20,6 +21,8 @@ Route::get('/cov-report',[CovreportController::class,'index'])->name('cov.index'
 Route::get('cov-report/creaate', [CovreportController::class,'create'])->name('cov.create');
 Route::post('cov-report/store',[CovreportController::class,'store'])->name('cov.store');
 
+//* CHIUSURE SERVIZIO
+Route::get('/chiusure-servizio',[ServicesController::class,'index'])->name('servizio.index');
 
 
 
