@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->date('day');
             $table->time('time',precision:0);
-            $table->string('train');
+            $table->unsignedBigInteger('train_id');
+            $table->foreign('train_id')->references('id')->on('trains');
             $table->string('worker');
+            $table->string('request');
             $table->string('resolved');
             $table->string('ticket');
             $table->longText('note');

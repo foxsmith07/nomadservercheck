@@ -1,8 +1,9 @@
 <div class="navbar bg-base-100 shadow-2xl">
     <div class="flex-1 flex items-center ms-2">
         {{-- <a class="btn btn-ghost text-xl">Nomad Server status</a> --}}
-        <img src="asset/logosmall.png" alt="" class="h-[50px] me-3">
-        <span>Nola Service Desk</span>
+        {{-- <img src="asset/logosmall.png" alt="" class="h-[50px] me-3">
+        <span>Nola Service Desk</span> --}}
+        <img src="asset/logobig.png" alt="" class="w-[200px]">
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">

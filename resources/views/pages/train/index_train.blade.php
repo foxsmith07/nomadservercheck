@@ -2,34 +2,33 @@
 
 
     <div class="flex justify-between mb-5">
-        <h1 class="text-3xl">SIV REQUEST</h1>
-        <a href="{{ route('siv.create') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md">
+        <h1 class="text-3xl">TRAINS</h1>
+        <a href="{{ route('train.create') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md">
             <i class="fa-solid fa-circle-plus me-2 text-lg"></i>
-            Add Siv Request
+            Add Train
         </a>
     </div>
 
-    <p>total request: {{ $sivsCount }}</p>
     <div class="overflow-x-auto mt-2 rounded-box border border-base-content/5 bg-base-100">
         <table class="table">
             <!-- head -->
             <thead>
                 <tr>
-                    <th class=" w-1/12 text-center">Train</th>
-                    <th class="w-8/12">Description</th>
+                    <th class=" w-2/12">Train</th>
+                    <th class="w-7/12">Tipology</th>
                     <th class="w-2/12 text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($sivs as $siv)
+                @forelse ($trains as $train)
                     <tr class="hover:bg-blue-100">
-                        <th class="text-center">{{ $siv->train->name }}</th>
-                        <td>{{ $siv->description }}</td>
+                        <th class="">{{ $train->name }} <span class="ms-2 font-normal">({{$train->number}})</span></th>
+                        <td>{{ $train->tipology == 'iob' ? 'IoB solution' : 'Debian 10'}}</td>
                         <td class="text-center">
-                            <a href="{{route('siv.edit', $siv->id)}}">
+                            <a href="{{route('train.edit', $train->id)}}">
                                 <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl me-4"></i>
                             </a>
-                            <form action="{{ route('siv.destroy', $siv->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
+                            <form action="{{ route('train.destroy', $train->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
                                 @csrf
                                 @method('delete')
                                 <button type="button" id="deleteButton" class="hover:cursor-pointer"
@@ -45,7 +44,7 @@
 
                 @empty
                     <tr>
-                        <th colspan="100%" class="text-green-600">No SIV Request..</th>
+                        <th colspan="100%" class="text-green-600">No Train insered yet..</th>
                     </tr>
                 @endforelse
 
@@ -77,7 +76,7 @@
             buttonsStyling: false
         });
         swalWithBootstrapButtons.fire({
-            title: "Sei sicuro di cancellare la richiesta?",
+            title: "Sei sicuro di cancellare il Treno?",
             text: "Non puoi tornare indietro!",
             icon: "warning",
             showCancelButton: true,

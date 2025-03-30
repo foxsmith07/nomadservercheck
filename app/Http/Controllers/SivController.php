@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SivRequest;
 use App\Models\Siv;
 use Illuminate\Http\Request;
 
@@ -29,10 +30,10 @@ class SivController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SivRequest $request)
     {
         Siv::create([
-            'train' => $request->input('train'),
+            'train_id' => $request->input('train_id'),
             'description' => $request->input('description'),
         ]);
 
@@ -58,10 +59,10 @@ class SivController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Siv $siv)
+    public function update(SivRequest $request, Siv $siv)
     {
         $siv->update([
-            'train' => $request->input('train'),
+            'train_id' => $request->input('train_id'),
             'description' => $request->input('description'),
         ]);
 

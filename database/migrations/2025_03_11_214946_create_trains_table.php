@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('number');
-            $table->longText('obn')->nullable();
-            $table->longText('marcli')->nullable();
+            $table->enum('tipology',['iob','deb10']);
             $table->timestamps();
         });
     }

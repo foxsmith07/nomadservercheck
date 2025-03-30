@@ -12,7 +12,8 @@ class CovreportController extends Controller
      */
     public function index()
     {
-        return view('pages.cov.index_cov');
+        $covs = Covreport::all()->sortByDesc('created_at');
+        return view('pages.cov.index_cov', compact('covs'));
     }
 
     /**

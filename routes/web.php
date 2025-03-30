@@ -5,6 +5,7 @@ use App\Http\Controllers\SivController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\CovreportController;
+use App\Http\Controllers\TrainController;
 
 Route::get('/',[PublicController::class, 'index'])->name('index');
 
@@ -23,6 +24,15 @@ Route::post('cov-report/store',[CovreportController::class,'store'])->name('cov.
 
 //* CHIUSURE SERVIZIO
 Route::get('/chiusure-servizio',[ServicesController::class,'index'])->name('servizio.index');
+
+
+//* Train configuration
+Route::get('/trains',[TrainController::class, 'index'])->name('train.index');
+Route::get('/train/create',[TrainController::class, 'create'])->name('train.create');
+Route::post('/train/store',[TrainController::class, 'store'])->name('train.store');
+Route::get('/train/edit/{train}',[TrainController::class, 'edit'])->name('train.edit');
+Route::put('/train/update/{train}',[TrainController::class, 'update'])->name('train.update');
+Route::delete('/train/delete/{train}', [TrainController::class, 'destroy'])->name('train.destroy');
 
 
 

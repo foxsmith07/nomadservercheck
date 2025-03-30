@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('sivs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('train');
+            $table->unsignedBigInteger('train_id');
+            $table->foreign('train_id')->references('id')->on('trains');
             $table->longText('description');
         });
     }

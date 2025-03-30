@@ -6,33 +6,44 @@
         </a>
     </div>
 
-    <h3 class="bg-slate-300 w-[200px] p-2 rounded-md font-semibold">Giorno 22/03/2025</h3>
-    <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
-        <table class="table">
-            <!-- head -->
-            <thead>
-                <tr>
-                    <th>Train</th>
-                    <th>Time</th>
-                    <th>Worker</th>
-                    <th>Request</th>
-                    <th>Resolver</th>
-                    <th>Ticket Number</th>
-                    <th>Note</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- row 1 -->
-                <tr class="hover:bg-blue-100">
-                    <th>32</th>
-                    <td>8:50</td>
-                    <td>Fortunato</td>
-                    <td>Request Wifi check</td>
-                    <td>yes</td>
-                    <td>IC9794651321</td>
-                    <td>Modem 0 power off</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    @forelse ($covs as $cov)
+        <h3 class="bg-slate-300 w-[200px] p-2 rounded-md font-semibold">Giorno {{$cov->created_at->format('d M Y')}}</h3>
+        
+        <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+            <table class="table">
+                <!-- head -->
+                <thead>
+                    <tr>
+                        <th>Train</th>
+                        <th>Time</th>
+                        <th>Worker</th>
+                        <th>Request</th>
+                        <th>Resolver</th>
+                        <th>Ticket Number</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($covs as $cov)
+                        <tr class="hover:bg-blue-100">
+                            <th>{{$cov->train->name}}</th>
+                            <td>{{$cov->time}}</td>
+                            <td>{{$cov->worker}}</td>
+                            <td>{{$cov->request}}</td>
+                            <td>{{$cov->resolved}}</td>
+                            <td>{{$cov->ticket}}</td>
+                            <td>{{$cov->note}}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <th colspan="100%">No Cov Report yet</th>
+                        </tr>
+                        
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    @empty
+        
+    @endforelse
 </x-layout>
