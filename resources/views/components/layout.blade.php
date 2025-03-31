@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="shortcut icon" href="{{asset("asset/logosmall2.png")}}" type="image/x-icon">
-    {{-- <link rel="shortcut icon" href="asset/logosmall.png" type="image/x-icon"> --}}
-    {{-- <link rel="icon" type="image/x-icon" href="/asset/logo_small.png"> --}}
+    <link rel="shortcut icon" href="{{ asset('asset/logosmall2.png') }}" type="image/x-icon">
     <title>Nomad Service Desk</title>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @livewireStyles
 </head>
 
@@ -35,6 +36,7 @@
     <script src="https://kit.fontawesome.com/57bd6dffc2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @livewireScripts
+
 </body>
 
 </html>

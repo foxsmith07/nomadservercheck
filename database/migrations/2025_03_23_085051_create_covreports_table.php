@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('covreports', function (Blueprint $table) {
             $table->id();
-            $table->date('day');
-            $table->time('time',precision:0);
+            $table->dateTime('datetime');
             $table->unsignedBigInteger('train_id');
             $table->foreign('train_id')->references('id')->on('trains');
             $table->string('worker');
             $table->string('request');
             $table->string('resolved');
-            $table->string('ticket');
-            $table->longText('note');
+            $table->string('ticket')->nullable();
+            $table->longText('note')->nullable();
             $table->timestamps();
         });
     }

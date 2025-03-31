@@ -3,7 +3,7 @@
 
     <div class="flex justify-between mb-5">
         <h1 class="text-3xl">CHIUSURE SERVIZIO</h1>
-        <a href="{{ route('siv.create') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md">
+        <a href="{{ route('servizio.create') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md">
             <i class="fa-solid fa-circle-plus me-2 text-lg"></i>
             New Chiusura servizio
         </a>
@@ -15,9 +15,12 @@
             <!-- head -->
             <thead>
                 <tr>
-                    <th class=" w-1/12 text-center">Train</th>
-                    <th class="w-8/12">Description</th>
-                    <th class="w-2/12 text-center">Action</th>
+                    <th class="w-1/12 text-center">Train</th>
+                    <th class="w-2/12 text-center">Start Expected</th>
+                    <th class="w-2/12">Inviata il</th>
+                    <th class="w-2/12">End Expected</th>
+                    <th class="w-4/12">Note</th>
+                    <th class="w-1/12 text-center">Action</th>
                 </tr>
             </thead>
             <tbody>

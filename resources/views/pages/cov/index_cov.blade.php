@@ -1,38 +1,55 @@
 <x-layout>
     <div class="flex justify-between">
-        <h1 class="text-3xl mb-5">COV REPORT</h1>
+        <div class="flex flex-col">
+            <h1 class="text-3xl mb-5">COV REPORT</h1>
+            <small>Totale chiamate mese corrente {{$monthlyCallCount}}</small>
+        </div>
         <a href="{{route('cov.create')}}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md">
             <i class="fa-solid fa-phone"></i>Chiamata COV
         </a>
     </div>
 
-    @forelse ($covs as $cov)
-        <h3 class="bg-slate-300 w-[200px] p-2 rounded-md font-semibold">Giorno {{$cov->created_at->format('d M Y')}}</h3>
+    @forelse ($covs as $date => $dailyReports)
+        <h3 class="bg-slate-300 w-[200px] p-2 rounded-md font-semibold mt-7">Giorno {{$date}}</h3>
         
         <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
             <table class="table">
                 <!-- head -->
                 <thead>
                     <tr>
-                        <th>Train</th>
-                        <th>Time</th>
-                        <th>Worker</th>
-                        <th>Request</th>
-                        <th>Resolver</th>
-                        <th>Ticket Number</th>
-                        <th>Note</th>
+                        <th class="w-1/12">Train</th>
+                        <th class="w-1/12">Time</th>
+                        <th class="w-2/12">Worker</th>
+                        <th class="w-2/12">Request</th>
+                        <th class="w-1/12">Resolver</th>
+                        <th class="w-2/12">Ticket Number</th>
+                        <th class="w-2/12">Note</th>
+                        <th class="w-1/12">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($covs as $cov)
+                    @forelse ($dailyReports as $cov)
                         <tr class="hover:bg-blue-100">
                             <th>{{$cov->train->name}}</th>
-                            <td>{{$cov->time}}</td>
+                            <td>{{$cov->datetime->format('H:i')}}</td>
                             <td>{{$cov->worker}}</td>
                             <td>{{$cov->request}}</td>
                             <td>{{$cov->resolved}}</td>
                             <td>{{$cov->ticket}}</td>
                             <td>{{$cov->note}}</td>
+                            <td class="text-center">
+                                <a href="{{route('cov.edit', $cov->id)}}">
+                                    <i class="fa-regular fa-pen-to-square text-yellow-500 text-lg me-4"></i>
+                                </a>
+                                <form action="{{ route('cov.destroy', $cov->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" id="deleteButton" class="hover:cursor-pointer"
+                                        @click.prevent="confirmDelete($event, $el.parentElement)">
+                                        <i class="fa-solid fa-trash-can text-lg text-red-500"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @empty
                         <tr>
@@ -47,3 +64,47 @@
         
     @endforelse
 </x-layout>
+
+@session('success')
+    <script>
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 3000
+        });
+    </script>
+@endsession
+
+<script>
+    function confirmDelete(event, formElement) {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn text-[18px] bg-green-500 text-slate-100 border-none mx-[6px] rounded-[4px] hover:bg-green-700",
+                cancelButton: "btn text-[18px] bg-red-500 text-slate-100 border-none mx-[6px] rounded-[4px] hover:bg-red-700"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Sei sicuro di cancellare la chiamata COV?",
+            text: "Non puoi tornare indietro!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Si, cancellalo!",
+            cancelButtonText: "No, annulla!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Invia il form se l'utente conferma
+                formElement.submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalWithBootstrapButtons.fire({
+                    title: "Annullato",
+                    text: "la chiamata COV è salva :)",
+                    icon: "error"
+                });
+            }
+        });
+    }
+</script>

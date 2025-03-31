@@ -37,9 +37,6 @@
                                     <i class="fa-solid fa-trash-can text-2xl text-red-500"></i>
                                 </button>
                             </form>
-                            {{-- <a href="">
-                                <i class="fa-solid fa-trash-can text-red-500 text-2xl mx-2"></i>
-                            </a> --}}
                         </td>
                     </tr>
 

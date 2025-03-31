@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Covreport extends Model
 {
     protected $fillable = [
-        'day','time','train_id','worker','resolved','ticket','note'
+        'datetime','train_id','worker','request','resolved','ticket','note'
+    ];
+
+    protected $casts = [
+        'datetime' => 'datetime',
     ];
 
     public function train(){

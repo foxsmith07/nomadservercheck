@@ -15,7 +15,7 @@ export default defineConfig({
     //     port: 5173, // Specifica la porta che vuoi usare
     //     strictPort: true, // Impedisce a Vite di cambiare porta se la 5173 è occupata
     //     hmr: {
-    //         host: '192.168.120.128', // Sostituiscilo con l'IP della tua macchina nella rete
+    //         host: '192.168.1.5', // Sostituiscilo con l'IP della tua macchina nella rete
     //     },
     // },
 });

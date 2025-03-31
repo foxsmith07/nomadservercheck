@@ -23,7 +23,7 @@
                 @forelse ($trains as $train)
                     <tr class="hover:bg-blue-100">
                         <th class="">{{ $train->name }} <span class="ms-2 font-normal">({{$train->number}})</span></th>
-                        <td>{{ $train->tipology == 'iob' ? 'IoB solution' : 'Debian 10'}}</td>
+                        <td class="{{$train->tipology == 'iob' ? 'font-bold text-green-600' : ''}}">{{ $train->tipology == 'iob' ? 'IoB solution' : 'Debian 10'}}</td>
                         <td class="text-center">
                             <a href="{{route('train.edit', $train->id)}}">
                                 <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl me-4"></i>

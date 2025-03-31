@@ -19,3 +19,7 @@
 /* th, td {
     border: 1px solid lightgray;
 } */
+
+.input-custom {
+    @apply bg-white p-3 rounded-md outline-0 focus:outline-2 focus:outline-blue-500;
+}
