@@ -16,10 +16,11 @@
             <thead>
                 <tr>
                     <th class="w-1/12 text-center">Train</th>
+                    <th class="w-2/12 text-center">Event</th>
+                    <th class="w-2/12 text-center">User impact</th>
                     <th class="w-2/12 text-center">Start Expected</th>
-                    <th class="w-2/12">Inviata il</th>
+                    <th class="w-2/12">Start Actual</th>
                     <th class="w-2/12">End Expected</th>
-                    <th class="w-4/12">Note</th>
                     <th class="w-1/12 text-center">Action</th>
                 </tr>
             </thead>
@@ -27,22 +28,27 @@
                 @forelse ($services as $service)
                     <tr class="hover:bg-blue-100">
                         <th class="text-center">{{ $service->train }}</th>
-                        <td>lasciami</td>
+                        <td>{{$service->event}}</td>
+                        <td>{{$service->impact}}</td>
+                        <td>{{$service->start_expected}}</td>
+                        <td>{{$service->start_actual}}</td>
+                        <td>{{$service->end_expected}}</td>
+
                         <td class="text-center">
-                            {{-- <a href="{{route('siv.edit', $siv->id)}}">
-                                <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl me-4"></i>
+                            {{-- <a href="{{route('siv.edit', $siv->id)}}"> --}}
+                            <a href="">
+                                <i class="fa-solid fa-circle-info text-sky-500 text-2xl me-4"></i>
+                                {{-- <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl me-4"></i> --}}
                             </a>
-                            <form action="{{ route('siv.destroy', $siv->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
+                            {{-- <form action="{{ route('siv.destroy', $siv->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer"> --}}
+                            <form action="" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
                                 @csrf
                                 @method('delete')
                                 <button type="button" id="deleteButton" class="hover:cursor-pointer"
                                     @click.prevent="confirmDelete($event, $el.parentElement)">
                                     <i class="fa-solid fa-trash-can text-2xl text-red-500"></i>
                                 </button>
-                            </form> --}}
-                            {{-- <a href="">
-                                <i class="fa-solid fa-trash-can text-red-500 text-2xl mx-2"></i>
-                            </a> --}}
+                            </form>
                         </td>
                     </tr>
 

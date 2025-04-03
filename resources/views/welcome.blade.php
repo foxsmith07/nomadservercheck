@@ -10,7 +10,7 @@
                 <i class="fa-solid fa-phone-volume text-8xl"></i>
             </div>
         </div>
-        <div class="h-[150px] bg-yellow-300 rounded-md shadow-xl p-5 grid grid-cols-2 hover:bg-yellow-400">
+        <div class="h-[150px] bg-yellow-300 bg300 rounded-md shadow-xl p-5 grid grid-cols-2 hover:bg-yellow-400">
             <div class="flex flex-col justify-between col-span-1 h-full">
                 <h3 class="text-2xl">Chiusure Servizio</h3>
                 <p>2 servizi chiusi</p>
@@ -31,7 +31,7 @@
         <div class="h-[150px] bg-sky-300 rounded-md shadow-xl p-5 grid grid-cols-2 hover:bg-sky-400">
             <div class="flex flex-col justify-between col-span-1 h-full">
                 <h3 class="text-2xl">Users</h3>
-                <p>6 users created</p>
+                <p>{{$users}} users created</p>
             </div>
             <div class="col-span-1 flex justify-center items-center">
                 <i class="fa-solid fa-user text-8xl"></i>

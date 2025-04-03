@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('train_id');
-            $table->foreign('train_id')->references('id')->on('trains');
+            // $table->unsignedBigInteger('train_id');
+            // $table->foreign('train_id')->references('id')->on('trains');
+            $table->string('train');
             $table->string('event');
-            $table->dateTime('start_expected');
-            $table->dateTime('end_expected');
+            $table->string('impact');
+            $table->string('start_expected');
+            $table->string('start_actual');
+            $table->string('end_expected');
+            $table->string('end_actual')->nullable();
             $table->timestamps();
         });
     }

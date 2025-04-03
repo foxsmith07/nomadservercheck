@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Services;
 use Illuminate\Http\Request;
+use App\Http\Requests\ServiceRequest;
+use App\Mail\ServiceClosingMail;
+use Illuminate\Support\Facades\Mail;
 
 class ServicesController extends Controller
 {
@@ -21,15 +25,36 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.servizio.create_servizio');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
-        //
+
+        Services::create([
+            'event'=>$request->input('event'),
+            'train'=>$request->input('train'),
+            'impact'=>$request->input('impact'),
+            'start_expected'=>$request->input('start_expected'),
+            'start_actual'=>$request->input('start_actual'),
+            'end_expected'=>$request->input('end_expected'),
+        ]);
+        
+        $train = $request->input('train');
+        $event = $request->input('event');
+        $impact = $request->input('impact');
+        $start_expected = $request->input('start_expected');
+        $start_actual = $request->input('start_actual');
+        $end_expected = $request->input('end_expected');
+
+        $mail=compact('train','event','impact','start_expected','start_actual','end_expected');
+
+        Mail::to('italo@ntv.it')->send(new ServiceClosingMail($mail));
+
+        return redirect()->route('servizio.index')->with('success','Service closed and mail sent!');
     }
 
     /**

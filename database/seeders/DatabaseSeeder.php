@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Train;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,9 +16,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@nomadrail.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'admin',
+        //     'email' => 'admin@nomadrail.com',
+        // ]);
+
+        $this->call(TrainSeeder::class);
+
     }
 }

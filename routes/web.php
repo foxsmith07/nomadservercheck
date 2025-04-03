@@ -10,7 +10,8 @@ use Faker\Guesser\Name;
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::get('/',[PublicController::class, 'index'])->name('index');
+    //* WELCOME PAGE - WIDGET
+    Route::get('/',[PublicController::class, 'index'])->name('welcome');
     
     //* SIV REQUEST
     Route::get('/siv-request',[SivController::class, 'index'])->name('siv.index');

@@ -1,9 +1,7 @@
-<div class="h-[100px] flex justify-center items-center px-5 text-slate-200">
-    {{-- <img src="asset/logobig.png" alt=""> --}}
-    {{-- <h1 class="text-center text-2xl my-5">Nola Service Desk</h1> --}}
+<a href="{{route('welcome')}}" class="h-[100px] flex justify-center items-center px-5 text-slate-200">
     <img src="asset/logosmall2.png" alt="" class="h-[70px] me-3">
     <span class=" text-2xl">Nola Service Desk</span>
-</div>
+</a>
 
 <div class="flex flex-col gap-2 items-start my-[20px] px-5 text-start text-slate-200 text-[15px]">
     <a href="{{route('siv.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">

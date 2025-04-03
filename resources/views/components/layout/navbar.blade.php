@@ -3,7 +3,9 @@
         {{-- <a class="btn btn-ghost text-xl">Nomad Server status</a> --}}
         {{-- <img src="asset/logosmall.png" alt="" class="h-[50px] me-3">
         <span>Nola Service Desk</span> --}}
-        <img src="asset/logobig.png" alt="" class="w-[200px]">
+        <a href="{{route('welcome')}}">
+            <img src="asset/logobig.png" alt="" class="w-[200px]">
+        </a>
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">

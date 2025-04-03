@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Spatie\PdfToText\Pdf;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class PublicController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $users = User::all()->count();
+        return view('welcome',compact('users'));
     }
 
     public function obncheck(Request $request)
