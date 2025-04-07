@@ -14,9 +14,9 @@ class PublicController extends Controller
         return view('welcome',compact('users'));
     }
 
-    public function obncheck(Request $request)
+    public function obncheck()
     {
-        return view('pages.obnvalidate');
+        return view('pages.obn.index_obn');
     }
 
     public function store(Request $request)

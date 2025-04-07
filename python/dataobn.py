@@ -1,72 +1,18 @@
-# Technology
+import re
+import mysql.connector
 
-- Laravel 12
-    - fortify
-    - livewire 3.6.1
+# Connessione al database MySQL
+conn = mysql.connector.connect(
+    host="localhost",
+    port=3306,
+    user="root",
+    password="root",
+    database="nomadservercheck"
+)
+cursor = conn.cursor()
 
-- Tailwind css 4
-    - DaisyUi 5
-
-## STACK LEMP
-
-
-## Data ...
-
-- Train
-- uptime (da quanto tempo è acceso)
-- Situazione modem
-    Modem (ce0p0..)
-    status (active..)
-    tech (LTE..)
-    provider (Voda it)
-    ICCID
-    slot (7)
-- ?? nomad connect version
-- ?? GPS
-- AP
-    - coach
-    - IP
-    - Firmware
-    - Configuration
-- Switch
-    - coach
-    - IP
-    - Firmware
-    - Configuration
-- Docker
-    - container attivi con versioni
-
-
-# datta pagina engineering
-
-*On Board Network*
-Nome - Coach 7 ap 1
-type - AP , SW ecc
-Coach - 7
-IP - 10.226.105.230
-Firmware - 6.11.4-beta3
-Configuration - IBX1510-00145a048fde-v10-AP
-
-*Modem Overview*
-Modem - ce0p0
-Status - Connected (verde) , missing rosso ecc
-Tech - LTV
-Provider - VodaIT
-ICCID - 8939105656568584
-Slot - 7
-?? APN - mobile.vodafone.it 
-?? Lock - true verde
-?? Last active - 4 apr 2025 09:48
-
-*GPS*
-Latitude
-Longitude
-Speed
-
-
-
-**output validate**
-+---------------------------------------------------------------------------------------------------------+
+# Inserisci qui l'output completo come stringa
+text = """+---------------------------------------------------------------------------------------------------------+
 |                                         Backbone switch overview                                        |
 +-------+--------+-----------------+----------------------------------+-----------------------------------+
 | COACH | DEVICE | IP              | FIRMWARE                         | CONFIG                            |
@@ -100,11 +46,57 @@ Speed
 | 6     | 2      | 10.226.32.243 ✓ | 6.11.4-beta3 (6.11.4-0) ✗ | IBX1510-00145a0488a0-v10-AP ✓ |
 | 7     | 1      | 10.226.32.236 ✓ | 6.11.4-beta3 (6.11.4-0) ✗ | IBX1510-00145a049210-v10-AP ✓ |
 | 7     | 2      | 10.226.32.237 ✓ | 6.11.4-beta3 (6.11.4-0) ✗ | IBX1510-00145a049222-v10-AP ✓ |
-+-------+--------+-----------------+---------------------------+-------------------------------+
++-------+--------+-----------------+---------------------------+-------------------------------+"""
 
-*per la data/ora giusta*
-in config/app.php ho modificato 
+# Funzione per estrarre dati da una sezione e costruire i record
+def extract_section_data(section_text, device_type):
+    records = []
+    lines = section_text.strip().split("\n")
+    for line in lines:
+        # Modifica dell'espressione regolare per gestire i vari formati
+        match = re.match(r"\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*([\d.]+)\s*[\✓✗]?\s*\|\s*(.*?)\s*[\✓✗]?\s*\|\s*(.*?)\s*[\✓✗]?\s*\|", line)
+        if match:
+            coach = int(match.group(1))
+            num = int(match.group(2))
+            ip = match.group(3)
+            fw = match.group(4).strip()
+            conf = match.group(5).strip()
+            records.append((device_type, coach, num, ip, fw, conf))
+    return records
 
-questo 'timezone' => 'UTC' 
+# Troviamo le sezioni "switch" e "access point"
+switch_block = re.search(r"Backbone switch overview.*?\+[-+]+\+\n(.*?)\+[-+]+\+", text, re.DOTALL)
+ap_block = re.search(r"Backbone access point overview.*?\+[-+]+\+\n(.*?)\+[-+]+\+", text, re.DOTALL)
 
-in questo 'timezone' => 'Europe/Rome',, nel nel file env
+# Debug: Stampa le sezioni estratte
+if switch_block:
+    print("Sezione switch trovata")
+    print(switch_block.group(1))
+else:
+    print("Sezione switch non trovata")
+
+if ap_block:
+    print("Sezione access point trovata")
+    print(ap_block.group(1))
+else:
+    print("Sezione access point non trovata")
+
+# Creiamo una lista per contenere tutti i record
+all_records = []
+
+if switch_block:
+    all_records += extract_section_data(switch_block.group(1), "switch")
+if ap_block:
+    all_records += extract_section_data(ap_block.group(1), "access_point")
+
+# Debug: Mostra quanti record sono stati estratti
+print(f"Record estratti: {len(all_records)}")
+
+# Inseriamo i record nella tabella 'testpies'
+for record in all_records:
+    cursor.execute("""
+        INSERT INTO testpies (type, coach, num, ip, fw, conf)
+        VALUES (%s, %s, %s, %s, %s, %s)
+    """, record)
+
+# Salvataggio e chius

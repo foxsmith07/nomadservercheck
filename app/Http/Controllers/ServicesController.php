@@ -60,9 +60,9 @@ class ServicesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Services $services)
+    public function show(Services $service)
     {
-        //
+        return view('pages.servizio.show_servizio', compact('service'));
     }
 
     /**
@@ -84,8 +84,10 @@ class ServicesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Services $services)
+    public function destroy(Services $service)
     {
-        //
+        $service-> delete();
+
+        return redirect()->route('servizio.index')->with('success','chiusura di servizio cancellata!!');
     }
 }

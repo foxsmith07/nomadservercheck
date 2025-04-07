@@ -35,13 +35,10 @@
                         <td>{{$service->end_expected}}</td>
 
                         <td class="text-center">
-                            {{-- <a href="{{route('siv.edit', $siv->id)}}"> --}}
-                            <a href="">
+                            <a href="{{route('servizio.show', compact('service'))}}">
                                 <i class="fa-solid fa-circle-info text-sky-500 text-2xl me-4"></i>
-                                {{-- <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl me-4"></i> --}}
                             </a>
-                            {{-- <form action="{{ route('siv.destroy', $siv->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer"> --}}
-                            <form action="" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
+                            <form action="{{ route('servizio.destroy', $service->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
                                 @csrf
                                 @method('delete')
                                 <button type="button" id="deleteButton" class="hover:cursor-pointer"
@@ -54,7 +51,7 @@
 
                 @empty
                     <tr>
-                        <th colspan="100%" class="text-green-600">No Chiusure di servizio..</th>
+                        <th colspan="100%" class="text-green-600">Nessuna Chiusura di servizio..</th>
                     </tr>
                 @endforelse
 
@@ -86,7 +83,7 @@
             buttonsStyling: false
         });
         swalWithBootstrapButtons.fire({
-            title: "Sei sicuro di cancellare la richiesta?",
+            title: "Sei sicuro di cancellare la chiusura di servizio?",
             text: "Non puoi tornare indietro!",
             icon: "warning",
             showCancelButton: true,
@@ -100,7 +97,7 @@
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 swalWithBootstrapButtons.fire({
                     title: "Annullato",
-                    text: "la richiesta è salva :)",
+                    text: "la chiusura di servizio è salva :)",
                     icon: "error"
                 });
             }

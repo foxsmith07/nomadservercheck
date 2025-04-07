@@ -5,6 +5,7 @@ use App\Http\Controllers\SivController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\CovreportController;
+use App\Http\Controllers\ObnController;
 use App\Http\Controllers\TrainController;
 use Faker\Guesser\Name;
 
@@ -34,9 +35,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/chiusure-servizio',[ServicesController::class,'index'])->name('servizio.index');
     Route::get('/chiusure-servizio/create',[ServicesController::class,'create'])->name('servizio.create');
     Route::post('/chiusure-servizio/store',[ServicesController::class,'store'])->name('servizio.store');
+    Route::get('/chiusura-servizio/show/{service}',[ServicesController::class,'show'])->name('servizio.show');
+    Route::delete('/chiusura-servizio/destroy/{service}',[ServicesController::class,'destroy'])->name('servizio.destroy');
     
-    
-
     
     //* Train configuration
     Route::get('/trains',[TrainController::class, 'index'])->name('train.index');
@@ -47,8 +48,12 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/train/delete/{train}', [TrainController::class, 'destroy'])->name('train.destroy');
     
     
+    //*OBN TRAIN CHECK
+    Route::get('/obn-train/check',[ObnController::class, 'index'])->name('obn.index');
+    Route::get('/obn-train/show/{train}',[ObnController::class, 'show'])->name('obn.show');
+
+
     
-    Route::get('/obn-validate',[PublicController::class, 'obncheck'])->name('obn.check');
     Route::post('/file/submit',[PublicController::class, 'store'])->name('file.submit');
     
     Route::get('/pdf-reader',[PublicController::class, 'pdf'])->name('pdf');

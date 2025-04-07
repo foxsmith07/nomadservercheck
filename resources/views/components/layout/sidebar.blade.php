@@ -22,7 +22,7 @@
         <i class="fa-solid fa-table-list me-2"></i>
         Chiusure servizio
     </a>
-    <a href="{{route('obn.check')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+    <a href="{{route('obn.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
         <i class="fa-solid fa-train-subway  me-3"></i>
         
         OBN Train check
