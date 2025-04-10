@@ -1,10 +1,10 @@
 <x-layout>
-@dd($train)
+{{-- @dd($train->train()) --}}
     <a href="{{route('obn.index')}}" class="btn bg-slate-400 rounded-md btn-sm hover:bg-slate-500 mb-4 text-white">
         <i class="fa-regular fa-circle-left"></i>
         Back
     </a>
-    <h1 class="text-4xl mb-5">TRAIN {{$train->train}}</h1>
+    <h1 class="text-4xl mb-5">TRAIN {{$train->train}} </h1>
 
     <h2>Devices on board</h2>
     <div class="overflow-x-auto">

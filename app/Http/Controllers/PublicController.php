@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Covreport;
+use App\Models\Services;
+use App\Models\Siv;
 use App\Models\User;
+use Carbon\Carbon;
 use Spatie\PdfToText\Pdf;
 use Illuminate\Http\Request;
 
@@ -10,8 +14,13 @@ class PublicController extends Controller
 {
     public function index()
     {
-        $users = User::all()->count();
-        return view('welcome',compact('users'));
+        $now = Carbon::now();
+        $usersCount = User::all()->count();
+        $servicesCount = Services::all()->count();
+        $covCount = Covreport::whereMonth('created_at', $now->month)->count();
+        $sivCount = Siv::all()->count();
+
+        return view('welcome',compact('usersCount','servicesCount','sivCount','covCount'));
     }
 
     public function obncheck()

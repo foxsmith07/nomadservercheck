@@ -60,6 +60,7 @@ class ObnController extends Controller
     // public function show(Request $obn)
     public function show(Request $train)
     {
+        // dd($train->all());
         return view('pages.obn.show_obn', compact('train'));
     }
 
