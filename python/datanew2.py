@@ -41,8 +41,8 @@ def parse_device_output_updated(output_text, train_number):
           coach = int(parts[0])
           device_num = int(parts[1])
           ip = parts[2]
-          fw = parts[3] # Nome colonna DB: 'firmware'
-          conf = parts[4]  # Nome colonna DB: 'configuration'
+          fw = parts[3] # Nome colonna DB: 'fw'
+          conf = parts[4]  # Nome colonna DB: 'conf'
 
           record = {
               "train": train_number,
@@ -50,8 +50,8 @@ def parse_device_output_updated(output_text, train_number):
               "coach": coach,
               "num": device_num,
               "ip": ip,
-              "fw": fw, # Se la colonna è 'fw', cambia questa chiave in "fw"
-              "conf": conf, # Se la colonna è 'conf', cambia questa chiave in "conf"
+              "fw": fw,
+              "conf": conf,
               "updated_at": updated_at,
           }
           records.append(record)
@@ -65,14 +65,12 @@ def parse_device_output_updated(output_text, train_number):
 
 
 # --- INIZIO: Configurazione Database ---
-# !!! SOSTITUISCI CON I TUOI VALORI REALI !!!
 DB_CONFIG = {
-    'host': 'localhost',       # o l'IP del tuo server DB
+    'host': 'localhost',
     'user': 'root',
-    'password': 'root',
-    'database': 'nomadservercheck' # Il nome del database che contiene la tabella 'obns'
+    'password': 'clone42',
+    'database': 'nomadservercheck'
 }
-# !!! GESTISCI QUESTE CREDENZIALI IN MODO SICURO IN PRODUZIONE (es. variabili d'ambiente) !!!
 # --- FINE: Configurazione Database ---
 
 
@@ -85,7 +83,7 @@ def insert_records_to_db(records, train_number):
         print(f"Info [Treno {train_number}]: Nessun record valido da inserire.")
         return
 
-    connection = None # Inizializza a None per il blocco finally
+    connection = None
     try:
         connection = mysql.connector.connect(**DB_CONFIG)
 
@@ -104,7 +102,6 @@ def insert_records_to_db(records, train_number):
             INSERT INTO obns (train, type, coach, num, ip, fw, conf, updated_at)
             VALUES (%(train)s, %(type)s, %(coach)s, %(num)s, %(ip)s, %(fw)s, %(conf)s, %(updated_at)s)
             """
-            # IMPORTANTE: Se le tue colonne sono 'fw'/'conf', modifica l'INSERT qui sopra:
             # VALUES (..., %(ip)s, %(fw)s, %(conf)s)
 
             cursor.executemany(insert_query, records)
@@ -130,12 +127,12 @@ def insert_records_to_db(records, train_number):
 
 def validate():
     os.system('clear')
-    Trains = ['32', '37', '38'] # Assicurati che questi siano stringhe se usati come tali
+    Trains = ['32', '37', '38']
 
     for train in Trains:
         print(f"--- Processing Train: {train} ---")
         # Usa f-string per leggibilità
-        ping_command = f'ping {DB_CONFIG["host"]} -c 3' # Ping al DB host o a un IP del treno? Modifico per pingare l'IP del treno come nel tuo script originale
+        ping_command = f'ping {DB_CONFIG["host"]} -c 3'
         target_ip = f'10.226.{train}.1'
         ping_command = f'ping {target_ip} -c 3'
 
@@ -152,7 +149,7 @@ def validate():
             ssh_command = f"ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 developer@{target_ip} sudo obn validate" # Aggiunto timeout
             try:
                 # Usa sp.run per maggiore controllo e cattura errori
-                ssh_process = sp.run(ssh_command.split(), capture_output=True, text=True, check=True, timeout=60) # Timeout per ssh
+                ssh_process = sp.run(ssh_command.split(), capture_output=True, text=True, check=True, timeout=60)
                 output = ssh_process.stdout
                 print(f"Info [Treno {train}]: Output ricevuto:\n{output[:500]}...\n") # Stampa solo inizio output per brevità
 
@@ -181,5 +178,4 @@ def validate():
             print(f"Errore [Treno {train}]: Non raggiungibile ({target_ip}).")
         print(f"--- Fine Processing Train: {train} ---\n")
 
-# Esegui la funzione principale
 validate()
