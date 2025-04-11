@@ -1,5 +1,7 @@
 <x-layout>
-    <main class="grid grid-cols-4 gap-10 text-slate-600">
+    <H1 class="text-3xl mb-8">Main Overview</H1>
+
+    <main class="grid lg:grid-cols-4 gap-10 text-slate-600">
 
         {{--? WIDGET 1 Cov --}}
         <div class="h-[180px] bg-linear-to-tl from-cyan-500 to-blue-500 text-white rounded-md shadow-xl p-5 grid grid-cols-2 hover:bg-red-400">
@@ -11,6 +13,7 @@
                 <i class="fa-solid fa-phone-volume text-8xl"></i>
             </div>
         </div>
+
         {{--? WIDGET 2 Chiusure Servizio --}}
         <div class="h-[180px] bg-linear-to-tl from-red from-amber-400 to-orange-500 rounded-md shadow-xl p-5 grid grid-cols-2 text-white">
             <div class="flex flex-col justify-between col-span-1 h-full">
@@ -21,6 +24,7 @@
                 <i class="fa-solid fa-table-list text-8xl"></i>
             </div>
         </div>
+
         {{--? WIDGET 3 Siv --}}
         <div class="h-[180px] bg-linear-to-tl from-lime-300 to-green-500 rounded-md shadow-xl p-5 grid grid-cols-2 text-white">
             <div class="flex flex-col justify-between col-span-1 h-full">

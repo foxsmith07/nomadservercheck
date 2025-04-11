@@ -17,8 +17,8 @@
 
 <body class="bg-[#F1F2F7]">
 
-    <div class=" grid grid-cols-12 h-screen">
-        <section class="col-span-2 h-screen bg-[#282D3E]">
+    <div class="lg:grid lg:grid-cols-12 h-screen">
+        <section class="hidden lg:block col-span-2 h-screen bg-[#282D3E]">
             <x-layout.sidebar />
         </section>
 
