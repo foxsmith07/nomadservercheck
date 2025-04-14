@@ -5,6 +5,7 @@ use App\Http\Controllers\SivController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\CovreportController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ObnController;
 use App\Http\Controllers\TrainController;
 use Faker\Guesser\Name;
@@ -48,14 +49,18 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/train/delete/{train}', [TrainController::class, 'destroy'])->name('train.destroy');
     
     
-    //*OBN TRAIN CHECK
+    //* OBN TRAIN CHECK
     Route::get('/obn-train/check',[ObnController::class, 'index'])->name('obn.index');
     Route::get('/obn-train/show/{train}',[ObnController::class, 'show'])->name('obn.show');
 
+    // AGV / EVO train check
 
+
+    //* MOVIE TO SEND 
+    Route::get('/movie-to-send',[MovieController::class, 'index'])->name('movie.index');
     
+    //! disattivate 
     Route::post('/file/submit',[PublicController::class, 'store'])->name('file.submit');
-    
     Route::get('/pdf-reader',[PublicController::class, 'pdf'])->name('pdf');
 
 });

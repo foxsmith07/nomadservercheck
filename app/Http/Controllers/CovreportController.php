@@ -21,7 +21,7 @@ class CovreportController extends Controller
         $startOfMonth = $now->startOfMonth()->toDateString();
         $endOfMonth = $now->endOfMonth()->toDateString();
 
-        $covs = Covreport::orderBy('datetime','asc')->get()->groupBy(function ($covs) {
+        $covs = Covreport::orderBy('datetime','desc')->get()->groupBy(function ($covs) {
             return Carbon::parse($covs->datetime)->format('d F Y');
         });
 

@@ -39,7 +39,7 @@
 
     <div class="flex-1 lg:flex items-center ms-2 hidden">
         <a href="{{ route('welcome') }}">
-            <img src="asset/logobig.png" alt="" class="w-[200px]">
+            <img src="{{asset('asset/logobig.png')}}" alt="" class="w-[200px]">
         </a>
     </div>
     <div class="flex-none">
