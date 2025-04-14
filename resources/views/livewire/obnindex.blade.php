@@ -1,0 +1,67 @@
+<div class="overflow-x-auto" wire:poll.60s>
+    <table class="table">
+        <!-- head -->
+        <thead>
+            <tr class="bg-slate-200">
+                <th class="w-[60px]">Train</th>
+                <th class="text-center w-[120px]">Users</th>
+                <th class="w-[200px] text-center">Modem</th>
+                <th class="w-[400px]">Switch</th>
+                <th class="">Access Points</th>
+                <th class="w-[140px]">Last check</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($tabella as $train)
+                <tr class="hover:bg-slate-200">
+                    <th class="flex justify-center items-center">
+                        <a href="{{route('obn.show', $train['train'])}}" class="w-full flex justify-center items-center p-2 text-center">
+                            <span class="w-full">{{$train['train']}}</span>
+                        </a>
+                    </th>
+                    <!-- Users -->
+                    <td class="text-center">
+                        <small class="bg-green-600 p-1 rounded-sm text-white font-bold">{{$train->usernum}}</small>
+                        {{-- <small class="bg-red-600 w-[150px] p-1 rounded-sm text-white font-bold">B2 (200)</small> --}}
+                    </td>
+                    
+                    {{-- Modems--}}
+                    <td>
+                        <small class="bg-green-600 p-1 rounded-sm text-white font-bold">M0 - 7</small>
+                        <small class="bg-green-600 p-1 rounded-sm text-white font-bold">M1 - 10</small>
+                        <small class="bg-green-600 p-1 rounded-sm text-white font-bold">M2 - 11</small>
+                        
+                    </td>
+                    {{-- Switch --}}
+                    <td>
+                        @forelse ($train['sw'] as $sw)
+                            <small class="bg-green-600 p-1 rounded-sm text-white font-bold">Coach {{$sw->coach}}</small>
+                        @empty    
+                            <small class="text-red-500"> No Switch found</small>
+                        @endforelse
+                    </td>
+                    {{-- Access Points --}}
+                    <td>
+                        @forelse ($train['ap'] as $ap)
+                            <small class="bg-green-600 p-1 rounded-sm text-white font-bold">{{$ap->coach}}.{{$ap->num}}</small>
+                        @empty
+                            <small class="text-red-500"> No Access Point found</small>
+                        @endforelse
+                    </td>
+                    {{-- Last Update --}}
+                    <td>
+                        {{-- {{now()}} --}}
+                        <small class="bg-{{ now()->diffInMinutes($train['updated_at']) > 1 ? 'red-600' : 'green-600' }} p-1 rounded-sm text-white font-bold">{{$train['updated_at']->format('d/m/y - H:i')}} </small>
+                    </td>
+                </tr>
+                
+            @empty
+                <tr>
+                    <th colspan="100%">
+                        No Train
+                    </th>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>

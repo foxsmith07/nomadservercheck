@@ -16,14 +16,14 @@
         <input type="text" class="bg-white p-2 rounded-md">
     </div>
 
-    <div class="flex gap-5 my-8 text-5xl">
-        <button class="btn btn-circle bg-red-500 w-[50px] h-[50px] hover:bg-red-700">
+    <div class="flex gap-5 my-12 text-5xl">
+        <button class="btn btn-circle bg-red-500 w-[50px] h-[50px] border border-slate-500 hover:bg-red-700">
             <i class="fa-solid fa-stop text-3xl"></i>
         </button>
-        <button class="btn btn-circle bg-red-500 w-[50px] h-[50px] hover:bg-red-700">
+        <button class="btn btn-circle bg-sky-500 w-[50px] h-[50px] border border-slate-500 hover:bg-sky-700">
             <i class="fa-solid fa-play text-3xl"></i>
         </button>
-        <button class="btn btn-circle bg-red-500 w-[50px] h-[50px] hover:bg-red-700">
+        <button class="btn btn-circle bg-orange-400 w-[50px] h-[50px] border border-slate-500 hover:bg-orange-600">
             <i class="fa-solid fa-pause text-3xl"></i>
         </button>
     </div>

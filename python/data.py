@@ -68,7 +68,7 @@ def parse_device_output_updated(output_text, train_number):
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'clone42',
+    'password': 'root',
     'database': 'nomadservercheck'
 }
 # --- FINE: Configurazione Database ---

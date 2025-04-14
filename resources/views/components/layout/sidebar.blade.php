@@ -39,6 +39,7 @@
         {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
         <i class="fa-solid fa-clapperboard me-3"></i>
         Movie to send
+        <i class="fa-solid fa-triangle-exclamation ms-3 text-2xl text-yellow-400"></i>
     </a>    
     <a href="{{route('train.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
         {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
