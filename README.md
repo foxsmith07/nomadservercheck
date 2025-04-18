@@ -66,6 +66,8 @@ Speed
 
 
 **output validate**
+*sudo obn validate*
+
 +---------------------------------------------------------------------------------------------------------+
 |                                         Backbone switch overview                                        |
 +-------+--------+-----------------+----------------------------------+-----------------------------------+
@@ -101,6 +103,51 @@ Speed
 | 7     | 1      | 10.226.32.236 ✓ | 6.11.4-beta3 (6.11.4-0) ✗ | IBX1510-00145a049210-v10-AP ✓ |
 | 7     | 2      | 10.226.32.237 ✓ | 6.11.4-beta3 (6.11.4-0) ✗ | IBX1510-00145a049222-v10-AP ✓ |
 +-------+--------+-----------------+---------------------------+-------------------------------+
+
+
+
+**MARCLI**
+*marcli all*
+
+MAR INFORMATION:
+****************
+
+   ce0p0: st:       DOWN bs:19821651680 br:140024487167 al:   -1 at:  0.000 Mbit/s au:  0.000 Mbit/s ap:    0% ns:    0  tps:    0   ha: IPv4
+   ce1p0: st:     ACTIVE bs:35823763359 br:215359629489 al:   76 at:  11.127 Mbit/s au:  1.314 Mbit/s ap:    0% ns:    0  tps:    0   ha: IPv4
+   ce2p0: st:     ACTIVE bs:18106538257 br:96003621897 al:  137 at:  0.013 Mbit/s au:  0.389 Mbit/s ap:    0% ns:    0  tps:    0   ha: IPv4
+    lan2: st:       DOWN bs:          0 br:          0 al:   -1 at:  0.000 Mbit/s au:  0.000 Mbit/s ap:    0% ns:    0  tps:    0   ha: IPv4
+
+total: bs:73751953296 br:451387738553 at:  11.139 Mbit au:  1.703 Mbit/s
+
+HA (IPv4): 89.207.175.34
+HA (IPv6): None
+
+
+MODEM INFORMATION:
+****************
+
+         state                 powered      geo-disabled     sim        operator     cell          lac         network        band             iccid
+         -----                 -------      ------------     ---        --------     ----          ---         -------        ----             -----
+ce0p0:   UNKNOWN               FALSE        FALSE            9          0            0             0                                                                  
+ce1p0:   CONNECTED             TRUE         FALSE            11         22201        179338273     17105       5GNR           B28              89390100002654944325   
+ce2p0:   CONNECTED             TRUE         FALSE            12         22288        62613254      24414       LTE            B20              8939880825110191786    
+
+
+GEO INFORMATION:
+****************
+
+GPS updates enabled:                            TRUE
+Last update:            Tue Apr 15 08:46:17 UTC 2025
+
+Valid:                                          TRUE
+Latitude:                                   45.42567
+Longitude:                                  10.96912
+Altitude:                                   73.15500
+Heading:                                       79.91
+Speed:                                       61 km/h
+
+
+
 
 *per la data/ora giusta*
 in config/app.php ho modificato 

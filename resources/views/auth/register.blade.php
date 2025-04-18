@@ -24,22 +24,22 @@
 
                 <input type="text" name="name" class="input-custom" placeholder="Username" value="{{old('name')}}">
                 @error('name')
-                    <small class="text-red-700 block"></small>
+                    <small class="text-red-700 block">{{$message}}</small>
                 @enderror
                 <input type="email" name="email" class="input-custom" placeholder="Email" value="{{old('email')}}">
                 @error('email')
-                    <small class="text-red-700 block"></small>
+                    <small class="text-red-700 block">{{$message}}</small>
                 @enderror
 
                 <input type="password" name="password" class="input-custom" placeholder="Password">
                 @error('password')
-                    <small class="text-red-700 block"></small>
+                    <small class="text-red-700 block">{{$message}}</small>
                 @enderror
 
                 <input type="password" name="password_confirmation" class="input-custom"
                     placeholder="Password Confirmation">
                 @error('password_confirmation')
-                    <small class="text-red-700 block"></small>
+                    <small class="text-red-700 block">{{$message}}</small>
                 @enderror
 
                 <button class="btn bg-yellow-500 text-white rounded-md hover:bg-yellow-700 p3">Register</button>

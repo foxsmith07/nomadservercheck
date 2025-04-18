@@ -14,28 +14,7 @@ class ObnController extends Controller
     public function index()
     {
 
-        $treni = Obn::select('train')->distinct()->get(); //DISTINCT - rimuove i duplicati. Se hai più righe con lo stesso train, ne prende solo una
-
-        $tabella = [];
-
-        foreach ($treni as $treno) {
-            $ap = Obn::where('train', $treno->train)->where('type', 'AP')->get();
-            $sw = Obn::where('train', $treno->train)->where('type', 'SW')->get();
-            $updated_at = Obn::where('train', $treno->train)
-            ->orderBy('updated_at', 'asc') // Ordina per updated_at in modo crescente
-            ->value('updated_at'); // Ottieni solo il valore della colonna 'updated_at';
-
-            $tabella[] = [
-                'train' => $treno->train,
-                'ap' => $ap,
-                'sw' => $sw,
-                'updated_at' => $updated_at,
-            ];
-        }
-
-        // $obnsol = ['32', '37', '38'];
-        // $trains = Obn::where('train', $obnsol)->get();
-        return view('pages.obn.index_obn', compact('tabella'));
+        return view('pages.obn.index_obn');
     }
 
     /**

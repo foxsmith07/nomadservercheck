@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Obn;
 use App\Models\Siv;
 use App\Models\Covreport;
 use Illuminate\Database\Eloquent\Model;
@@ -19,5 +20,9 @@ class Train extends Model
 
     public function covreports(){
         return $this->hasMany(Covreport::class);
+    }
+
+    public function obns(){
+        return $this->hasMany(Obn::class);
     }
 }

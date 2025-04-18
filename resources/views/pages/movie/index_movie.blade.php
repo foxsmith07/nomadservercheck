@@ -1,22 +1,35 @@
 <x-layout>
 
-    <h1 class="text-3xl mb-10">Movie to send</h1>
+    <h1 class="text-3xl mb-10 font-bold">Movie to send</h1>
 
-    <div class="mb-5">
-        <label for="">Train</label>
-        <select name="" id="" class="rounded-md p-2 ms-5 bg-white">
-            @foreach ($cinema as $train)
-                <option value="{{$train}}">{{$train}}</option>
-            @endforeach
-        </select>
-    </div>
+    <form action="{{ route('movie.search') }}" method="POST">
+        @csrf
+        <div class="mb-5">
+            <label for="">Train</label>
+            <select name="train" id="" class="rounded-md p-2 ms-5 bg-white">
+                @foreach ($cinema as $train)
+                    <option value="{{ $train }}">{{ $train }}</option>
+                @endforeach
+            </select>
 
-    <div>
-        <label for="" class="block mb-3">Insert Movie to search</label>
-        <input type="text" class="bg-white p-2 rounded-md">
-    </div>
+            <div class="my-10">
+                <label class="block mb-3">Insert Movie to search</label>
+                <input type="text" name="search" class="bg-white p-2 rounded-sm">
+            </div>
 
-    <div class="flex gap-5 my-12 text-5xl">
+            <button class="btn bg-blue-500 text-white rounded-sm">Search</button>
+        </div>
+    </form>
+
+    @session('movies')
+    <pre>{{ session('movies') }} </pre>
+    @endsession
+    
+    @session('unreachable')
+    <p class="font-bold text-red-500">{{ session('unreachable') }} </p>
+    @endsession
+
+    {{-- <div class="flex gap-5 my-12 text-5xl">
         <button class="btn btn-circle bg-red-500 w-[50px] h-[50px] border border-slate-500 hover:bg-red-700">
             <i class="fa-solid fa-stop text-3xl"></i>
         </button>
@@ -37,8 +50,6 @@
         <i class="fa-solid fa-display"></i>
         <i class="fa-solid fa-display"></i>
         <i class="fa-solid fa-display"></i>
-    </div>
+    </div> --}}
 
 </x-layout>
-
-
