@@ -21,9 +21,9 @@
         </div>
     </form>
 
-    @session('movies')
+    {{-- @session('movies')
     <pre>{{ session('movies') }} </pre>
-    @endsession
+    @endsession --}}
     
     @session('unreachable')
     <p class="font-bold text-red-500">{{ session('unreachable') }} </p>
