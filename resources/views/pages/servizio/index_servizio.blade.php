@@ -34,11 +34,11 @@
                         <td>{{$service->start_actual}}</td>
                         <td>{{$service->end_expected}}</td>
 
-                        <td class="text-center">
+                        <td class="text-center flex justify-around">
                             <a href="{{route('servizio.show', compact('service'))}}">
-                                <i class="fa-solid fa-circle-info text-sky-500 text-2xl me-4"></i>
+                                <i class="fa-solid fa-circle-info text-sky-500 text-2xl"></i>
                             </a>
-                            <form action="{{ route('servizio.destroy', $service->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
+                            <form action="{{ route('servizio.destroy', $service->id) }}" method="POST" x-data class="inline hover:cursor-pointer">
                                 @csrf
                                 @method('delete')
                                 <button type="button" id="deleteButton" class="hover:cursor-pointer"

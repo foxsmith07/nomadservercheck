@@ -37,11 +37,11 @@
                             <td>{{$cov->resolved}}</td>
                             <td>{{$cov->ticket}}</td>
                             <td>{{$cov->note}}</td>
-                            <td class="text-center">
+                            <td class="text-center flex justify-around">
                                 <a href="{{route('cov.edit', $cov->id)}}">
-                                    <i class="fa-regular fa-pen-to-square text-yellow-500 text-lg me-4"></i>
+                                    <i class="fa-regular fa-pen-to-square text-yellow-500 text-lg"></i>
                                 </a>
-                                <form action="{{ route('cov.destroy', $cov->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
+                                <form action="{{ route('cov.destroy', $cov->id) }}" method="POST" x-data class="inline hover:cursor-pointer">
                                     @csrf
                                     @method('delete')
                                     <button type="button" id="deleteButton" class="hover:cursor-pointer"

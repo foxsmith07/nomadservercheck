@@ -16,8 +16,8 @@
             <thead>
                 <tr>
                     <th class=" w-1/12 text-center">Train</th>
-                    <th class="w-8/12">Description</th>
-                    <th class="w-2/12 text-center">Action</th>
+                    <th class="w-10/12">Description</th>
+                    <th class="w-1/12 text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,11 +25,11 @@
                     <tr class="hover:bg-blue-100">
                         <th class="text-center">{{ $siv->train->name }}</th>
                         <td>{{ $siv->description }}</td>
-                        <td class="text-center">
+                        <td class="text-center flex justify-around">
                             <a href="{{route('siv.edit', $siv->id)}}">
-                                <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl me-4"></i>
+                                <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl"></i>
                             </a>
-                            <form action="{{ route('siv.destroy', $siv->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
+                            <form action="{{ route('siv.destroy', $siv->id) }}" method="POST" x-data class="inline hover:cursor-pointer">
                                 @csrf
                                 @method('delete')
                                 <button type="button" id="deleteButton" class="hover:cursor-pointer"
