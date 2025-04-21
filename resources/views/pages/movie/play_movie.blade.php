@@ -36,7 +36,5 @@
     }
 </script>
 
-
 {{-- ------------------------------------------------------------------ --}}
-        <button class="btn bg-red-400 text-white mt-10">play</button>
 </x-layout>
