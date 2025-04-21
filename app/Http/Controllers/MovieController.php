@@ -19,8 +19,8 @@ class MovieController extends Controller
         $train = $request->input('train');
         $search = $request->input('search');
 
-        // exec('ping -c 3 -w 3 10.131.1.1',$output,$ping); 
-        exec('wsl ping -c 3 -w 3 10.131.'.$train.'.1',$output,$ping); //todo WINDOWS
+        exec('ping -c 3 -w 3 10.131.'.$train.'.1',$output,$ping); 
+        // exec('wsl ping -c 3 -w 3 10.131.'.$train.'.1',$output,$ping); //todo WINDOWS
 
         if ($ping == 0) {
             if (!empty($search)) {

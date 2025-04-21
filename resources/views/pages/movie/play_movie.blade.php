@@ -1,5 +1,5 @@
 <x-layout>
-    <h1 class="text-3xl">Movie to send</h1>
+    <h1 class="text-3xl">Movie to send Train "ro complete"</h1>
 
         {{-- <p class="my-8">Movie found:</p>
         @session('movies')
@@ -13,7 +13,7 @@
 
 <p class="my-8">Movie found:</p>
 <div class="my-4">
-    <input type="text" id="selectedMovie" class="shadow-sm border rounded-md p-2 w-full sm:w-96" placeholder="Seleziona un film">
+    <input type="text" id="selectedMovie" class="shadow-sm border rounded-md p-2 w-full sm:w-96" disabled placeholder="Clicca sul film per selezionarlo">
 </div>
 <div class="overflow-y-scroll bg-white rounded-sm shadow-xl p-4 w-[500px]" style="max-height: 500px">
     @session('movies')
