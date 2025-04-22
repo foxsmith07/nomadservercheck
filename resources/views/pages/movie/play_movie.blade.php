@@ -1,5 +1,5 @@
 <x-layout>
-    <h1 class="text-3xl">Movie to send Train {{ $train ?? null}}</h1>
+    <h1 class="text-3xl">MOVIE TO SEND <span class="text-blue-500">TRAIN {{ $train ?? null}}</span></h1>
 
 {{-- ----------------------------------------------------------------------------------------------- --}}
 
