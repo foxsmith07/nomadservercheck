@@ -1,6 +1,6 @@
 <x-layout>
 
-    <h1 class="text-3xl mb-10 font-bold">Movie to send</h1>
+    <h1 class="text-3xl mb-10">MOVIE TO SEND</h1>
 
     <form action="{{ route('movie.search') }}" method="POST">
         @csrf
