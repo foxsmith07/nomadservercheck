@@ -51,5 +51,22 @@
         <i class="fa-solid fa-display"></i>
         <i class="fa-solid fa-display"></i>
     </div> --}}
-
+@session('output')
+    <div>
+        {{session('output')}}
+        {{-- {{$film}} --}}
+    </div>
+@endsession
 </x-layout>
+
+@session('output')
+    <script>
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "{{ session('output') }}",
+            showConfirmButton: false,
+            timer: 3000
+        });
+    </script>
+@endsession

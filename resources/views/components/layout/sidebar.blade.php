@@ -22,6 +22,11 @@
         <i class="fa-solid fa-table-list me-3"></i>
         Chiusure servizio
     </a>
+    <a href="{{route('movie.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+        {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
+        <i class="fa-solid fa-clapperboard me-3"></i>
+        Movie to send
+    </a>    
     <a href="{{route('obn.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
         <i class="fa-solid fa-train-subway  me-3"></i>
         OBN Train check
@@ -35,12 +40,6 @@
         <i class="fa-solid fa-server me-3"></i>
         AGV / EVO check
     </p>
-    <a href="{{route('movie.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
-        {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
-        <i class="fa-solid fa-clapperboard me-3"></i>
-        Movie to send
-        <i class="fa-solid fa-triangle-exclamation ms-3 text-2xl text-yellow-400"></i>
-    </a>    
     <a href="{{route('train.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
         {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
         <i class="fa-solid fa-gear me-3"></i>
