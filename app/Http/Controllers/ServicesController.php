@@ -52,7 +52,7 @@ class ServicesController extends Controller
 
         $mail=compact('train','event','impact','start_expected','start_actual','end_expected');
 
-        Mail::to('italo@ntv.it')->send(new ServiceClosingMail($mail));
+        Mail::to('fortunato.di.domenico@nomadrail.com')->send(new ServiceClosingMail($mail));
 
         return redirect()->route('servizio.index')->with('success','Service closed and mail sent!');
     }
