@@ -18,12 +18,15 @@
 
 <body class="bg-[#d9d9d9]"> {{-- old color = F1F2F7--}}
 
-    <div class="lg:grid lg:grid-cols-12 h-screen">
-        <section class="hidden lg:block col-span-2 h-screen bg-[#242f40] shadow-xl"> {{-- old color = 282D3E --}}
+    {{-- <div class="lg:grid lg:grid-cols-12 h-screen"> --}}
+    <div class="lg:flex h-screen">
+        {{-- <section class="hidden lg:block col-span-2 h-screen bg-[#242f40] shadow-xl min-w-[310px]"> old color = 282D3E --}}
+        <section class="hidden lg:block h-screen bg-[#242f40] shadow-xl min-w-[310px]"> {{-- old color = 282D3E --}}
             <x-layout.sidebar />
         </section>
 
-        <main class="col-span-10 overflow-y-scroll">
+        {{-- <main class="col-span-10 overflow-y-scroll"> --}}
+        <main class="w-full overflow-y-scroll">
             <x-layout.navbar />
             <div class=" p-8">
                 {{ $slot }}
