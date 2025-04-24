@@ -15,7 +15,7 @@
 
         <div class="my-10">
             <label class="block mb-3">Insert Movie to search</label>
-            <input type="text" name="search" class="bg-slate-100 w-full p-2 rounded-sm">
+            <input type="text" name="search" class="bg-slate-100 w-full p-2 rounded-sm" placeholder="vuoto per lista completa">
         </div>
 
         <button type="submit" class="btn bg-blue-500 text-white rounded-sm w-1/2" :disabled="isLoading">
