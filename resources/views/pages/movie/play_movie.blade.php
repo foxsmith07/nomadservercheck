@@ -24,8 +24,12 @@
     <form action="{{route('movie.play')}}" method="POST">
         @csrf
         <div class="mt-8">
-            <input type="text" id="selectedMovie" name="film" class="shadow-xl border rounded-md p-2 w-full sm:w-96" value="{{trim($movie)}}" readonly placeholder="Clicca sul film per selezionarlo">
+            <input type="text" id="selectedMovie" name="film" class="shadow-xl border @error('film') border-red-500  @enderror rounded-md p-2 w-full sm:w-96" value="{{trim($movie)}}" readonly placeholder="Clicca sul film per selezionarlo">
         </div>
+        @error('film')
+            <small>{{ $message }}</small>
+        @enderror
+
         <input type="text" name="train" class="hidden" value="{{$train}}">
         
         <button type="submit" class="btn bg-red-400 hover:bg-red-600 text-white mt-10 rounded-sm text-xl w-48 shadow-xl"><i class="fa-solid fa-play"></i> play</button>
@@ -36,5 +40,9 @@
             document.getElementById('selectedMovie').value = movieName;
         }
     </script>
+
+    @session('nofilm')
+        <h1>{{session('nofilm')}}</h1>
+    @endsession
 
 </x-layout>
