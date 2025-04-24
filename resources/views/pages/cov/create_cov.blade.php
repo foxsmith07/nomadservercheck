@@ -1,7 +1,7 @@
 <x-layout>
     <h1 class="text-3xl mb-5">COV create</h1>
 
-    <form action="{{route('cov.store')}}" method="POST" class="bg-slate-200 p-5 rounded-md max-w-[600px]">
+    <form action="{{route('cov.store')}}" method="POST" class="bg-white p-8 rounded-md max-w-[600px] shadow-xl">
         @csrf
         {{-- ? RIGA 1 --}}
         <div class="flex justify-between">
@@ -92,8 +92,7 @@
         </div>
 
         <div class="w-full flex justify-end">
-            <button type="submit"
-                class="btn w-[150px] bg-blue-500 text-white hover:bg-blue-700 mt-5 rounded-md">Submit</button>
+            <button type="submit" class="btn w-1/2 bg-blue-500 text-white hover:bg-blue-700 mt-5 rounded-md">Submit</button>
         </div>
     </form>
 </x-layout>

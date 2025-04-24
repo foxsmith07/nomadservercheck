@@ -10,9 +10,9 @@
     </div>
 
     @forelse ($covs as $date => $dailyReports)
-        <h3 class="bg-slate-300 w-[200px] p-2 rounded-md font-semibold mt-7">Giorno {{$date}}</h3>
+        <h3 class="bg-slate-300 w-[200px] p-2 rounded-md font-semibold mt-7 shadow-xl">Giorno {{$date}}</h3>
         
-        <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+        <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 shadow-xl">
             <table class="table">
                 <!-- head -->
                 <thead>

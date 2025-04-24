@@ -5,6 +5,7 @@ use App\Http\Controllers\SivController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\CovreportController;
+use App\Http\Controllers\FilmController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ObnController;
 use App\Http\Controllers\TrainController;
@@ -60,6 +61,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/movie-to-send',[MovieController::class, 'index'])->name('movie.index');
     Route::post('/movie-to-send/search', [MovieController::class, 'search'])->name('movie.search');
     Route::post('/movie-to-send/play',[MovieController::class, 'play'])->name('movie.play');
+
     
     //! disattivate 
     Route::post('/file/submit',[PublicController::class, 'store'])->name('file.submit');

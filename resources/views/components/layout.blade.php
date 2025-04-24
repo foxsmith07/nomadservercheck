@@ -9,16 +9,17 @@
     <link rel="shortcut icon" href="{{ asset('asset/logosmall2.png') }}" type="image/x-icon">
     <title>Nomad Service Desk</title>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @livewireStyles
 </head>
 
-<body class="bg-[#F1F2F7]">
+<body class="bg-[#d9d9d9]"> {{-- old color = F1F2F7--}}
 
     <div class="lg:grid lg:grid-cols-12 h-screen">
-        <section class="hidden lg:block col-span-2 h-screen bg-[#282D3E]">
+        <section class="hidden lg:block col-span-2 h-screen bg-[#242f40] shadow-xl"> {{-- old color = 282D3E --}}
             <x-layout.sidebar />
         </section>
 

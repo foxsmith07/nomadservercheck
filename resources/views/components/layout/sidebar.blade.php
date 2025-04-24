@@ -27,6 +27,7 @@
         <i class="fa-solid fa-clapperboard me-3"></i>
         Movie to send
     </a>    
+ 
     <a href="{{route('obn.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
         <i class="fa-solid fa-train-subway  me-3"></i>
         OBN Train check

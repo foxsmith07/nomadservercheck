@@ -1,7 +1,7 @@
 <x-layout>
     <h1 class="text-3xl mb-5">COV edit <span class="text-blue-700">{{$cov->train->name}}</span></h1>
 
-    <form action="{{route('cov.update', compact('cov'))}}" method="POST" class="bg-slate-200 p-5 rounded-md max-w-[600px]">
+    <form action="{{route('cov.update', compact('cov'))}}" method="POST" class="bg-white p-8 rounded-md max-w-[600px] shadow-xl">
         @csrf
         @method('put')
         {{-- ? RIGA 1 --}}
@@ -94,7 +94,7 @@
 
         <div class="w-full flex justify-end">
             <button type="submit"
-                class="btn w-[150px] bg-yellow-500 text-white hover:bg-yellow-700 mt-5 rounded-md">Save</button>
+                class="btn w-1/2 bg-yellow-500 text-white hover:bg-yellow-700 mt-5 rounded-md">Save</button>
         </div>
     </form>
 </x-layout>

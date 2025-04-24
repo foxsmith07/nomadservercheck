@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MovieRequest;
 use App\Models\Train;
 use Illuminate\Http\Request;
 use Spatie\Ssh\Ssh;
@@ -48,6 +47,7 @@ class MovieController extends Controller
         $cmd="curl -s --show-error http://localhost:2323/cinema/server/play/";
 
         try {
+            
             $output = Ssh::create('developer','10.131.'.$train.'.1 ')->execute($cmd.$film)->getOutput();
         } catch (\Exception $e) {
             $output=$e;

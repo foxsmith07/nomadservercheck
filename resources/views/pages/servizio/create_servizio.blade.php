@@ -76,7 +76,7 @@
             </table>
         </div>
 
-        <button class="btn bg-blue-500 hover:bg-blue-700 text-white mt-5">Chiudi Servizio</button>
+        <button class="btn bg-red-500 hover:bg-red-700 text-white mt-5 w-[250px] shadow-xl">Chiudi Servizio</button>
     </form>
 </x-layout>
 

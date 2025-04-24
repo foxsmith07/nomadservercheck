@@ -1,4 +1,4 @@
-<div class="navbar bg-[#282D3E] lg:bg-base-100 shadow-2xl flex justify-between">
+<nav class="navbar bg-[#282D3E] lg:bg-base-100 shadow-2xl flex justify-between h-[80px]">
 
     <div class="dropdown dropdown-start lg:hidden">
         <div tabindex="0" role="button" class="btn m-1 bg-slate-500 border-none"><i class="fa-solid fa-bars text-2xl"></i></div>
@@ -83,4 +83,4 @@
             </li>
         </ul>
     </div>
-</div>
+</nav>
