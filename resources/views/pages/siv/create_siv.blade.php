@@ -1,7 +1,8 @@
 <x-layout>
 
     <h1 class="text-3xl mb-8">Create SIV Request</h1>
-    <form action="{{ route('siv.store') }}" method="POST" class="w-1/4">
+
+    <form action="{{ route('siv.store') }}" method="POST" class="bg-white p-8 max-w-[600px] rounded-md shadow-xl">
         @csrf
         <div class="flex flex-col mb-3">
             <label for="train_id" class="mb-3">Train</label>
@@ -27,7 +28,7 @@
             @enderror
         </div>
 
-        <button class="btn bg-blue-500 hover:bg-blue-700 text-white my-4">Submit</button>
+        <button class="btn bg-blue-500 hover:bg-blue-700 text-white my-4 w-1/2">Submit</button>
     </form>
 
 </x-layout>

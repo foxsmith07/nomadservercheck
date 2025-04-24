@@ -1,12 +1,12 @@
 <x-layout>
 
     <h1 class="text-3xl mb-8">Add Train</h1>
-    <form action="{{route('train.store')}}" method="POST">
+    <form action="{{route('train.store')}}" method="POST" class="bg-white shadow-xl rounded-md p-5 w-[500px]">
         @csrf
         <div class="flex flex-col mb-3">
             <label for="number" class="mb-3">Train Number</label>
             <input type="text" name="number" id="number" 
-                    class="bg-white p-3 rounded-md w-1/4 outline-0 focus:outline-2 focus:outline-blue-500 
+                    class="bg-slate-100 p-3 rounded-md outline-0 focus:outline-2 focus:outline-blue-500 
                             @error('number') outline-2 outline-red-400 @enderror" 
                     placeholder="es. 39" value="{{old('number')}}">
             @error('number')
@@ -16,7 +16,7 @@
         <div class="flex flex-col mb-3">
             <label for="name" class="mb-3">Train Name</label>
             <input type="text" name="name" id="name" 
-                    class="bg-white p-3 rounded-md w-1/4 outline-0 focus:outline-2 focus:outline-blue-500 
+                    class="bg-slate-100 p-3 rounded-md outline-0 focus:outline-2 focus:outline-blue-500 
                             @error('number') outline-2 outline-red-400 @enderror"
                     placeholder="es. EVO-09" value="{{old('name')}}">
             @error('name')
@@ -25,7 +25,7 @@
         </div>
         <div class="flex flex-col mb-3">
             <label for="tipology" class="mb-3">Tipology</label>
-            <select name="tipology" id="tipology" class="bg-white p-3 rounded-md w-1/4 outline-0 focus:outline-2 focus:outline-blue-500 
+            <select name="tipology" id="tipology" class="bg-slate-100 p-3 rounded-md outline-0 focus:outline-2 focus:outline-blue-500 
                             @error('number') outline-2 outline-red-400 @enderror">
                 <option disabled {{ old('tipology') == '' ? 'selected' : ''}}>select tipology</option>
                 <option value="iob" {{ old('tipology') == 'iob' ? 'selected' : ''}}>IoB solution</option>

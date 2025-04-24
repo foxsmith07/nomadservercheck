@@ -9,7 +9,7 @@
         </a>
     </div>
 
-    <div class="overflow-x-auto mt-2 rounded-box border border-base-content/5 bg-base-100">
+    <div class="overflow-x-auto my-2 rounded-box border border-base-content/5 bg-base-100 shadow-xl">
         <table class="table">
             <!-- head -->
             <thead>
