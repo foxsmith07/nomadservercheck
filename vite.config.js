@@ -10,14 +10,14 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
-    server: {
-        host: '0.0.0.0', // Permette l'accesso da altri dispositivi nella rete
-        port: 5173,
-        strictPort: true, // Impedisce a Vite di cambiare porta se la 5173 è occupata
-        hmr: {
-            host: '192.168.9.10',
-        },
-    },
+    // server: {
+    //     host: '0.0.0.0', // Permette l'accesso da altri dispositivi nella rete
+    //     port: 5173,
+    //     strictPort: true, // Impedisce a Vite di cambiare porta se la 5173 è occupata
+    //     hmr: {
+    //         host: '192.168.9.10',
+    //     },
+    // },
 });
 
 // php artisan serve --host=192.168.9.10 --port=8000 & npm run dev

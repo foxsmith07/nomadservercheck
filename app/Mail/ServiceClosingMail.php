@@ -29,7 +29,7 @@ class ServiceClosingMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('nomad@nomadrail.com','Nomad Digital'),
+            from: new Address('fortunato.didomenico@gmail.com','Nomad Digital'),
             subject: '[Telematica di bordo] START UNSCHEDULED DOWNTIME ['. $this->mail['start_expected'].']',
         );
     }
