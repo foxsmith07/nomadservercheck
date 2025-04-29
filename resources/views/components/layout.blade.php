@@ -21,21 +21,21 @@
     {{-- <div class="lg:grid lg:grid-cols-12 h-screen"> --}}
     <div class="lg:flex h-screen">
         {{-- <section class="hidden lg:block col-span-2 h-screen bg-[#242f40] shadow-xl min-w-[310px]"> old color = 282D3E --}}
-        <section class="hidden lg:block h-screen bg-[#242f40] shadow-xl min-w-[310px]"> {{-- old color = 282D3E --}}
+        <nav class="hidden lg:block h-screen bg-[#242f40] shadow-xl min-w-[310px]"> {{-- old color = 282D3E --}}
             <x-layout.sidebar />
-        </section>
+        </nav>
 
         {{-- <main class="col-span-10 overflow-y-scroll"> --}}
         <main class="w-full overflow-y-scroll">
             <x-layout.navbar />
-            <div class=" p-8">
+            <div class="p-8">
                 {{ $slot }}
             </div>
         </main>
     </div>
 
 
-    <x-layout.footer />
+    {{-- <x-layout.footer /> --}}
 
     <script src="https://kit.fontawesome.com/57bd6dffc2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

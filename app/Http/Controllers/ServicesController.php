@@ -54,7 +54,7 @@ class ServicesController extends Controller
         $mail=compact('train','event','impact','start_expected','start_actual','end_expected');
 
         try {
-            Mail::to(['furtunat@libero.it','fortunato.didomenico@gmail.com'])->cc('fortunato.di.domenico@nomadrail.com')->send(new ServiceClosingMail($mail));
+            Mail::to(['fortunato.didomenico@gmail.com','fortunato.di.domenico@nomadrail.com'])->cc('furtunat@libero.it')->send(new ServiceClosingMail($mail));
         } catch (\Exception $e) {
             \Log::error('Errore invio mail di test: ' . $e->getMessage());
             return redirect()->route('servizio.index')->with('success',$e->getMessage());
