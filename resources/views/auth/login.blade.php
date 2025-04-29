@@ -19,7 +19,7 @@
             @csrf
             <h1 class="text-center text-3xl mb-5 text-white">Login</h1>
 
-            <input type="email" name="email" class="input-custom" placeholder="Username">
+            <input type="email" name="email" class="input-custom" placeholder="Username" autofocus>
             @error('email')
                 <small class="text-red-500 block">{{ $message }}</small>
             @enderror

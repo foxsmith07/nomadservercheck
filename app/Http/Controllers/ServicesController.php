@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 use App\Models\Services;
 use Illuminate\Http\Request;
-use App\Http\Requests\ServiceRequest;
 use App\Mail\ServiceClosingMail;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ServiceRequest;
 
 class ServicesController extends Controller
 {
@@ -52,7 +53,12 @@ class ServicesController extends Controller
 
         $mail=compact('train','event','impact','start_expected','start_actual','end_expected');
 
-        Mail::to('fortunato.di.domenico@nomadrail.com')->send(new ServiceClosingMail($mail));
+        try {
+            Mail::to(['furtunat@libero.it','fortunato.didomenico@gmail.com'])->cc('fortunato.di.domenico@nomadrail.com')->send(new ServiceClosingMail($mail));
+        } catch (\Exception $e) {
+            \Log::error('Errore invio mail di test: ' . $e->getMessage());
+            return redirect()->route('servizio.index')->with('success',$e->getMessage());
+        }
 
         return redirect()->route('servizio.index')->with('success','Service closed and mail sent!');
     }

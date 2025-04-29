@@ -27,7 +27,7 @@
         <i class="fa-solid fa-clapperboard me-3"></i>
         Movie to send
     </a>    
- 
+
     <a href="{{route('obn.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
         <i class="fa-solid fa-train-subway  me-3"></i>
         OBN Train check
@@ -46,4 +46,9 @@
         <i class="fa-solid fa-gear me-3"></i>
         Configuration
     </a>
+</div>
+
+<div class="mt-[760px] flex justify-center text-white">
+    {{-- <img src="{{asset('asset/logobig.png')}}" alt="" class="w-[200px]"> --}}
+    <span>@ 2025 Copyright: Nomad Digital</span>
 </div>
