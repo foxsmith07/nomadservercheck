@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('number');
             $table->enum('tipology',['iob','deb10']);
+
             $table->timestamps();
         });
     }
