@@ -1,6 +1,6 @@
 <x-layout>
     <h1 class="text-4xl mb-8">Chiusura Servizio</h1>
-    <form action="{{route('servizio.store')}}" method="POST">
+    <form action="{{route('servizio.store')}}" method="POST" x-data="{isLoading: false}" @submit="isLoading = true">
         @csrf
         @if ($errors->any())
             <div class="mb-3">
@@ -76,7 +76,7 @@
             </table>
         </div>
 
-        <button class="btn bg-red-500 hover:bg-red-700 text-white mt-5 w-[250px] shadow-xl">Chiudi Servizio</button>
+        <button class="btn bg-red-500 hover:bg-red-700 text-white mt-5 w-[250px] shadow-xl" :disabled="isLoading">Chiudi Servizio</button>
     </form>
 </x-layout>
 
