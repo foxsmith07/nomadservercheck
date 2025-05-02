@@ -3,7 +3,7 @@
     <div>
         <a href="{{ route('welcome') }}" class="h-[100px] flex justify-center items-center text-slate-200">
             <img src="{{ asset('asset/logosmall2.png') }}" alt="" class="h-[70px] me-3">
-            <span class=" text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-slate-200 shadow-xl to-red-300">Nola Service Desk</span>
+            <span class=" text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-red-300">Nola Service Desk</span>
         </a>
 
         <div class="flex flex-col gap-2 items-start my-[20px] px-5 text-start text-slate-200 text-[15px]">
