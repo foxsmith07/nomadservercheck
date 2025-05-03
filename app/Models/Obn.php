@@ -36,7 +36,7 @@ class Obn extends Model
     // ];
 
     protected $fillable = [
-        'train_id','type','coach','device','ip','firmware','config'
+        'train_id','type','coach','device','ip','firmware','config','lastcheck'
     ];
 
     protected $casts = [
