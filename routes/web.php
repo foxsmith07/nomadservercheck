@@ -62,9 +62,5 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/movie-to-send/search', [MovieController::class, 'search'])->name('movie.search');
     Route::post('/movie-to-send/play',[MovieController::class, 'play'])->name('movie.play');
 
-    
-    //! disattivate 
-    Route::post('/file/submit',[PublicController::class, 'store'])->name('file.submit');
-    Route::get('/pdf-reader',[PublicController::class, 'pdf'])->name('pdf');
 
 });

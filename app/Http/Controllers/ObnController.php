@@ -37,9 +37,9 @@ class ObnController extends Controller
      * Display the specified resource.
      */
     // public function show(Request $obn)
-    public function show(Request $train)
+    public function show(Train $train)
     {
-        // dd($train->all());
+
         return view('pages.obn.show_obn', compact('train'));
     }
 

@@ -46,4 +46,5 @@ class Obn extends Model
     public function train(){
         return $this->belongsTo(Train::class);
     }
+
 }
