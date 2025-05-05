@@ -60,7 +60,7 @@
                         </summary>
                         <ul class="bg-[#282D3E] lg:bg-base-100 shadow-xl rounded-t-none w-full p-2">
                             <li>
-                                <a class="text-slate-100 lg:text-gray-700">
+                                <a href="{{route('user.edit',['user' => Auth::user()])}}" class="text-slate-100 lg:text-gray-700">
                                     <i class="fa-regular fa-circle-user me-2 text-[20px]"></i>
                                     Profile
                                 </a>

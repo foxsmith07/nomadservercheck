@@ -9,6 +9,7 @@ use App\Http\Controllers\FilmController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ObnController;
 use App\Http\Controllers\TrainController;
+use App\Http\Controllers\UserController;
 use Faker\Guesser\Name;
 
 Route::middleware(['auth'])->group(function(){
@@ -61,6 +62,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/movie-to-send',[MovieController::class, 'index'])->name('movie.index');
     Route::post('/movie-to-send/search', [MovieController::class, 'search'])->name('movie.search');
     Route::post('/movie-to-send/play',[MovieController::class, 'play'])->name('movie.play');
+
+    //* USERS
+    Route::get('/profile/{user}',[UserController::class, 'edit'])->name('user.edit');
 
 
 });

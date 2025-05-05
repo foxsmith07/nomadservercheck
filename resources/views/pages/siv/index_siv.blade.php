@@ -3,7 +3,7 @@
 
     <div class="flex justify-between mb-5">
         <h1 class="text-3xl">SIV REQUEST</h1>
-        <a href="{{ route('siv.create') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md">
+        <a href="{{ route('siv.create') }}" class="btn border-none shadow-xl bg-blue-500 hover:bg-blue-700 text-white rounded-md">
             <i class="fa-solid fa-circle-plus me-2 text-lg"></i>
             Add Siv Request
         </a>

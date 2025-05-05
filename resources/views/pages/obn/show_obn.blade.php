@@ -1,13 +1,13 @@
 <x-layout>
     {{-- @dd($train->train()) --}}
-    <a href="{{ route('obn.index') }}" class="btn bg-slate-400 rounded-md btn-sm hover:bg-slate-500 mb-4 text-white">
-        <i class="fa-regular fa-circle-left"></i>
+    <a href="{{ route('obn.index') }}" class="btn border-none bg-slate-400 rounded-md btn-sm hover:bg-slate-500 mb-4 text-white">
+        <i class="fa-regular fa-circle-left text-lg"></i>
         Back
     </a>
     <h1 class="text-4xl mb-5">TRAIN <span class=" text-blue-500">{{ $train->name }}</span> </h1>
 
     <h2 class="mb-4">Devices on board</h2>
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 shadow-xl">
         <table class="table">
             <!-- head -->
             <thead>
@@ -27,13 +27,13 @@
                         $fw = preg_replace("/\x1b\[[0-9;]*m/", '', $sw->firmware);
                         $cf = preg_replace("/\x1b\[[0-9;]*m/", '', $sw->config);
                     @endphp
-                    <tr>
+                    <tr class="hover:bg-slate-100">
                         <th class="w-[30px] text-blue-500">SW</th>
                         <td>{{ $sw->coach }}</td>
                         <td>{{ $sw->device }}</td>
-                        <td>{{ $ip }}</td>
-                        <td>{{ $fw }}</td>
-                        <td>{{ $cf }}</td>
+                        <td class="text-center">{{ $ip }}</td>
+                        <td class="text-center">{{ $fw }}</td>
+                        <td class="text-center">{{ $cf }}</td>
                     </tr>
                 @endforeach
                 @foreach ($train->accessPoints as $ap)
@@ -42,13 +42,13 @@
                         $fw = preg_replace("/\x1b\[[0-9;]*m/", '', $ap->firmware);
                         $cf = preg_replace("/\x1b\[[0-9;]*m/", '', $ap->config);
                     @endphp
-                    <tr>
+                    <tr class="hover:bg-slate-100">
                         <th class="w-[30px] text-orange-500">AP</th>
                         <td>{{ $ap->coach }}</td>
-                        <td>{{ $ap->device }}</td>
-                        <td>{{ $ip }}</td>
-                        <td>{{ $fw }}</td>
-                        <td>{{ $cf }}</td>
+                        <td class=" text-center">{{ $ap->device }}</td>
+                        <td class=" text-center">{{ $ip }}</td>
+                        <td class=" text-center">{{ $fw }}</td>
+                        <td class=" text-center">{{ $cf }}</td>
                     </tr>
                 @endforeach
             </tbody>

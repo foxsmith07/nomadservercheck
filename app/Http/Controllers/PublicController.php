@@ -19,8 +19,9 @@ class PublicController extends Controller
         $servicesCount = Services::all()->count();
         $covCount = Covreport::whereMonth('created_at', $now->month)->count();
         $sivCount = Siv::all()->count();
+        $users = User::all();
 
-        return view('welcome',compact('usersCount','servicesCount','sivCount','covCount'));
+        return view('welcome',compact('usersCount','servicesCount','sivCount','covCount','users'));
     }
 
     public function obncheck()

@@ -212,6 +212,6 @@ class Checkobn extends Command
             }
         }
 
-        $this->info("\nMonitoraggio OBN completato: " . now() . "\n\n");
+        $this->warn("\nMonitoraggio OBN completato: " . now() . "\n\n");
     }
 }

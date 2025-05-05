@@ -1,8 +1,8 @@
-<div class="overflow-x-auto" wire:poll.20s> <!-- 1200s sono ogni 20 minuti -->
+<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 shadow-xl" wire:poll.20s> <!-- 1200s sono ogni 20 minuti -->
     <table class="table">
         <!-- head -->
         <thead>
-            <tr class="bg-slate-200">
+            <tr class="bg-indigo-100">
                 <th class="w-[97px]">Train</th>
                 <th class="text-center w-[120px] bg-red-300">Users</th>
                 <th class="w-[200px] text-center bg-red-300">Modem</th>
@@ -14,8 +14,9 @@
         <tbody>
             @forelse ($trains as $train)
                 <tr class="hover:bg-slate-200">
+
                     <th class="flex justify-center items-center">
-                        <a href="{{route('obn.show', compact('train'))}}" class="w-full flex justify-center items-center p-2 text-center">
+                        <a href="{{route('obn.show', compact('train'))}}" class="w-full flex justify-center items-center p-2 text-center hover:scale-110 transition-transform">
                             <span class="w-full">{{$train->name}}</span>
                         </a>
                     </th>

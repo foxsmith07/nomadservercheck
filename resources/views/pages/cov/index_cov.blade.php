@@ -4,7 +4,7 @@
             <h1 class="text-3xl mb-5">COV REPORT</h1>
             <small>Totale chiamate mese corrente {{$monthlyCallCount}}</small>
         </div>
-        <a href="{{route('cov.create')}}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md">
+        <a href="{{route('cov.create')}}" class="btn border-none shadow-xl bg-blue-500 hover:bg-blue-700 text-white rounded-md">
             <i class="fa-solid fa-phone"></i>Chiamata COV
         </a>
     </div>
