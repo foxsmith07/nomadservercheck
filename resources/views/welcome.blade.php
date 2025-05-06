@@ -52,33 +52,35 @@
         </a>
     </header>
 
+    {{--? MAIN USER --}}
+    
     <main class="my-10">
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center mb-5">
             <h2 class="text-3xl">Users</h2>
-            <button class="btn btn-sm bg-blue-500 text-white rounded-md border-none hover:bg-blue-700">
+            <a href="{{route('user.create')}}" class="btn btn-sm bg-blue-500 text-white rounded-md border-none hover:bg-blue-700">
                 <i class="fa-solid fa-user-plus"></i> Add Collaborator
-            </button>
+            </a>
         </div>
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto bg-white rounded-md shadow-xl">
             <table class="table">
                 <!-- head -->
                 <thead>
-                    <tr>
-                        <th></th>
+                    <tr class="bg-slate-200">
+                        <th class="w-[25px]"></th>
                         <th>Name</th>
                         <th>Mail</th>
-                        <th>Privileges</th>
+                        <th>Role</th>
                         <th>Created at</th>
                         <th class="w-[50px]">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($users as $user)
-                        <tr class="bg-base-200">
+                        <tr class="bg-base-200 hover:bg-blue-200">
                             <th>{{ $loop->iteration }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td class="text-red-500">ruolo ancora abiliato</td>
+                            <td class="{{$user->role == 'admin' ? 'text-yellow-600' : ''}}">{{ ucfirst($user->role) }}</td>
                             <td>{{ $user->created_at->format('d M Y - H:i') }}</td>
                             <td class="text-center">
                                 <a href="">
@@ -98,3 +100,47 @@
         </div>
     </main>
 </x-layout>
+
+@session('success')
+    <script>
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 3000
+        });
+    </script>
+@endsession
+
+<script>
+    function confirmDelete(event, formElement) {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn text-[18px] bg-green-500 text-slate-100 border-none mx-[6px] rounded-[4px] hover:bg-green-700",
+                cancelButton: "btn text-[18px] bg-red-500 text-slate-100 border-none mx-[6px] rounded-[4px] hover:bg-red-700"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Sei sicuro di cancellare la chiamata COV?",
+            text: "Non puoi tornare indietro!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Si, cancellalo!",
+            cancelButtonText: "No, annulla!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Invia il form se l'utente conferma
+                formElement.submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalWithBootstrapButtons.fire({
+                    title: "Annullato",
+                    text: "la chiamata COV è salva :)",
+                    icon: "error"
+                });
+            }
+        });
+    }
+</script>

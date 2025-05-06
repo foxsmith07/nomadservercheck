@@ -63,8 +63,11 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/movie-to-send/search', [MovieController::class, 'search'])->name('movie.search');
     Route::post('/movie-to-send/play',[MovieController::class, 'play'])->name('movie.play');
 
+
     //* USERS
     Route::get('/profile/{user}',[UserController::class, 'edit'])->name('user.edit');
+    Route::get('/create-user',[UserController::class, 'create'])->name('user.create');
+    Route::post('/store-user',[UserController::class, 'store'])->name('user.store');
 
 
 });

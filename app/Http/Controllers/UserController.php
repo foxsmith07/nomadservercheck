@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -20,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.user.create_user');
     }
 
     /**
@@ -28,7 +31,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'role' => $request->input('role'),
+            'password' => Hash::make('12345678'),
+            'password_confirmation' => Hash::make('12345678'),
+        ]);
+
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $newUser = compact('name','email');
+
+        try {
+            Mail::to($email)->send(new NewUser($newUser));
+            return redirect()->route('welcome')->with('success','User successfully created!!');
+            
+        } catch (\Exception $e) {
+            return redirect()->route('welcome')->with('success',$e);
+        }
+
     }
 
     /**
