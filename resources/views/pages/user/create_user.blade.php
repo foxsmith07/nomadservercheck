@@ -6,7 +6,7 @@
 
         <div class="flex flex-col w-full">
             <label class="mb-3">Name</label>
-            <input type="text" name="name" class="input-custom" placeholder="Username" value="{{ old('name') }}">
+            <input type="text" name="name" class="input-custom @error('name') border-2 border-red-500 @enderror" placeholder="Username" value="{{ old('name') }}">
             @error('name')
                 <small class="text-red-700 block">{{ $message }}</small>
             @enderror
@@ -14,7 +14,7 @@
         
         <div class="flex flex-col w-full">
             <label class="mb-3">Email</label>
-            <input type="email" name="email" class="input-custom" placeholder="Email" value="{{ old('email') }}">
+            <input type="email" name="email" class="input-custom @error('email') border-2 border-red-500 @enderror" placeholder="Email" value="{{ old('email') }}">
             @error('email')
                 <small class="text-red-700 block">{{ $message }}</small>
             @enderror

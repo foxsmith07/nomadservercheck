@@ -15,11 +15,11 @@
 
     <section class="lg:hidden p-8 h-screen bg-[url(https://images.unsplash.com/photo-1495313196544-7d1adf4e628f?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover bg-center bg-black/50 bg-blend-multiply">
         <img src="/asset/logo2.png" alt="nomad_logo" class="mb-10">
-        <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-5">
+        <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-5" x-data="{ isLoading: false}" @submit="isLoading = true">
             @csrf
             <h1 class="text-center text-3xl mb-5 text-white">Login</h1>
 
-            <input type="email" name="email" class="input-custom" placeholder="Username" autofocus>
+            <input type="email" name="email" class="input-custom" placeholder="Username" autofocus autocomplete="email">
             @error('email')
                 <small class="text-red-500 block">{{ $message }}</small>
             @enderror
@@ -28,7 +28,9 @@
                 <small class="text-red-500 block">{{ $message }}</small>
             @enderror
 
-            <button class="btn bg-blue-500 text-white rounded-md hover:bg-blue-700 p3 border-none">Login</button>
+            <button class="btn bg-blue-500 text-white rounded-md hover:bg-blue-700 p3 border-none" :disabled="isLoading">
+                <span x-text="isLoading ? 'Loging...'' : 'Login'"></span>
+            </button>
 
         </form>
     </section>
@@ -64,3 +66,18 @@
 </body>
 
 </html>
+
+<h1>Reset Password</h1>
+
+<form action="{{ route('password.update')}}" action="post">
+
+    @csrf
+
+    <input type="hidden" name="token" value="{{$request->token}}">
+    <input type="hidden" name="email" value="{{$request->email}}">
+
+    <input type="password" name="password">
+    <input type="password" name="password_confirmation">
+
+    <button type="submit">Reset Password</button>
+</form>

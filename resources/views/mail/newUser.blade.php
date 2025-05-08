@@ -15,11 +15,12 @@
 
 <body>
     <div>
-        <h1>Benvenuto in Service Desk {{ $newUser['name'] }}</h1>
+        <h1>Benvenuto in Nomad Service Desk. {{ $newUser['name'] }}</h1>
 
-        <p>questa è la tua mail per accedere {{ $newUser['email']}}</p>
+        <p>La tua mail di accesso è {{ $newUser['email']}}</p>
 
-        <p>questo è il link per impostare la password </p>
+        {{-- <p>questo è il link per impostare la password <a href="192.168.9.10:8000">clicca qui!</a></p> --}}
+        <p>questo è il link per impostare la password <a href="https://localhost:8000">clicca qui!</a></p>
     </div>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script> --}}
