@@ -66,18 +66,3 @@
 </body>
 
 </html>
-
-<h1>Reset Password</h1>
-
-<form action="{{ route('password.update')}}" action="post">
-
-    @csrf
-
-    <input type="hidden" name="token" value="{{$request->token}}">
-    <input type="hidden" name="email" value="{{$request->email}}">
-
-    <input type="password" name="password">
-    <input type="password" name="password_confirmation">
-
-    <button type="submit">Reset Password</button>
-</form>

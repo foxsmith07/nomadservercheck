@@ -55,6 +55,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/obn-train/check',[ObnController::class, 'index'])->name('obn.index');
     Route::get('/obn-train/show/{train}',[ObnController::class, 'show'])->name('obn.show');
 
+    //! TEST
+    Route::get('/obn-train/test/{train}',[PublicController::class,'test'])->name('test'); 
     // AGV / EVO train check
 
 

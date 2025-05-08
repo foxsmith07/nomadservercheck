@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Covreport;
-use App\Models\Services;
+use Carbon\Carbon;
 use App\Models\Siv;
 use App\Models\User;
-use Carbon\Carbon;
+use App\Models\Train;
+use App\Models\Services;
+use App\Models\Covreport;
 use Spatie\PdfToText\Pdf;
 use Illuminate\Http\Request;
+use Spatie\Ssh\Ssh;
 
 class PublicController extends Controller
 {
@@ -24,25 +26,23 @@ class PublicController extends Controller
         return view('welcome',compact('usersCount','servicesCount','sivCount','covCount','users'));
     }
 
-    public function obncheck()
-    {
-        return view('pages.obn.index_obn');
+    // public function obncheck()
+    // {
+    //     return view('pages.obn.index_obn');
+    // }
+
+    public function test(Train $train){
+
+        $id = $train->number;
+
+        $utenti = Ssh::create('developer','10.226.'.$id.'.1')
+        ->execute([
+            'sudo /usr/local/bin/count_client.sh 1',
+            'marcli all',
+            'sudo obn validate',
+            ])->getOutput();
+
+        return view('test',compact('train','utenti'));
     }
 
-    public function store(Request $request)
-    {
-
-        $file = $request->file('file');
-
-        $text = (new Pdf())
-            ->setPdf($file)
-            ->text();
-
-        return back()->with(['text' => $text]);
-    }
-
-    public function pdf(){
-
-        return view('pages.pdf');
-    }
 }

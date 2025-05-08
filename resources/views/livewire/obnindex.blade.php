@@ -54,6 +54,11 @@
                     <td>
                         <small class="{{ now()->diffInMinutes($train->lastcheck()) <= -20 ? 'bg-red-600' : 'bg-green-600' }} p-1 rounded-sm text-white font-bold">{{$train->lastcheck() == null ? 'NULL' : $train->lastcheck()->format('d M y - H:i')}}</small>
                     </td>
+                    <td>
+                        <a href="{{route('test',compact('train'))}}">
+                            <i class="fa-solid fa-magnifying-glass text-3xl"></i>
+                        </a>
+                    </td>
                 </tr>
                 
             @empty
