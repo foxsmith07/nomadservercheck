@@ -31,18 +31,6 @@ class PublicController extends Controller
     //     return view('pages.obn.index_obn');
     // }
 
-    public function test(Train $train){
 
-        $id = $train->number;
-
-        $utenti = Ssh::create('developer','10.226.'.$id.'.1')
-        ->execute([
-            'sudo /usr/local/bin/count_client.sh 1',
-            'marcli all',
-            'sudo obn validate',
-            ])->getOutput();
-
-        return view('test',compact('train','utenti'));
-    }
 
 }

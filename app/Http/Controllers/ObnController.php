@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Obn;
+use Spatie\Ssh\Ssh;
 use App\Models\Train;
 use Illuminate\Http\Request;
 
@@ -65,5 +66,35 @@ class ObnController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function rtcheck(Train $train){
+
+        $id = $train->number;
+
+        exec('ping -c 3 -w 3 10.226.'.$id.'.1',$output,$ping);
+
+        if ($ping == 0) {
+            $output = Ssh::create('developer','10.226.'.$id.'.1')
+            ->execute([
+                'echo "Utenti: $(sudo /usr/local/bin/count_client.sh 1)"',
+                'echo',
+                'echo MODEM STATUS',
+                'marcli all | grep -A2 ce0p0',
+                'echo',
+                'echo',
+                'sudo obn validate | grep -i -w -A10 "switch"',
+                'echo',
+                'echo',
+                'sudo obn validate | grep -i -w -A17 "access point"',
+                'echo',
+    
+                ])->getOutput();
+
+        } else {
+            $output = "Train Unreachable";
+        }
+
+        return view('pages.obn.rtcheck',compact('train','output'));
     }
 }

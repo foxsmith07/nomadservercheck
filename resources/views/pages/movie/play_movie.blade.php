@@ -1,5 +1,5 @@
 <x-layout>
-    <a href="{{route('movie.index')}}" class="btn btn-sm bg-gray-300 border-none mb-4 hover:bg-gray-400">
+    <a href="{{route('movie.index')}}" class="btn btn-sm bg-slate-300 border-none mb-4 hover:bg-slate-400">
         <i class="fa-regular fa-circle-left text-xl"></i>
         Torna indietro
     </a>

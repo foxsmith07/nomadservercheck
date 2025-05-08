@@ -9,6 +9,7 @@
                 <th class="w-[400px]">Switch</th>
                 <th class="">Access Points</th>
                 <th class="w-[140px]">Last check</th>
+                <th class="w-[140px]">Real time check</th>
             </tr>
         </thead>
         <tbody>
@@ -55,8 +56,9 @@
                         <small class="{{ now()->diffInMinutes($train->lastcheck()) <= -20 ? 'bg-red-600' : 'bg-green-600' }} p-1 rounded-sm text-white font-bold">{{$train->lastcheck() == null ? 'NULL' : $train->lastcheck()->format('d M y - H:i')}}</small>
                     </td>
                     <td>
-                        <a href="{{route('test',compact('train'))}}">
-                            <i class="fa-solid fa-magnifying-glass text-3xl"></i>
+                        <a href="{{route('obn.rtcheck',compact('train'))}}" class="btn btn-sm bg-blue-500 hover:bg-blue-700 text-white">
+                            <span>Check</span>
+                            <i class="fa-solid fa-magnifying-glass"></i>
                         </a>
                     </td>
                 </tr>
