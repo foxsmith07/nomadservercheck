@@ -38,6 +38,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
             ])->save();
         }
+        
+        redirect()->back()->with('success','Profilo aggiornato con successo!!');
     }
 
     /**
