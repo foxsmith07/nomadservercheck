@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CmdComtroller;
+use App\Http\Controllers\CmdController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SivController;
 use App\Http\Controllers\PublicController;
@@ -17,6 +19,7 @@ Route::middleware(['auth'])->group(function(){
     //* WELCOME PAGE - WIDGET
     Route::get('/',[PublicController::class, 'index'])->name('welcome');
     
+
     //* SIV REQUEST
     Route::get('/siv-request',[SivController::class, 'index'])->name('siv.index');
     Route::get('/siv-request/create',[SivController::class,'create'])->name('siv.create');
@@ -25,6 +28,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('siv-request/edit/{siv}',[SivController::class,'edit'])->name('siv.edit');
     Route::put('siv-request/update/{siv}',[SivController::class,'update'])->name('siv.update');
     
+
     //* COV REPORT
     Route::get('/cov-report',[CovreportController::class,'index'])->name('cov.index');
     Route::get('/cov-report/creaate', [CovreportController::class,'create'])->name('cov.create');
@@ -56,8 +60,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/obn-train/show/{train}',[ObnController::class, 'show'])->name('obn.show');
     Route::get('/obn-train/real-time-check/{train}',[ObnController::class,'rtcheck'])->name('obn.rtcheck'); 
 
-    //! TEST
-    // AGV / EVO train check
+    //* CMD ON TRAINS
+    Route::get('cmd-on-trains',[CmdController::class, 'index'])->name('cmd.index');
+    Route::post('cmd-on-trains/run',[CmdController::class, 'run'])->name('cmd.run');
+    Route::get('cmd-on-trains/response',[CmdController::class, 'response'])->name('cmd.response');
 
 
     //* MOVIE TO SEND 
