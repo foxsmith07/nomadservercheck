@@ -73,16 +73,30 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        if ($user->role == 'admin') {
+    
+            $user->update([
+                $user->role = 'collaborator',
+            ]);
+        } else {
+
+            $user->update([
+                $user->role = 'admin',
+            ]);
+        }
+
+        return redirect()->route('welcome')->with('success','User successfully switched!!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('welcome')->with('success','User successfully deleted!!');
     }
 }
