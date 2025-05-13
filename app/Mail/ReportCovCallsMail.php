@@ -14,13 +14,13 @@ class ReportCovCallsMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    
+    public $data;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($_data)
     {
-        //
+        $this->data ? $_data;
     }
 
     /**
@@ -40,7 +40,7 @@ class ReportCovCallsMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.cov_report',
         );
     }
 
