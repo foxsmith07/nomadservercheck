@@ -43,7 +43,7 @@ class MonthlyCovReport extends Command
         $data = compact('mail','countCov');
 
         try {
-            Mail::to($mail)->send(new ReportCovCallsMail($data));
+            Mail::to($mail)->cc('fortunato.didomenico@gmail.com')->send(new ReportCovCallsMail($data));
 
             $this->info('mail inviata');
         } catch (\Exception $e) {

@@ -20,7 +20,7 @@ class ReportCovCallsMail extends Mailable
      */
     public function __construct($_data)
     {
-        $this->data ? $_data;
+        $this->data = $_data;
     }
 
     /**
@@ -30,7 +30,7 @@ class ReportCovCallsMail extends Mailable
     {
         return new Envelope(
             from: new Address('nola.nomaddigital@gmail.com'),
-            subject: ' - Report Cov Calls',
+            subject: ' Report Cov Calls',
         );
     }
 

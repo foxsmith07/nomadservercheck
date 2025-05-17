@@ -8,9 +8,10 @@
 </head>
 <body>
 
-    <h1>Report Chiamate Cov mese corrente</h1>
+    <img src="{{ asset('asset/logo2.png') }}" alt="">
+    <h1 style="font-size: 25px">Report Chiamate Cov mese corrente</h1>
     
-    <p>Questo mese ci sono state {{$data['countCov']}}</p>
+    <p>Questo mese abbiamo processato un totale di <span style="font-size: 20px;">{{$data['countCov']}}</span> chiamate </p>
     
 
 </body>
