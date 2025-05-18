@@ -53,7 +53,7 @@
 
     <div class="flex justify-center text-white h-[40px] items-center">
         {{-- <img src="{{asset('asset/logobig.png')}}" alt="" class="w-[200px]"> --}}
-        <span class="text-[13px]">© 2025 (v.2) Copyright: Nomad Digital</span>
+        <span class="text-[13px]">© 2025 (beta 3) Copyright: Nomad Digital</span>
     </div>
 
 </div>
