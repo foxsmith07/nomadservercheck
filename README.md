@@ -7,6 +7,9 @@
 - Tailwind css 4
     - DaisyUi 5
 
+- Alpine Js
+
+
 ## STACK LEMP
 
 
@@ -155,3 +158,17 @@ in config/app.php ho modificato
 questo 'timezone' => 'UTC' 
 
 in questo 'timezone' => 'Europe/Rome',, nel nel file env
+
+## Cron da inserire
+
+1. Mandare mail ogni 1 del mese alle 7.00
+
+    00 07 */1 * * cd /var/www/nomadservercheck/ && /usr/bin/php artisan cov:report >> /var/www/nomadservercheck/storage/cov_report.log
+
+2. Start del server alle 7.00 ogni giorno
+
+    0 7 * * * cd /var/www/nomadservercheck && nohup composer run dev > storage/logs/server.log 2>&1 &
+
+3. Stop del server alle 23.00 di ogni sera
+
+    0 23 * * * pkill -f "composer run dev" && echo "Server stoppato! $(date)" >> storage/logs/server.lo

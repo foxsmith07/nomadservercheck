@@ -29,8 +29,8 @@ class ReportCovCallsMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('nola.nomaddigital@gmail.com'),
-            subject: ' Report Cov Calls',
+            from: new Address('nola.nomaddigital@gmail.com','Nola Service Desk'),
+            subject: 'Report Cov Calls '. $this->data['nomeMesePrecedente'],
         );
     }
 
