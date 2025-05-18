@@ -7,6 +7,7 @@ use App\Mail\NewUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
@@ -49,7 +50,8 @@ class UserController extends Controller
             return redirect()->route('welcome')->with('success','User successfully created!!');
             
         } catch (\Exception $e) {
-            return redirect()->route('welcome')->with('success',$e);
+            Log::error('MAIL NON INVIATA \n'.$e);
+            return redirect()->route('welcome')->with('error','Mail non inviata.. controlla il log');
         }
 
     }

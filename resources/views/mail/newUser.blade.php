@@ -29,15 +29,18 @@
 <body>
     <div class="container">
 
-        <img src="{{ $message->embed('public/asset/logo2.png') }}" alt="nomad logo" style="margin-top: 20px; margin-bottom: 50px; width: 200px">
+        {{-- <img src="{{ $message->embed('public/asset/logo2.png') }}" alt="nomad logo" style="margin-top: 20px; margin-bottom: 50px; width: 200px"> --}}
+        <img src="{{ $message->embed(public_path('asset/logo2.png')) }}" alt="Nomad Logo">
+
+        {{-- <img src="{{ asset('asset/logo2.png') }}" alt="nomad logo" style="margin-top: 20px; margin-bottom: 50px; width: 200px"> --}}
 
         <h1>Benvenuto in Nomad Service Desk</h1>
         <h2>Ciao {{ ucfirst($newUser['name']) }},</h2>
 
-        <p style="font-size: 18px;">La tua mail di accesso è {{ $newUser['email']}}</p>
-        <p style="font-size: 18px;">La tua password temporanea è 12345678</p>
+        <p style="font-size: 18px;">La tua mail di accesso è <span style="color: dodgerblue">{{ $newUser['email']}}</span></p>
+        <p style="font-size: 18px;">La tua password temporanea è <span style="color: dodgerblue">12345678</span></p>
 
-        <small>Modifica la password nell'area profilo personale</small>
+        <small style="margin-top: 30px">Modifica la password nell'area profilo personale</small>
         
         {{-- <p>questo è il link per impostare la password <a href="https://localhost:8000">clicca qui!</a></p> --}}
     </div>

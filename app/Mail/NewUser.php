@@ -29,7 +29,7 @@ class NewUser extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('nolanomadrailnola.nomaddigital@gmail.com', 'Nola Service Desk'),
+            from: new Address('nola.nomaddigital@gmail.com', 'Nola Service Desk'),
             subject: 'Account Nola Service Desk',
         );
     }

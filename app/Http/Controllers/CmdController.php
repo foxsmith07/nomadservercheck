@@ -20,8 +20,21 @@ class CmdController extends Controller
         $cmd = $request->input('cmd');
         $train = $request->input('train');
 
+        if ($train == 'all' ) {
+            $output = 'ALL TRAIN';
+        } elseif ($train == 'iob' ) {
+            $output = 'IOB';
+        } elseif ($train == 'deb10' ) {
+            $output = 'DEB 10';
+        } else {
+            
+            $trova = Train::findOrFail($train);
+
+            $output = $trova->tipology;
+        }
         $output = Ssh::create('developer','10.131.'.$train.'.1')->execute($cmd)->getOutput();
 
-        redirect()->view('pages.cmd.output_cmd', compact('output'));
+        return view('pages.cmd.output_cmd', compact('output','cmd'));
+        // return redirect()->route('cmd.responde');
     }
 }
