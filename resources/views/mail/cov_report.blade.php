@@ -8,10 +8,12 @@
 </head>
 <body>
 
-    <img src="{{ asset('asset/logo2.png') }}" alt="">
-    <h1 style="font-size: 25px">Report Chiamate Cov del mese di <span style="color:dodgerblue; font-size:30px">{{$data['nomeMesePrecedente']}}</span></h1>
+    <img src="{{ $message->embed('public/asset/logo2.png') }}" alt="nomad logo" style="margin-top: 20px; margin-bottom: 50px; width: 200px">
+
+    <h1 style="font-size: 25px; margin-bottom: 40px">Report Chiamate Cov del mese di <span style="color:dodgerblue; font-size:30px">{{$data['nomeMesePrecedente']}}</span></h1>
     
-    <p>Sono state processate un totale di  <span style="font-size: 25px; color: dodgerblue">{{$data['countCov']}}</span>  chiamate </p>
+    <p style="font-size: 20px">Sono state processate un totale di  <span style="font-size: 25px; color: dodgerblue">{{$data['countCov']}}</span>  chiamate </p>
+    
     
 
 </body>

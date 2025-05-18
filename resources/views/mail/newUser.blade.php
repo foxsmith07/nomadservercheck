@@ -27,8 +27,10 @@
 </head>
 
 <body>
-    <img src="{{asset('asset/nd_maxi.jpg')}}" alt="nomad_logo_big">
     <div class="container">
+
+        <img src="{{ $message->embed('public/asset/logo2.png') }}" alt="nomad logo" style="margin-top: 20px; margin-bottom: 50px; width: 200px">
+
         <h1>Benvenuto in Nomad Service Desk</h1>
         <h2>Ciao {{ ucfirst($newUser['name']) }},</h2>
 
