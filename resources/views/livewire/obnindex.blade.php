@@ -4,7 +4,7 @@
         <thead>
             <tr class="bg-indigo-100">
                 <th class="w-[97px]">Train</th>
-                <th class="text-center w-[120px] bg-red-300">Users</th>
+                <th class="text-center w-[120px]">Users</th>
                 <th class="w-[200px] text-center bg-red-300">Modem</th>
                 <th class="w-[400px]">Switch</th>
                 <th class="">Access Points</th>
@@ -22,9 +22,9 @@
                         </a>
                     </th>
                     <!-- Users -->
-                    <td class="text-center bg-red-300">
+                    <td class="text-center">
                         {{-- <small class="bg-green-600 p-1 rounded-sm text-white font-bold">{{$train->usernum}}</small> --}}
-                        <small class="bg-red-600 w-[150px] p-1 rounded-sm text-white font-bold">B2 (200)</small>
+                        <small class="{{$train->obns->first()->users == '0' ? 'bg-red-500' : 'bg-green-500'}} w-[150px] p-1 rounded-sm text-white font-bold">{{$train->obns->first()->users}}</small>
                     </td>
                     
                     {{-- Modems--}}
@@ -55,9 +55,10 @@
                     <td>
                         <small class="{{ now()->diffInMinutes($train->lastcheck()) <= -20 ? 'bg-red-600' : 'bg-green-600' }} p-1 rounded-sm text-white font-bold">{{$train->lastcheck() == null ? 'NULL' : $train->lastcheck()->format('d M y - H:i')}}</small>
                     </td>
-                    <td>
-                        <a href="{{route('obn.rtcheck',compact('train'))}}" class="btn btn-sm bg-blue-500 hover:bg-blue-700 text-white">
-                            <span>Check</span>
+                    <td x-data="{ isLoading: false}">
+                        <a href="{{route('obn.rtcheck',compact('train'))}}" class="btn btn-sm bg-blue-500 hover:bg-blue-700 text-white" @click="isLoading = true" :disabled="isLoading">
+                            {{-- <span>Check</span> --}}
+                            <span x-text="isLoading ? 'Checking...' : 'Check'"></span>
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </a>
                     </td>

@@ -52,6 +52,9 @@ class Checkobn extends Command
             if ($ping == 0) {
                 Obn::where('train_id', $train->id)->delete();
 
+                $users = Ssh::create('developer',$host)->disableStrictHostKeyChecking()->execute('sudo /usr/local/bin/count_client.sh 1 ')->getOutput();
+                $this->warn('Users: '.$users);
+
                 $validate = Ssh::create('developer', $host)->disableStrictHostKeyChecking()->execute('sudo obn validate')->getOutput();
                 // $this->info('Validate: ' . $validate);
 
@@ -131,6 +134,7 @@ class Checkobn extends Command
                             'firmware'  => $row['firmware'],
                             'config'    => $row['config'],
                             'lastcheck' => now(),
+                            'users' => $users,
                         ]
                     );
                 }
@@ -204,6 +208,7 @@ class Checkobn extends Command
                             'firmware'  => $row['firmware'],
                             'config'    => $row['config'],
                             'lastcheck' => now(),
+                            'users' => $users,
                         ]
                     );
                 }

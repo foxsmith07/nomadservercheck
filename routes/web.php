@@ -1,13 +1,11 @@
 <?php
 
-use App\Http\Controllers\CmdComtroller;
 use App\Http\Controllers\CmdController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SivController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\CovreportController;
-use App\Http\Controllers\FilmController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ObnController;
 use App\Http\Controllers\TrainController;
@@ -46,7 +44,7 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/chiusura-servizio/destroy/{service}',[ServicesController::class,'destroy'])->name('servizio.destroy');
     
     
-    //* Train configuration
+    //* TRAIN CONFIGURATOR
     Route::get('/trains',[TrainController::class, 'index'])->name('train.index');
     Route::get('/train/create',[TrainController::class, 'create'])->name('train.create');
     Route::post('/train/store',[TrainController::class, 'store'])->name('train.store');

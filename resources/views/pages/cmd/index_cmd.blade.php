@@ -1,7 +1,7 @@
 <x-layout>
     <h1 class="text-3xl mb-5">Command on Trains</h1>
 
-    <form action="{{route('cmd.run')}}" method="POST" class="bg-white rounded-md shadow-xl p-5 max-w-[500px] flex flex-col gap-8">
+    <form action="{{route('cmd.run')}}" method="POST" class="bg-white rounded-md shadow-xl p-5 max-w-[500px] flex flex-col gap-8" x-data="{ isLoading: false}" @submit="isLoading = true">
         @csrf
         <div class="flex flex-col">
             <label class="mb-3">Command to run</label>
@@ -15,13 +15,13 @@
                 <option value="iob">All Trains IOB</option>
                 <option value="deb10">All Trains deb10</option>
                 @foreach ($trains as $train)
-                    <option value="{{$train->id}}">{{$train->name}}</option>
+                    <option value="{{$train->number}}">{{$train->name}}</option>
                 @endforeach
             </select>
         </div>
 
-        <button type="submit" class="btn bg-blue-500 text-white">
-            Run command
+        <button type="submit" class="btn bg-blue-500 text-white" :disabled="isLoading">
+            <span x-text="isLoading ? 'Running...' : 'Run Command'"></span>
         </button>
 
     </form>

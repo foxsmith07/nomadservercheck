@@ -6,6 +6,8 @@
     </a>
     <h1 class="text-4xl mb-5">TRAIN <span class=" text-blue-500">{{ $train->name }}</span> </h1>
 
+    <h2 class="mb-4">Users: {{$train->obns->first()->users}}</h2>
+
     <h2 class="mb-4">Devices on board</h2>
     <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 shadow-xl">
         <table class="table">

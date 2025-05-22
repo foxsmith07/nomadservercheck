@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@nomadrail.com',
+            'role' => 'admin'
         ]);
 
         $this->call(TrainSeeder::class);
