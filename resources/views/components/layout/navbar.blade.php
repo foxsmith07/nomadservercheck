@@ -53,7 +53,7 @@
                         <summary>
                             <div class="avatar">
                                 <div class="w-[50px] rounded-full">
-                                    @if (Auth::user()->mail == 'vincenzo.gori@nomadrail.com')
+                                    @if (Auth::user()->email == 'vincenzo.gori@nomadrail.com')
                                         <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
                                     @else
                                         <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"/>
