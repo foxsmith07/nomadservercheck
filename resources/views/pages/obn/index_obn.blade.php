@@ -10,22 +10,4 @@
 
     <livewire:obnindex />
 
-    {{-- @if (!empty($outputs))
-        @foreach ($outputs as $train)      
-            <p>{{$train['number']}}</p>
-            <pre>{{$train['output']}}</pre>
-        @endforeach
-
-        <p>{{$outputs[0]['number']}}</p>
-    @endif --}}
-
-    @if (!empty($output) and !empty($train))
-        <p>{{$train->number}} </p>
-        @foreach ($output as $item)
-        <pre>{{trim($item)}} </pre>
-        @endforeach
-
-        
-    @endif
-
 </x-layout>
