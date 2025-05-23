@@ -6,6 +6,8 @@ use App\Models\Obn;
 use Spatie\Ssh\Ssh;
 use App\Models\Train;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Artisan;
 
 class ObnController extends Controller
 {
@@ -75,22 +77,27 @@ class ObnController extends Controller
         exec('ping -c 3 -w 3 10.226.'.$id.'.1',$output,$ping);
 
         if ($ping == 0) {
-            $output = Ssh::create('developer','10.226.'.$id.'.1')
+            $cmd = Ssh::create('developer','10.226.'.$id.'.1')
             ->execute([
                 'echo "Utenti: $(sudo /usr/local/bin/count_client.sh 1)"',
                 'echo',
-                'echo MODEM STATUS',
+                // 'echo',
+                // 'sudo obn validate | grep -i -w -A10 "switch"',
+                // 'echo',
+                'echo',
+                'echo VALIDATE...',
+                // 'echo',
+                'sudo obn validate',
+                // 'sudo obn validate | grep -i -w -A17 "access point"',
+                'echo',
+                'echo MODEM STATUS...',
+                'echo',
                 'marcli all | grep -A2 ce0p0',
-                'echo',
-                'echo',
-                'sudo obn validate | grep -i -w -A10 "switch"',
-                'echo',
-                'echo',
-                'sudo obn validate | grep -i -w -A17 "access point"',
                 'echo',
     
                 ])->getOutput();
 
+            $output = preg_replace('/\e\[[\d;]*m/', '', $cmd);
         } else {
             $output = "Train Unreachable";
         }
@@ -100,43 +107,16 @@ class ObnController extends Controller
 
     public function allCheck(){
         
-        $train = Train::where('tipology','iob')->get()->first();
 
-        // $trains = Train::where('tipology','iob')->get();
+        Artisan::call('check:obn');
+        
+        $output = Artisan::output();
 
-        // foreach ($trains as $train) {
-            
-        //     exec('ping -c 3 -w 3 10.226.'.$train->number.'.1', $output, $ping);
-
-        //     if ($ping == 0 ){
-        //         $output = Ssh::create('developer','10.226.'.$train->number.'.1')->execute('hostname')->getOutput();
-        //     } else {
-        //         $output = 'Train Unreachable';
-        //     }
-
-        //     $outputs[] = [
-        //         'number' => $train->number,
-        //         'output' => $output,
-        //     ];
-        // }
-
-        exec('ping -c 3 -w 3 10.226.'.$train->number.'.1', $output, $ping);
-
-        if ($ping == 0 ){
-            $output = Ssh::create('developer','10.226.'.$train->number.'.1')->execute('sudo obn validate')->getOutput();
-
-            // 1. Pulisci i codici ANSI (colori terminale)
-            $output = preg_replace('/\e\[[\d;]*m/', '', $output);
-
-            // 2. Spezza l'output in righe
-            $output = explode("\n", $output);
+        Log::info($output);
 
 
-        } else {
-            $output = 'Train Unreachable';
-        }
-
-        return view('pages.obn.index_obn',compact('output','train'));
-        // return redirect()->route('obn.index')->with('success',$outputs);
+        // return view('pages.obn.index_obn');
+        // return view('pages.obn.index_obn',compact('output','train'));
+        return redirect()->route('obn.index')->with('success',$output);
     }
 }
