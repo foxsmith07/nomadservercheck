@@ -55,8 +55,12 @@
                                 <div class="w-[50px] rounded-full">
                                     @if (Auth::user()->email == 'vincenzo.gori@nomadrail.com')
                                         <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
+                                    
+                                    @elseif (Auth::user()->email == 'carla.napolitano@nomadrail.com')
+                                        <img src="{{asset('asset/avatar_woman.png')}}" alt="avatar_woman">
                                     @else
-                                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"/>
+                                        {{-- <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"/> --}}
+                                        <img src="{{asset('asset/avatar_man.png')}}" alt="avatar_man"/>
                                     @endif
                                 </div>
                             </div>
