@@ -52,7 +52,7 @@ class MonthlyCovReport extends Command
         $data = compact('mail', 'countCov','nomeMesePrecedente');
 
         try {
-            Mail::to($mail)->cc('fortunato.didomenico@gmail.com')->send(new ReportCovCallsMail($data));
+            Mail::to(['carla.napolitano@nomadrail.com','walter.pecoraro@nomadrail.com'])->cc($mail)->send(new ReportCovCallsMail($data));
 
             $preciso = now();
 

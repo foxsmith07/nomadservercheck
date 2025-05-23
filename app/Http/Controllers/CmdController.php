@@ -27,40 +27,40 @@ class CmdController extends Controller
             $choose='all';
             $trains = Train::all();
 
-                foreach ($trains as $train) {
-                
-                    if ($train->tipology == 'iob') {
+            foreach ($trains as $train) {
+            
+                if ($train->tipology == 'iob') {
+                    
+                    exec('ping -c 3 -w 3 10.226.' . $train->number . '.1', $output, $ping);
+                    
+                    if ($ping == 0) {
+                        $result = Ssh::create('developer', '10.226.' . $train->number . '.1')->execute($cmd)->getOutput();
                         
-                        exec('ping -c 3 -w 3 10.226.' . $train->number . '.1', $output, $ping);
-                        
-                        if ($ping == 0) {
-                            $result = Ssh::create('developer', '10.226.' . $train->number . '.1')->execute($cmd)->getOutput();
-                            
-                        } else {
-                            $result = "Train ".$train->number." Unreachable";
-                        }
-        
-                        $outputs[] = [
-                            'number' => $train->number,
-                            'output' => $result,
-                        ];
-
                     } else {
-
-                        exec('ping -c 3 -w 3 10.131.' . $train->number . '.1', $output, $ping);
-                        
-                        if ($ping == 0) {
-                            $result = Ssh::create('developer', '10.131.' . $train->number . '.1')->execute($cmd)->getOutput();
-                            
-                        } else {
-                            $result = "Train ".$train->number." Unreachable";
-                        }
-        
-                        $outputs[] = [
-                            'number' => $train->number,
-                            'output' => $result,
-                        ];
+                        $result = "Train ".$train->number." Unreachable";
                     }
+    
+                    $outputs[] = [
+                        'number' => $train->number,
+                        'output' => $result,
+                    ];
+
+                } else {
+
+                    exec('ping -c 3 -w 3 10.131.' . $train->number . '.1', $output, $ping);
+                    
+                    if ($ping == 0) {
+                        $result = Ssh::create('developer', '10.131.' . $train->number . '.1')->execute($cmd)->getOutput();
+                        
+                    } else {
+                        $result = "Train ".$train->number." Unreachable";
+                    }
+    
+                    $outputs[] = [
+                        'number' => $train->number,
+                        'output' => $result,
+                    ];
+                }
             }
 
 

@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/obn-train/check',[ObnController::class, 'index'])->name('obn.index');
     Route::get('/obn-train/show/{train}',[ObnController::class, 'show'])->name('obn.show');
     Route::get('/obn-train/real-time-check/{train}',[ObnController::class,'rtcheck'])->name('obn.rtcheck'); 
+    Route::get('/obn-train/all-check', [ObnController::class, 'allCheck'])->name('obn.allCheck');
 
     //* CMD ON TRAINS
     Route::get('cmd-on-trains',[CmdController::class, 'index'])->name('cmd.index');

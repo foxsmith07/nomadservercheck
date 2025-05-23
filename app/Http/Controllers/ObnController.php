@@ -97,4 +97,46 @@ class ObnController extends Controller
 
         return view('pages.obn.rtcheck',compact('train','output'));
     }
+
+    public function allCheck(){
+        
+        $train = Train::where('tipology','iob')->get()->first();
+
+        // $trains = Train::where('tipology','iob')->get();
+
+        // foreach ($trains as $train) {
+            
+        //     exec('ping -c 3 -w 3 10.226.'.$train->number.'.1', $output, $ping);
+
+        //     if ($ping == 0 ){
+        //         $output = Ssh::create('developer','10.226.'.$train->number.'.1')->execute('hostname')->getOutput();
+        //     } else {
+        //         $output = 'Train Unreachable';
+        //     }
+
+        //     $outputs[] = [
+        //         'number' => $train->number,
+        //         'output' => $output,
+        //     ];
+        // }
+
+        exec('ping -c 3 -w 3 10.226.'.$train->number.'.1', $output, $ping);
+
+        if ($ping == 0 ){
+            $output = Ssh::create('developer','10.226.'.$train->number.'.1')->execute('sudo obn validate')->getOutput();
+
+            // 1. Pulisci i codici ANSI (colori terminale)
+            $output = preg_replace('/\e\[[\d;]*m/', '', $output);
+
+            // 2. Spezza l'output in righe
+            $output = explode("\n", $output);
+
+
+        } else {
+            $output = 'Train Unreachable';
+        }
+
+        return view('pages.obn.index_obn',compact('output','train'));
+        // return redirect()->route('obn.index')->with('success',$outputs);
+    }
 }
