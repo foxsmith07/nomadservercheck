@@ -1,25 +1,26 @@
 <nav class="navbar bg-[#282D3E] lg:bg-base-100 shadow-2xl flex justify-between h-[80px]">
 
     <div class="dropdown dropdown-start lg:hidden">
-        <div tabindex="0" role="button" class="btn m-1 bg-slate-500 border-none"><i class="fa-solid fa-bars text-2xl"></i></div>
+        <div tabindex="0" role="button" class="btn m-1 bg-slate-500 border-none"><i
+                class="fa-solid fa-bars text-2xl"></i></div>
         <ul tabindex="0" class="dropdown-content menu bg-[#282D3E] rounded-box z-1 w-screen p-2 shadow-sm">
             <li>
-                <a href="{{route('siv.index')}}" class="text-2xl text-slate-100">
+                <a href="{{ route('siv.index') }}" class="text-2xl text-slate-100">
                     <i class="fa-solid fa-download me-3"></i> Siv Request
                 </a>
             </li>
             <li>
-                <a href="{{route('cov.index')}}" class="text-2xl text-slate-100">
+                <a href="{{ route('cov.index') }}" class="text-2xl text-slate-100">
                     <i class="fa-solid fa-phone-volume me-3"></i> COV Report
                 </a>
             </li>
             <li>
-                <a href="{{route('servizio.index')}}" class="text-2xl text-slate-100">
+                <a href="{{ route('servizio.index') }}" class="text-2xl text-slate-100">
                     <i class="fa-solid fa-table-list me-2"></i> Chiusure servizio
                 </a>
             </li>
             <li>
-                <a href="{{route('obn.index')}}" class="text-2xl text-slate-100">
+                <a href="{{ route('obn.index') }}" class="text-2xl text-slate-100">
                     <i class="fa-solid fa-train-subway  me-3"></i> OBN Trains Check
                 </a>
             </li>
@@ -29,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('train.index')}}" class="text-2xl text-slate-100">
+                <a href="{{ route('train.index') }}" class="text-2xl text-slate-100">
                     <i class="fa-solid fa-gear me-2"></i>
                     Siv Request
                 </a>
@@ -39,7 +40,7 @@
 
     <div class="flex-1 lg:flex items-center ms-2 hidden">
         <a href="{{ route('welcome') }}">
-            <img src="{{asset('asset/logobig.png')}}" alt="" class="w-[200px]">
+            <img src="{{ asset('asset/logobig.png') }}" alt="" class="w-[200px]">
             {{-- <span>Service Desk Nola</span> --}}
         </a>
     </div>
@@ -49,18 +50,17 @@
             <li>
                 @auth
 
-                    <details>
+                    <details class="w-[180px]">
                         <summary>
                             <div class="avatar">
-                                <div class="w-[50px] rounded-full">
+                                <div class="w-[45px] rounded-full">
                                     @if (Auth::user()->email == 'vincenzo.gori@nomadrail.com')
                                         <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
-                                    
                                     @elseif (Auth::user()->email == 'carla.napolitano@nomadrail.com')
-                                        <img src="{{asset('asset/avatar_woman.png')}}" alt="avatar_woman">
+                                        <img src="{{ asset('asset/avatar_woman.png') }}" alt="avatar_woman">
                                     @else
                                         {{-- <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"/> --}}
-                                        <img src="{{asset('asset/avatar_man.png')}}" alt="avatar_man"/>
+                                        <img src="{{ asset('asset/avatar_man.png') }}" alt="avatar_man" />
                                     @endif
                                 </div>
                             </div>
@@ -68,11 +68,22 @@
                         </summary>
                         <ul class="bg-[#282D3E] lg:bg-base-100 shadow-xl rounded-t-none w-full p-2">
                             <li>
-                                <a href="{{route('user.edit',['user' => Auth::user()])}}" class="text-slate-100 lg:text-gray-700">
+                                <a href="{{ route('user.edit', ['user' => Auth::user()]) }}"
+                                    class="text-slate-100 lg:text-gray-700">
                                     <i class="fa-regular fa-circle-user me-2 text-[20px]"></i>
                                     Profile
                                 </a>
                             </li>
+                            
+                            @if (Auth::user()->role == 'admin')
+                                <li>
+                                    <a href="{{ route('user.index') }}"
+                                        class="text-slate-100 lg:text-gray-700">
+                                        <i class="fa-solid fa-user me-2 text-[20px]"></i>
+                                        Team management
+                                    </a>
+                                </li>
+                            @endif
 
                             <li>
                                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">

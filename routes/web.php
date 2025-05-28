@@ -72,10 +72,11 @@ Route::middleware(['auth'])->group(function(){
 
 
     //* USERS
+    Route::get('/users',[UserController::class, 'index'])->name('user.index')->middleware('admin');
     Route::get('/profile/{user}',[UserController::class, 'edit'])->name('user.edit');
     Route::get('/create-user',[UserController::class, 'create'])->name('user.create')->middleware('admin');
     Route::post('/store-user',[UserController::class, 'store'])->name('user.store')->middleware('admin');
     Route::delete('/user/delete/{user}',[UserController::class,'destroy'])->name('user.destroy')->middleware('admin');
-    Route::put('/user/{user}/switch-to/',[UserController::class, 'update'])->name('user.update');
+    Route::put('/user/{user}/switch-to/',[UserController::class, 'update'])->name('user.update')->middleware('admin');
 
 });

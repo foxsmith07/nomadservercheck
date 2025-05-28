@@ -17,7 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return view('pages.user.index_user',compact('users'));
     }
 
     /**
@@ -47,11 +49,11 @@ class UserController extends Controller
 
         try {
             Mail::to($email)->send(new NewUser($newUser));
-            return redirect()->route('welcome')->with('success','User successfully created!!');
+            return redirect()->route('user.index')->with('success','User successfully created!!');
             
         } catch (\Exception $e) {
             Log::error('MAIL NON INVIATA \n'.$e);
-            return redirect()->route('welcome')->with('error','Mail non inviata.. controlla il log');
+            return redirect()->route('user.index')->with('error','Mail non inviata.. controlla il log');
         }
 
     }
@@ -89,7 +91,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect()->route('welcome')->with('success','User successfully switched!!');
+        return redirect()->route('user.index')->with('success','User successfully switched!!');
     }
 
     /**
@@ -99,6 +101,6 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('welcome')->with('success','User successfully deleted!!');
+        return redirect()->route('user.index')->with('success','User successfully deleted!!');
     }
 }

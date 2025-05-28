@@ -9,7 +9,8 @@
         <div class="flex flex-col items-start my-2 px-5 text-start text-slate-200 text-[15px]">
             <a href="{{route('welcome')}}"  class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 <i class="fa-solid fa-house me-3"></i>
-                <span>Overview</span>
+                <span>Dashboard</span>
+                {{-- <span>Overview</span> --}}
             </a>
             
             <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">Serivce Desk</p>

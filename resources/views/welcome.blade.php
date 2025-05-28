@@ -52,69 +52,8 @@
         </a>
     </header>
 
-    @if (Auth::user()->role == 'admin')
-        
-        {{--? MAIN USER --}}
-        
-        <main class="my-10">
-            <div class="flex justify-between items-center mb-5">
-                <h2 class="text-3xl">Users</h2>
-                <a href="{{route('user.create')}}" class="btn btn-sm bg-blue-500 text-white rounded-md border-none hover:bg-blue-700">
-                    <i class="fa-solid fa-user-plus"></i> Add Collaborator
-                </a>
-            </div>
-            <div class="overflow-x-auto bg-white rounded-md shadow-xl">
-                <table class="table">
-                    <!-- head -->
-                    <thead>
-                        <tr class="bg-slate-200">
-                            <th class="w-[25px]"></th>
-                            <th>Name</th>
-                            <th>Mail</th>
-                            <th>Role</th>
-                            <th>Created at</th>
-                            <th class="w-[200px]">Switch to</th>
-                            <th class="w-[50px]">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($users as $user)
-                            <tr class="bg-base-200 hover:bg-blue-200">
-                                <th>{{ $loop->iteration }}</th>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td class="{{$user->role == 'admin' ? 'text-yellow-600' : ''}}">{{ ucfirst($user->role) }}</td>
-                                <td>{{ $user->created_at->format('d M Y - H:i') }}</td>
-                                <td>
-                                    <form action="{{route('user.update', compact('user'))}}" method="POST">
-                                        @csrf
-                                        @method('put')
-                                        <button class="btn btn-sm bg-{{$user->role == 'admin' ? 'blue' : 'yellow'}}-500 text-white rounded-md border-none">{{$user->role == 'admin' ? 'switch to collaborator' : 'switch to admin'}}</button>
-                                    </form>
-                                </td>
-                                <td class="text-center">
-                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="button" id="deleteButton" class="hover:cursor-pointer"
-                                            @click.prevent="confirmDelete($event, $el.parentElement)">
-                                            <i class="fa-solid fa-trash-can text-2xl text-red-500"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <th colspan="100%" class="text-red-500">
-                                    No Collaborator created yet
-                                </th>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    @endif
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+
 
 </x-layout>
 
