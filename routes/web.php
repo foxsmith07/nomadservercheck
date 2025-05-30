@@ -16,6 +16,7 @@ Route::middleware(['auth'])->group(function(){
 
     //* WELCOME PAGE - WIDGET
     Route::get('/',[PublicController::class, 'index'])->name('welcome');
+    Route::put('/save{lavagna}',[PublicController::class,'save'])->name('welcome.save');
     
 
     //* SIV REQUEST

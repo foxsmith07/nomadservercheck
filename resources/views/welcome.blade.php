@@ -53,9 +53,15 @@
         </a>
     </header>
 
-    <h1 class=" text-3xl mt-8 mb-5">Lavagna</h1>
-    <div class="bg-white rounded-md shadow-xl p-3 mb-8 h-[500px]">
-        <textarea name="" id="lavagna" cols="30" rows="10" class="w-full h-full"></textarea>
+
+    <div class="p-3 bg-slate-400 rounded-xl mt-8">
+        <h1 class="text-center text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mb-3">Lavagna</h1>
+        <form action="{{route('welcome.save',compact('lavagna'))}}" method="POST">
+            @csrf
+            @method('put')
+            <textarea name="content" id="lavagna" cols="30" rows="30" class="w-full h-full">{{$lavagna->content ?? ''}}</textarea>
+            <button name="submitbtn"></button>
+        </form>
     </div>
 
 
@@ -65,8 +71,19 @@
 <script>
     tinymce.init({
         selector: 'textarea#lavagna', // Replace this CSS selector to match the placeholder element for TinyMCE
-        plugins: 'code table lists',
-        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+        plugins: 'code table lists advlist link image autosave save',
+        // autosave_interval: '20s',
+        toolbar: 'undo redo | blocks | bold italic backcolor forecolor | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table | save',
+        onboarding: false,
+
+        // MENU BAR - Menu dive sta File, ecc..
+        // menubar: false,
+
+        //? STATUS BAR - barra sottostante
+        // statusbar: false,
+        branding: false,
+        elementpath: false,
+        resize: false,
     });
 </script>
 

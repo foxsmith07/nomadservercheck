@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Train;
 use App\Models\Services;
 use App\Models\Covreport;
+use App\Models\Lavagna;
 use Spatie\PdfToText\Pdf;
 use Illuminate\Http\Request;
 use Spatie\Ssh\Ssh;
@@ -23,14 +24,31 @@ class PublicController extends Controller
         $sivCount = Siv::all()->count();
         $users = User::all();
 
-        return view('welcome',compact('usersCount','servicesCount','sivCount','covCount','users'));
+        $lavagna = Lavagna::first();
+
+        return view('welcome',compact('usersCount','servicesCount','sivCount','covCount','users','lavagna'));
     }
 
-    // public function obncheck()
-    // {
-    //     return view('pages.obn.index_obn');
-    // }
+    public function save(Request $request){
 
+        $contenuto = $request->input('content');
+
+        $lavagna = Lavagna::first();
+
+        if($lavagna){
+
+            $lavagna->update([
+                'content'=> $contenuto,
+            ]);
+        } else {
+            Lavagna::create([
+                'content' => $contenuto
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Lavagna Aggiornata!!');
+
+    }
 
 
 }
