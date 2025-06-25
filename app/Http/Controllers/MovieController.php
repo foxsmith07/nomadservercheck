@@ -21,15 +21,25 @@ class MovieController extends Controller
         $train = $request->input('train');
         $search = $request->input('search');
 
-        exec('ping -c 3 -w 3 10.131.'.$train.'.1',$output,$ping); 
+        exec('ping -c 3 -W 3 10.131.'.$train.'.1',$output,$ping); 
         // exec('wsl ping -c 3 -w 3 10.131.'.$train.'.1',$output,$ping); //todo WINDOWS
 
         if ($ping == 0) {
             if (!empty($search)) {
-                $movies = Ssh::create('developer','10.131.'.$train.'.1')->execute('ls /media/movies | grep -i '.$search)->getOutput();
+                try {
+                    //code...
+                    $movies = Ssh::create('developer','10.131.'.$train.'.1')->setTimeout(5)->execute('ls /media/movies | grep -i '.$search)->getOutput();
+                } catch (\Exception $e) {
+                    $movies = $e;
+                }
                 
             } else {
-                $movies = Ssh::create('developer','10.131.'.$train.'.1')->execute('ls /media/movies')->getOutput();
+                try {
+                    //code...
+                    $movies = Ssh::create('developer','10.131.'.$train.'.1')->setTimeout(5)->execute('ls /media/movies')->getOutput();
+                } catch (\Exception $e) {
+                    $movies = $e;
+                }
             }
             // return redirect()->route('movie.select',compact('train'))->with('movies',$movie);
             return view('pages.movie.play_movie',compact('movies','train'));
