@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Train;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Spatie\Ssh\Ssh;
 
 class CmdController extends Controller
@@ -31,7 +32,11 @@ class CmdController extends Controller
             
                 if ($train->tipology == 'iob') {
                     
-                    exec('ping -c 3 -w 3 10.226.' . $train->number . '.1', $output, $ping);
+                    try {
+                        exec('ping -c 3 -w 3 10.226.' . $train->number . '.1', $output, $ping);
+                    } catch (\Throwable $e) {
+                        Log::alert($e);
+                    }
                     
                     if ($ping == 0) {
                         $result = Ssh::create('developer', '10.226.' . $train->number . '.1')->execute($cmd)->getOutput();
