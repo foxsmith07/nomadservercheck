@@ -61,11 +61,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/obn-train/all-check', [ObnController::class, 'allCheck'])->name('obn.allCheck');
 
     //* CMD ON TRAINS
-    Route::get('/cmd-on-trains',[CmdController::class, 'index'])->name('cmd.index');
-    Route::post('/cmd-on-trains/run',[CmdController::class, 'run'])->name('cmd.run');
-    Route::get('/cmd-on-trains/response',[CmdController::class, 'response'])->name('cmd.response');
+    // Route::get('/cmd-on-trains',[CmdController::class, 'index'])->name('cmd.index');
+    // Route::post('/cmd-on-trains/run',[CmdController::class, 'run'])->name('cmd.run');
+    // Route::get('/cmd-on-trains/response',[CmdController::class, 'response'])->name('cmd.response');
 
-    Route::get('/cmd-on-trains/2',[CmdController::class, 'due'])->name('2');
+    Route::get('/cmd-on-trains',[CmdController::class, 'index'])->name('cmd.index');
 
 
     //* MOVIE TO SEND 

@@ -49,8 +49,7 @@
                 <i class="fa-solid fa-triangle-exclamation ms-3 text-2xl text-yellow-400"></i>
             </a>
             
-            {{-- <a href="{{ route('cmd.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full"> --}}
-            <a href="{{ route('2') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+            <a href="{{ route('cmd.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 <i class="fa-solid fa-terminal me-3"></i>
                 CMD on Trains
             </a>
