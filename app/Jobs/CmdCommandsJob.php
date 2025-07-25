@@ -1,33 +1,37 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Jobs;
 
-use App\Models\Train;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Spatie\Ssh\Ssh;
+use App\Models\Train;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CmdController extends Controller
+class CmdCommandsJob implements ShouldQueue
 {
-    public function index()
-    {
-        // $trains=Train::all();
-        // $iob=Train::where('tipology','iob')->get();
-        // $deb10=Train::where('tipology','deb10')->get();
+    use Queueable;
 
-        // return view('pages.cmd.index_cmd',compact('trains','iob','deb10'));
-        return view('pages.cmd.index_cmd');
+    public $cmd;
+    public $train;
+    /**
+     * Create a new job instance.
+     */
+    public function __construct($_cmd , $_train)
+    {
+        //
+        $this->cmd = $_cmd;
+        $this->train = $_train;
     }
 
-    public function due(){
-
-        return view('pages.cmd.2');
-    }
-
-    public function run(Request $request)
+    /**
+     * Execute the job.
+     */
+    public function handle(): void
     {
-        $cmd = $request->input('cmd');
-        $train = $request->input('train');
+        //
+        $cmd = $this->cmd;;
+        $train = $this->train;;
 
         if ($train == 'all') {
             $choose='all';
@@ -146,7 +150,7 @@ class CmdController extends Controller
         }
         // $output = Ssh::create('developer','10.131.'.$train.'.1')->execute($cmd)->getOutput();
 
-        return view('pages.cmd.output_cmd', compact('cmd', 'trains','choose','outputs'));
+        // return view('pages.cmd.output_cmd', compact('cmd', 'trains','choose','outputs'));
         // return redirect()->route('cmd.responde');
     }
 }

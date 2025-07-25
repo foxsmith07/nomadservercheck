@@ -50,7 +50,7 @@
             <li>
                 @auth
 
-                    <details class="w-[180px]">
+                    <details class="w-[180px] z-10">
                         <summary>
                             <div class="avatar">
                                 <div class="w-[45px] rounded-full">
