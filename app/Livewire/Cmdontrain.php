@@ -16,6 +16,9 @@ class Cmdontrain extends Component
     public $nok;
     public $treno;
 
+    public $count = 0;
+    public $progress = 0;
+
     public function check()
     {
         // dd($this->train);
@@ -32,6 +35,7 @@ class Cmdontrain extends Component
         if ($this->train == 'all') {
 
             $trains = Train::orderBy('number', 'asc')->get();
+            $this->count = Train::all()->count();
 
             foreach ($trains as $train) {
 
@@ -107,11 +111,13 @@ class Cmdontrain extends Component
         } elseif ($this->train == 'iob') {
 
             $trains = Train::where('tipology', 'iob')->get();
+            $this->count = Train::where('tipology', 'iob')->count();
 
             foreach ($trains as $train) {
 
                 $nok = false;
-
+                $this->progress = 0;
+                
                 try {
                     exec('ping -c 3 -w 5 10.226.' . $train->number . '.1', $output, $ping);
                 } catch (\Throwable $e) {
@@ -141,6 +147,7 @@ class Cmdontrain extends Component
                     'output' => $result,
                     'nok' => $nok,
                 ];
+                $this->progress++;
             }
         } elseif ($this->train == 'deb10') {
 
@@ -217,8 +224,8 @@ class Cmdontrain extends Component
 
             } else {
 
-                $nok = false;
-
+                $this->nok = false;;
+                $this->count = 1;
 
                 try {
                     exec('ping -c 3 -w 3 10.131.' . $this->train . '.1', $result, $ping);
@@ -226,7 +233,7 @@ class Cmdontrain extends Component
 
                     Log::alert($e);
                     $this->output = $e->getMessage();
-                    $nok = true;
+                    $this->nok = true;
                 }
 
                 if ($ping == 0) {
@@ -236,7 +243,7 @@ class Cmdontrain extends Component
                         ->getOutput();
                 } else {
                     $this->output = "Train " . $this->train . " Unreachable";
-                    $nok = true;
+                    $this->nok = true;
                 }
 
                 $this->treno = $this->train;

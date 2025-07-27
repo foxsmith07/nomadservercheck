@@ -39,8 +39,8 @@
             {{-- <p class="py-4">Press ESC key or click the button below to close</p> --}}
 
             <div wire:loading wire:target='check' class="text-center mt-10">
-                <p class="text-lg text-center">Caricamento <span class="loading loading-dots loading-md ms-3"></span>
-                </p>
+                <p class="text-lg text-center">Caricamento <span class="loading loading-dots loading-md ms-3"></span></p>
+                {{-- <p class="mt-4" wire:poll wire:text>Treni da processare: {{$progress}} di {{$count}}</p> --}}
             </div>
             <div wire:loading.remove wire:target='check' class="mt-10">
                 @if ($output)
