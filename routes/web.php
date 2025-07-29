@@ -65,11 +65,11 @@ Route::middleware(['auth'])->group(function(){
 
 
     //* MOVIE TO SEND 
-    Route::get('/movie-to-send',[MovieController::class, 'index'])->name('movie.index');
-    Route::post('/movie-to-send/search', [MovieController::class, 'search'])->name('movie.search');
-    Route::post('/movie-to-send/play',[MovieController::class, 'play'])->name('movie.play');
+    // Route::get('/movie-to-send',[MovieController::class, 'index'])->name('movie.index');
+    // Route::post('/movie-to-send/search', [MovieController::class, 'search'])->name('movie.search');
+    // Route::post('/movie-to-send/play',[MovieController::class, 'play'])->name('movie.play');
 
-    Route::get('movie/2',[MovieController::class, 'due'])->name('movie.due');
+    Route::get('movie-to-send',[MovieController::class, 'index'])->name('movie.index');
 
 
     //* USERS
