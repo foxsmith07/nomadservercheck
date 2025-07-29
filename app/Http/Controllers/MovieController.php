@@ -71,4 +71,9 @@ class MovieController extends Controller
 
         return redirect()->route('movie.index')->with('output', $output);
     }
+
+
+    public function due() {
+        return view('pages.movie.2');
+    }
 }

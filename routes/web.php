@@ -69,6 +69,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/movie-to-send/search', [MovieController::class, 'search'])->name('movie.search');
     Route::post('/movie-to-send/play',[MovieController::class, 'play'])->name('movie.play');
 
+    Route::get('movie/2',[MovieController::class, 'due'])->name('movie.due');
+
 
     //* USERS
     Route::get('/users',[UserController::class, 'index'])->name('user.index')->middleware('admin');

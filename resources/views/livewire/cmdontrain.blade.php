@@ -8,7 +8,8 @@
         
         <div class="mb-3 flex flex-col">
             <label class="mb-3">Select 1 train or all</label>
-            <select name="train" wire:model="train" class="input-custom {{ $treno == null ? 'outline! outline-red-500!' : ''}}">
+            {{-- <select name="train" wire:model="train" class="input-custom {{ $treno == null ? 'outline! outline-red-500!' : ''}}"> --}}
+            <select name="train" wire:model="train" class="input-custom">
                 <option value="" disabled class="text-gray-400">select train or typology</option>
                 <option value="all">All Fleet</option>
                 <option value="iob">All Trains IOB</option>

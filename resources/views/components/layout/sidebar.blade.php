@@ -37,7 +37,8 @@
             
             <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">Train Actions</p>
 
-            <a href="{{ route('movie.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+            {{-- <a href="{{ route('movie.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full"> --}}
+            <a href="{{ route('movie.due') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
                 <i class="fa-solid fa-clapperboard me-3"></i>
                 Movie to send
