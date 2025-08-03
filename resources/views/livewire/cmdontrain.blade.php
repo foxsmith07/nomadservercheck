@@ -34,12 +34,12 @@
     <!--? Modale-->
     <dialog id="check" class="modal" wire:ignore.self>
 
-        <div class="bg-white rounded-md shadow-xl p-7 text-center w-full md:w-2/3 h-auto max-h-screen overflow-y-scroll">
+        <div class="bg-white rounded-md shadow-xl p-7 w-full md:w-2/3 h-auto max-h-screen overflow-y-scroll">
             {{-- <div class="modal-box text-center"> --}}
-            <h3 class="text-lg font-bold">Check</h3>
+            <h3 class="text-lg font-bold w-full text-center">Check</h3>
             {{-- <p class="py-4">Press ESC key or click the button below to close</p> --}}
 
-            <div wire:loading wire:target='check' class="text-center mt-10">
+            <div wire:loading wire:target='check' class="text-center w-full mt-10">
                 <p class="text-lg text-center">Caricamento <span class="loading loading-dots loading-md ms-3"></span></p>
                 {{-- <p class="mt-4" wire:poll wire:text>Treni da processare: {{$progress}} di {{$count}}</p> --}}
             </div>
