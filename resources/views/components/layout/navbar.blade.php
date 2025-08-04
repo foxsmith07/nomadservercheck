@@ -38,12 +38,31 @@
         </ul>
     </div>
 
-    <div class="flex-1 lg:flex items-center ms-2 hidden">
+
+    <div class="lg:flex items-center ms-2 hidden">
         <a href="{{ route('welcome') }}">
             <img src="{{ asset('asset/logobig.png') }}" alt="" class="w-[200px]">
             {{-- <span>Service Desk Nola</span> --}}
         </a>
     </div>
+
+
+
+    {{--! ADMIN SESSION --}}
+    @if (Auth::user()->role == 'admin')
+        <div class="hidden md:block">
+            <a href="{{ route('user.index') }}" class="hover:bg-slate-200 p-3 w-full rounded-md">
+                <i class="fa-solid fa-user me-2 text-[20px]"></i>
+                <span>Team Management</span>
+            </a>
+        </div>
+    @endif
+
+
+    {{--! END ADMIN SESSION --}}
+
+
+
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
             {{-- <li><a>Link</a></li> --}}
