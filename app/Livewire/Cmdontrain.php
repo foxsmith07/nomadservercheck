@@ -21,15 +21,23 @@ class Cmdontrain extends Component
 
     public function check()
     {
+        $this->reset(['output', 'outputs', 'nok', 'treno', 'count', 'progress']);
+        
+        $this->output = null;
+        $this->outputs = [];
+        $this->nok = false;
+        $this->treno = null;
+        $this->count = 0;
+        $this->progress = 0;
         // dd($this->train);
         $this->validate([
             'train' => 'required|not_in:""', // blocca il value vuoto
             'cmd' => 'required|string',
         ]);
 
-        $this->output = null;
-        $this->outputs = [];
-        $this->treno = null;
+        // $this->output = null;
+        // $this->outputs = [];
+        // $this->treno = null;
 
         // ACTION -> ALL TRAINS
         if ($this->train == 'all') {
@@ -55,7 +63,7 @@ class Cmdontrain extends Component
                             $result = Ssh::create('developer', '10.226.' . $train->number . '.1')
                                 ->disableStrictHostKeyChecking()
                                 ->setTimeout(5)
-                                ->execute('timeout 5 '.$this->cmd)
+                                ->execute('timeout 5 ' . $this->cmd)
                                 ->getOutput();
                         } catch (\Throwable $th) {
                             Log::alert($th);
@@ -86,7 +94,7 @@ class Cmdontrain extends Component
                             $result = Ssh::create('developer', '10.131.' . $train->number . '.1')
                                 ->disableStrictHostKeyChecking()
                                 ->setTimeout(5)
-                                ->execute('timeout 5 '.$this->cmd)
+                                ->execute('timeout 5 ' . $this->cmd)
                                 ->getOutput();
                         } catch (\Throwable $th) {
                             Log::alert($th);
@@ -117,7 +125,7 @@ class Cmdontrain extends Component
 
                 $nok = false;
                 $this->progress = 0;
-                
+
                 try {
                     exec('ping -c 3 -w 5 10.226.' . $train->number . '.1', $output, $ping);
                 } catch (\Throwable $e) {
@@ -130,7 +138,7 @@ class Cmdontrain extends Component
                         $result = Ssh::create('developer', '10.226.' . $train->number . '.1')
                             ->disableStrictHostKeyChecking()
                             ->setTimeout(10)
-                            ->execute('timeout 5 '.$this->cmd)
+                            ->execute('timeout 5 ' . $this->cmd)
                             ->getOutput();
                     } catch (\Throwable $th) {
                         Log::alert($th);
@@ -169,7 +177,7 @@ class Cmdontrain extends Component
                         $result = Ssh::create('developer', '10.131.' . $train->number . '.1')
                             ->disableStrictHostKeyChecking()
                             ->setTimeout(10)
-                            ->execute('timeout 5 '.$this->cmd)
+                            ->execute('timeout 5 ' . $this->cmd)
                             ->getOutput();
                     } catch (\Throwable $th) {
                         Log::alert($th);
@@ -191,7 +199,6 @@ class Cmdontrain extends Component
 
             $this->reset();
             $treno = null;
-            
         } else {
 
             $trains = Train::where('number', $this->train)->first();
@@ -213,7 +220,7 @@ class Cmdontrain extends Component
                 if ($ping == 0) {
                     $this->output = Ssh::create('developer', '10.226.' . $this->train . '.1')
                         ->disableStrictHostKeyChecking()
-                        ->execute('timeout 5 '.$this->cmd)
+                        ->execute('timeout 5 ' . $this->cmd)
                         ->getOutput();
                 } else {
                     $this->output = "Train " . $this->train . " Unreachable";
@@ -221,7 +228,6 @@ class Cmdontrain extends Component
                 }
 
                 $this->treno = $this->train;
-
             } else {
 
                 $this->nok = false;;
@@ -239,7 +245,7 @@ class Cmdontrain extends Component
                 if ($ping == 0) {
                     $this->output = Ssh::create('developer', '10.131.' . $this->train . '.1')
                         ->disableStrictHostKeyChecking()
-                        ->execute('timeout 5 '.$this->cmd)
+                        ->execute('timeout 5 ' . $this->cmd)
                         ->getOutput();
                 } else {
                     $this->output = "Train " . $this->train . " Unreachable";
@@ -248,7 +254,6 @@ class Cmdontrain extends Component
 
                 $this->treno = $this->train;
             }
-
         }
 
     }

@@ -96,7 +96,7 @@
             </div>
             <div wire:loading.remove wire:target="play,run">
                 @if ($output)
-                    <p class="text-xl font-bold mb-5">Output:</p>
+                    <p class="text-xl font-bold mb-5">Output Treno {{$this->train}}:</p>
                     <p>{{ $output }}</p>
                 @endif
             </div>
