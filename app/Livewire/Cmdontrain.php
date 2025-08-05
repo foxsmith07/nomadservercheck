@@ -11,9 +11,9 @@ class Cmdontrain extends Component
 {
     public $train = ''; //fatto cosi per la selected disabled
     public $cmd;
-    public $output;
-    public $outputs;
-    public $nok;
+    public $output = '';
+    public $outputs = [];
+    public $nok = false;
     public $treno;
 
     public $count = 0;
@@ -21,23 +21,28 @@ class Cmdontrain extends Component
 
     public function check()
     {
-        $this->reset(['output', 'outputs', 'nok', 'treno', 'count', 'progress']);
-        
-        $this->output = null;
-        $this->outputs = [];
-        $this->nok = false;
-        $this->treno = null;
-        $this->count = 0;
-        $this->progress = 0;
         // dd($this->train);
+
+        // $this->reset([
+        //     'output',
+        //     'outputs',
+        //     'nok',
+        //     'treno',
+        //     'count',
+        //     'progress',
+        // ]);
+
         $this->validate([
             'train' => 'required|not_in:""', // blocca il value vuoto
             'cmd' => 'required|string',
         ]);
 
-        // $this->output = null;
-        // $this->outputs = [];
-        // $this->treno = null;
+        $this->output = '';
+        $this->outputs = [];
+        $this->nok = false;
+        $this->treno = null;
+        $this->count = 0;
+        $this->progress = 0;
 
         // ACTION -> ALL TRAINS
         if ($this->train == 'all') {
@@ -199,52 +204,60 @@ class Cmdontrain extends Component
 
             $this->reset();
             $treno = null;
+
         } else {
 
-            $trains = Train::where('number', $this->train)->first();
+            $this->outputs = [];
+            $this->output = '';
+            $this->count = 1;
+            $this->progress = 1;
+            $this->nok = false;
+            $this->treno = null;
 
+            $traintocheck = Train::where('number', $this->train)->first();
 
-            if ($trains->tipology == 'iob') {
+            // dd($trains);
 
-                $nok = false;
+            if ($traintocheck->tipology == 'iob') {
+
 
                 try {
                     exec('ping -c 3 -w 3 10.226.' . $this->train . '.1', $result, $ping);
                 } catch (\Throwable $e) {
-
+                    
                     Log::alert($e);
                     $this->output = $e->getMessage();
                     $nok = true;
                 }
-
+                
                 if ($ping == 0) {
                     $this->output = Ssh::create('developer', '10.226.' . $this->train . '.1')
-                        ->disableStrictHostKeyChecking()
-                        ->execute('timeout 5 ' . $this->cmd)
-                        ->getOutput();
+                    ->disableStrictHostKeyChecking()
+                    ->execute('timeout 5 ' . $this->cmd)
+                    ->getOutput();
                 } else {
                     $this->output = "Train " . $this->train . " Unreachable";
                     $nok = true;
                 }
-
+                
                 $this->treno = $this->train;
             } else {
-
+                
                 $this->nok = false;;
                 $this->count = 1;
-
+                
                 try {
                     exec('ping -c 3 -w 3 10.131.' . $this->train . '.1', $result, $ping);
                 } catch (\Throwable $e) {
-
+                    
                     Log::alert($e);
                     $this->output = $e->getMessage();
                     $this->nok = true;
                 }
-
+                
                 if ($ping == 0) {
                     $this->output = Ssh::create('developer', '10.131.' . $this->train . '.1')
-                        ->disableStrictHostKeyChecking()
+                    ->disableStrictHostKeyChecking()
                         ->execute('timeout 5 ' . $this->cmd)
                         ->getOutput();
                 } else {
@@ -256,6 +269,13 @@ class Cmdontrain extends Component
             }
         }
 
+        // dd([$this->train,$this->treno]);
+        // dd($this->output);
+    }
+
+    public function redirigi(){
+
+        $this->redirectRoute('cmd.index');
     }
 
     public function render()
