@@ -43,7 +43,8 @@
                 Movie to send
             </a>
 
-            <a href="{{ route('obn.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+            {{-- <a href="{{ route('obn.index') }}" class="hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full"> --}}
+            <a href="javascript:void(0)" class="pointer-events-none px-3 py-2 m-0 rounded-md w-full text-slate-500">
                 <i class="fa-solid fa-train-subway  me-3"></i>
                 OBN Train check
                 <i class="fa-solid fa-triangle-exclamation ms-3 text-2xl text-yellow-400"></i>

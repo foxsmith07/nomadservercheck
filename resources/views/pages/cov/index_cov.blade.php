@@ -10,13 +10,13 @@
     </div>
 
     @forelse ($covs as $date => $dailyReports)
-        <h3 class="bg-slate-300 w-[200px] p-2 rounded-md font-semibold mt-7 shadow-xl">Giorno {{$date}}</h3>
+        <h3 class="bg-slate-300 w-[200px] p-2 rounded-sm font-semibold mt-7 shadow-xl border border-b-0 border-white">Giorno {{$date}}</h3>
         
         <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 shadow-xl">
             <table class="table">
                 <!-- head -->
                 <thead>
-                    <tr>
+                    <tr class="bg-slate-300">
                         <th class="w-1/12">Train</th>
                         <th class="w-1/12">Time</th>
                         <th class="w-2/12">Worker</th>
