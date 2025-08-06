@@ -51,7 +51,7 @@
     {{--! ADMIN SESSION --}}
     @if (Auth::user()->role == 'admin')
         <div class="hidden md:block">
-            <a href="{{ route('user.index') }}" class="hover:bg-slate-200 p-3 w-full rounded-md">
+            <a href="{{ route('user.index') }}" class="hover:bg-slate-100 p-3 w-full rounded-md">
                 <i class="fa-solid fa-user me-2 text-[20px]"></i>
                 <span>Team Management</span>
             </a>

@@ -34,6 +34,11 @@
                 Chiusure servizio
             </a>
             
+            <a href="" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+                {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
+                <i class="fa-solid fa-train-subway me-3"></i>
+                Italo Upgrade Roadmap
+            </a>
             
             <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">Train Actions</p>
 
@@ -44,7 +49,7 @@
             </a>
 
             <a href="{{ route('obn.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
-                <i class="fa-solid fa-train-subway  me-3"></i>
+                <i class="fa-solid fa-server me-3"></i>
                 OBN Train check
                 <i class="fa-solid fa-triangle-exclamation ms-3 text-2xl text-yellow-400"></i>
             </a>
