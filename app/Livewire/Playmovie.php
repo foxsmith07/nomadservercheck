@@ -21,6 +21,8 @@ class Playmovie extends Component
     public function play()
     {
 
+        $this->reset(['movies','output','unreachable','film']);
+        
         $this->movies = null;
         $this->output = null;
         $this->unreachable = null;
@@ -32,7 +34,7 @@ class Playmovie extends Component
 
             try {
 
-                exec('ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
+                exec('timeout 60s ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
             } catch (\Throwable $th) {
                 Log::alert($th);
                 $this->unreachable = $th->getMessage();
@@ -46,19 +48,19 @@ class Playmovie extends Component
                     $this->movies = Ssh::create('developer', '10.131.' . $this->train . '.1')
                         ->disableStrictHostKeyChecking()
                         ->setTimeout(10)
-                        ->execute('ls /media/movies')
+                        ->execute('timeout 60s ls /media/movies')
                         ->getOutput();
                 } catch (\Throwable $th) {
                     $this->unreachable = $th->getMessage();
                 }
             } else {
-                $this->unreachable = "Train Unreachable";
+                $this->unreachable = "Train ". $this->train. " Unreachable";
             }
         } else {
 
             try {
 
-                exec('ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
+                exec('timeout 60s ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
             } catch (\Throwable $th) {
                 Log::alert($th);
             }
@@ -71,14 +73,14 @@ class Playmovie extends Component
                     $this->movies = Ssh::create('developer', '10.131.' . $this->train . '.1')
                         ->disableStrictHostKeyChecking()
                         ->setTimeout(10)
-                        ->execute('ls /media/movies | grep -i ' . $this->search)
+                        ->execute('timeout 60s ls /media/movies | grep -i ' . $this->search)
                         ->getOutput();
                 } catch (\Throwable $th) {
                     $this->unreachable = $th->getMessage();
                 }
             } else {
                 # code...
-                $this->unreachable = "Train Unreachable";
+                $this->unreachable = "Train ".$this->train." Unreachable";
             }
         }
     }
@@ -91,7 +93,7 @@ class Playmovie extends Component
             $this->output = Ssh::create('developer', '10.131.' . $this->train . '.1')
                 ->disableStrictHostKeyChecking()
                 ->setTimeout(20)
-                ->execute("curl -s --show-error http://localhost:2323/cinema/server/play/".$this->film)
+                ->execute("timeout 60s curl -s --show-error http://localhost:2323/cinema/server/play/".$this->film)
                 ->getOutput();
         } catch (\Throwable $th) {
             $this->output = "ERRORE: ".$th->getMessage();
