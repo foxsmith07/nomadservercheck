@@ -6,10 +6,12 @@ use App\Http\Controllers\SivController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\CovreportController;
+use App\Http\Controllers\ItaloupgradeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ObnController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\UserController;
+use App\Livewire\Italoupgrade;
 use Faker\Guesser\Name;
 
 Route::middleware(['auth'])->group(function(){
@@ -43,6 +45,15 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/chiusure-servizio/store',[ServicesController::class,'store'])->name('servizio.store');
     Route::get('/chiusura-servizio/show/{service}',[ServicesController::class,'show'])->name('servizio.show');
     Route::delete('/chiusura-servizio/destroy/{service}',[ServicesController::class,'destroy'])->name('servizio.destroy');
+
+
+    //* ITALO UPGRADE ROADMAP
+    Route::get('/italo-upgrade',[ItaloupgradeController::class, 'index'])->name('italoupgrade.index');
+    Route::get('/italo-upgrade/create', [ItaloupgradeController::class, 'create'])->name('italoupgrade.create'); 
+    Route::post('/italo-upgrade/store',[ItaloupgradeController::class, 'store'])->name('italoupgrade.store');
+    Route::get('/italo-upgrade/edit/{item}',[ItaloupgradeController::class, 'edit'])->name('italoupgrade.edit');
+    Route::put('/italo-upgrade/update/{item}',[ItaloupgradeController::class, 'update'])->name('italoupgrade.update');
+    Route::delete('/italo-updrade/destroy/{item}', [ItaloupgradeController::class, 'destroy'])->name('italoupgrade.destroy');
     
     
     //* TRAIN CONFIGURATOR

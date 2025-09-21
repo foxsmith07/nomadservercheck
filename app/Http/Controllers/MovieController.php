@@ -13,6 +13,6 @@ class MovieController extends Controller
 {
 
     public function index() {
-        return view('pages.movie.index');
+        return view('pages.movie.index_movie');
     }
 }

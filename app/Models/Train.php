@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Obn;
 use App\Models\Siv;
+use App\Models\roadmap;
 use App\Models\Covreport;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -52,5 +53,9 @@ class Train extends Model
             ->first();
 
         return $obn ? $obn->lastcheck : null;
+    }
+
+    public function roadmaps(){
+        return $this->hasMany(roadmap::class);
     }
 }
