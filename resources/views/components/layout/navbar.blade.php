@@ -108,7 +108,7 @@
                 @auth
 
                     <details class="w-[180px] z-10">
-                        <summary>
+                        <summary class="rounded-md active:bg-slate-300!">
                             <div class="avatar">
                                 <div class="w-[45px] rounded-full">
                                     @if (Auth::user()->email == 'vincenzo.gori@nomadrail.com')
