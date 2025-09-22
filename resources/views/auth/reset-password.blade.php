@@ -10,15 +10,18 @@
     <style>
         
         .blocco {
+            margin-top: 50px;
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
+            background-color: red;
         }
 
         form {
-            margin-top: 150px;
             background-color: white;
             border-radius: 20px;
-            box-shadow: black 20px 20px 20px
+            /* box-shadow: black 20px 20px 20px */
         }
 
     </style>
@@ -27,7 +30,7 @@
     
     <h1>Benvenuto su Nomad Service Desk</h1>
 
-    <div class="blocco">
+    <div class="blocco flecol">
         <p>Imposta una password</p>
     
         <form action="{{ route('password.update')}}" action="post">

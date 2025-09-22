@@ -58,6 +58,10 @@
                     <small class="text-red-500 block">{{ $message }}</small>
                 @enderror
 
+                <a href="{{route('password.request')}}" class="hover:text-blue-500 hover:underline">
+                    <span>reset password</span>
+                </a>
+
                 <button class="btn bg-blue-500 text-white rounded-md hover:bg-blue-700 p-3" :disabled="isLoading">
                     <span x-text="isLoading ? 'Loging...' : 'Login'"></span>
                 </button>
