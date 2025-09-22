@@ -40,17 +40,28 @@
         </a>
 
         {{-- ? WIDGET 4 Users --}}
-        <a
+        {{-- <a
             class="h-[180px] bg-linear-to-tl from-rose-400 to-red-500 rounded-md shadow-xl p-5 grid grid-cols-2 text-white hover:scale-110 transition-transform">
             <div class="flex flex-col justify-between col-span-1 h-full">
                 <h3 class="text-2xl font-bold">Users</h3>
                 <p><span class="font-bold text-3xl">{{ $usersCount }}</span> users created</p>
             </div>
             <div class="col-span-1 flex justify-center items-center">
-                {{-- <i class="fa-solid fa-user text-8xl"></i> --}}
                 <i class="fa-regular fa-id-card text-8xl"></i>
             </div>
+        </a> --}}
+        
+        {{-- ? WIDGET 4 IOB Upgrade --}}
+        <a href="{{route('train.index')}}" class="h-[180px] bg-linear-to-tl from-rose-400 to-red-500 rounded-md shadow-xl p-5 grid grid-cols-2 text-white hover:scale-110 transition-transform">
+            <div class="flex flex-col justify-between col-span-1 h-full">
+                <h3 class="text-2xl font-bold">IOB Trains done</h3>
+                <p><span class="font-bold text-4xl">{{ $iobTrains }}</span> <span class="text-xl">/ 56</span></p>
+            </div>
+            <div class="col-span-1 flex justify-center items-center">
+                <i class="fa-solid fa-server text-8xl"></i>
+            </div>
         </a>
+
     </header>
 
 

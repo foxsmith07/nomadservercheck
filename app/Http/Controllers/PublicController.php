@@ -23,10 +23,11 @@ class PublicController extends Controller
         $covCount = Covreport::whereMonth('created_at', $now->month)->count();
         $sivCount = Siv::all()->count();
         $users = User::all();
+        $iobTrains = Train::where('tipology','iob')->count();
 
         $lavagna = Lavagna::first();
 
-        return view('welcome',compact('usersCount','servicesCount','sivCount','covCount','users','lavagna'));
+        return view('welcome',compact('usersCount','servicesCount','sivCount','covCount','users','lavagna','iobTrains'));
     }
 
     public function save(Request $request){

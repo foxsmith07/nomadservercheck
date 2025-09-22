@@ -126,7 +126,7 @@
                         <ul class="bg-[#282D3E] lg:bg-base-100 shadow-xl rounded-t-none w-full p-2">
                             <li>
                                 <a href="{{ route('user.edit', ['user' => Auth::user()]) }}"
-                                    class="text-slate-100 lg:text-gray-700">
+                                    class="text-slate-100 lg:text-gray-700 active:bg-slate-300! active:text-black!">
                                     <i class="fa-regular fa-circle-user me-2 text-[20px]"></i>
                                     Profile
                                 </a>
@@ -134,7 +134,7 @@
 
                             @if (Auth::user()->role == 'admin')
                                 <li>
-                                    <a href="{{ route('user.index') }}" class="text-slate-100 lg:text-gray-700">
+                                    <a href="{{ route('user.index') }}" class="text-slate-100 lg:text-gray-700 active:bg-slate-300! active:text-black!">
                                         <i class="fa-solid fa-user me-2 text-[20px]"></i>
                                         Team management
                                     </a>
@@ -142,7 +142,7 @@
                             @endif
 
                             <li>
-                                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                <form action="{{ route('logout') }}" method="POST" style="display: inline;" class="active:bg-slate-300!">
                                     @csrf
                                     <button class="dropdown-item text-red-500">
                                         <i class="fa-solid fa-right-from-bracket me-2 text-[20px]"></i>
