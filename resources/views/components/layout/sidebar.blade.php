@@ -49,15 +49,23 @@
             </a>
 
             {{-- <a href="{{ route('obn.index') }}" class="hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full"> --}}
-            <a href="javascript:void(0)" class="pointer-events-none px-3 py-2 m-0 rounded-md w-full text-slate-500">
+            {{-- <a href="javascript:void(0)" class="pointer-events-none px-3 py-2 m-0 rounded-md w-full text-slate-500">
                 <i class="fa-solid fa-train-subway  me-3"></i>
                 OBN Train check
                 <i class="fa-solid fa-triangle-exclamation ms-3 text-2xl text-yellow-400"></i>
-            </a>
+            </a> --}}
             
             <a href="{{ route('cmd.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 <i class="fa-solid fa-terminal me-3"></i>
                 CMD on Trains
+            </a>
+
+            <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">Stock management</p>
+
+            <a href="{{ route('stock.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+                {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
+                <i class="fa-solid fa-gear me-3"></i>
+                Inventory
             </a>
 
             <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">Settings</p>
@@ -72,7 +80,7 @@
 
     <div class="flex justify-center text-white h-[40px] items-center">
         {{-- <img src="{{asset('asset/logobig.png')}}" alt="" class="w-[200px]"> --}}
-        <span class="text-[13px]">© 2025 (beta 3) Copyright: Nomad Digital</span>
+        <span class="text-[13px]">© 2025 (v1.2) Copyright: Nomad Digital</span>
     </div>
 
 </div>

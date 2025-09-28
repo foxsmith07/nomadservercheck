@@ -9,6 +9,7 @@ use App\Http\Controllers\CovreportController;
 use App\Http\Controllers\ItaloupgradeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ObnController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Italoupgrade;
@@ -90,5 +91,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/store-user',[UserController::class, 'store'])->name('user.store')->middleware('admin');
     Route::delete('/user/delete/{user}',[UserController::class,'destroy'])->name('user.destroy')->middleware('admin');
     Route::put('/user/{user}/switch-to/',[UserController::class, 'update'])->name('user.update')->middleware('admin');
+
+    //* STOCK MANAGEMENT
+    Route::get('/stock-management',[StockController::class,'index'])->name('stock.index');
 
 });
