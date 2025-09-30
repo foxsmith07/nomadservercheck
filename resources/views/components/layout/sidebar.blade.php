@@ -1,9 +1,11 @@
-<div class="flex flex-col justify-between h-full">
+<div class="flex flex-col justify-between h-full bg-slate-700">
 
     <div>
-        <a href="{{ route('welcome') }}" class="h-[80px] flex justify-center items-center text-slate-200">
-            <img src="{{ asset('asset/logosmall2.png') }}" alt="" class="h-[70px] me-3">
-            <span class=" text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-red-300">Nola Service Desk</span>
+        <a href="{{ route('welcome') }}" class="h-[80px] flex justify-center items-center text-slate-200 mb-10">
+            <img src="{{ asset('asset/logosmall2.png') }}" alt="" class="h-[60px] me-3">
+            {{-- <span class=" text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-red-300">Nola Service Desk</span> --}}
+            <span class="text-xl font-bold text-rose-500 me-2">Nola</span>
+            <span class="text-xl font-bold text-zinc-300 me-2"> Service Desk</span>
         </a>
         
         <div class="flex flex-col items-start my-2 px-5 text-start text-slate-200 text-[15px]">

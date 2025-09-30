@@ -10,6 +10,7 @@ class Item extends Model
         'name',
         'description',
         'position',
+        'nmid',
         'quantity_stock',
         'quantity_ordered',
         'quantity_shipped',
