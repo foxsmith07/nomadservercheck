@@ -172,3 +172,13 @@ in questo 'timezone' => 'Europe/Rome',, nel nel file env
 3. Stop del server alle 23.00 di ogni sera
 
     0 23 * * * pkill -f "composer run dev" && echo "Server stoppato! $(date)" >> storage/logs/server.lo
+
+
+## STOCK MANAGER
+
+da aggiungere al db:
+nmid -> string temporaneamente non obbligatorio
+
+
+
+

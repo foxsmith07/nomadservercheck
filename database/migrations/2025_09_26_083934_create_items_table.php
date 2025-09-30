@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->integer('quantity_stock');
             $table->string('position');
+            $table->string('nmid')->nullable();
             $table->integer('quantity_ordered')->default(0);
             $table->timestamp('data_ordered')->nullable();
             $table->integer('quantity_shipped')->default(0);
