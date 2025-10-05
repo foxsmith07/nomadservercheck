@@ -5,36 +5,39 @@
 
         {{-- ? WIDGET 1 Cov --}}
         <a href="{{ route('cov.index') }}"
-            class="h-[180px] bg-linear-to-tl from-cyan-500 to-blue-500 text-white rounded-md shadow-xl p-5 grid grid-cols-2 hover:scale-110 transition-transform">
+            {{-- class="h-[180px] bg-linear-to-tl from-cyan-500 to-blue-500 text-white rounded-md shadow-xl p-5 grid grid-cols-2 hover:scale-110 transition-transform"> --}}
+            class="h-[180px] bg-white text-blue-700 rounded-md shadow-xl p-5 grid grid-cols-2 hover:scale-110 transition-transform">
             <div class="flex flex-col justify-between col-span-1 h-full">
                 <h3 class="text-2xl font-bold">Cov Report</h3>
                 <p><span class="font-bold text-3xl"> {{ $covCount }} </span> call this month</p>
             </div>
-            <div class="col-span-1 flex justify-center items-center">
+            <div class="col-span-1 flex justify-center items-center rounded-full bg-blue-700 text-white">
                 <i class="fa-solid fa-phone-volume text-8xl"></i>
             </div>
         </a>
 
         {{-- ? WIDGET 2 Chiusure Servizio --}}
         <a href="{{ route('servizio.index') }}"
-            class="h-[180px] bg-linear-to-tl from-red from-amber-400 to-orange-500 rounded-md shadow-xl p-5 grid grid-cols-2 text-white hover:scale-110 transition-transform">
+            {{-- class="h-[180px] bg-linear-to-tl from-red from-amber-400 to-orange-500 rounded-md shadow-xl p-5 grid grid-cols-2 text-white hover:scale-110 transition-transform"> --}}
+            class="h-[180px] bg-white rounded-md shadow-xl p-5 grid grid-cols-2 text-rose-500 hover:scale-110 transition-transform">
             <div class="flex flex-col justify-between col-span-1 h-full">
                 <h3 class="text-2xl font-bold">Chiusure Servizio</h3>
                 <p><span class="font-bold text-3xl">{{ $servicesCount }}</span> servizi chiusi</p>
             </div>
-            <div class="col-span-1 flex justify-center items-center">
+            <div class="col-span-1 flex justify-center items-center rounded-full bg-rose-400 text-white">
                 <i class="fa-solid fa-table-list text-8xl"></i>
             </div>
         </a>
 
         {{-- ? WIDGET 3 Siv --}}
         <a href="{{ route('siv.index') }}"
-            class="h-[180px] bg-linear-to-tl from-lime-300 to-green-500 rounded-md shadow-xl p-5 grid grid-cols-2 text-white hover:scale-110 transition-transform">
+            {{-- class="h-[180px] bg-green-700 rounded-md shadow-xl p-5 grid grid-cols-2 text-white hover:scale-110 transition-transform"> --}}
+            class="h-[180px] bg-white rounded-md shadow-xl p-5 grid grid-cols-2 text-green-700 hover:scale-110 transition-transform">
             <div class="flex flex-col justify-between col-span-1 h-full">
                 <h3 class="text-2xl font-bold">Siv Request</h3>
                 <p><span class="font-bold text-3xl">{{ $sivCount }}</span> requests intervention</p>
             </div>
-            <div class="col-span-1 flex justify-center items-center">
+            <div class="col-span-1 flex justify-center items-center rounded-full bg-green-700 text-white">
                 <i class="fa-solid fa-download text-8xl"></i>
             </div>
         </a>
@@ -52,12 +55,14 @@
         </a> --}}
         
         {{-- ? WIDGET 4 IOB Upgrade --}}
-        <a href="{{route('train.index')}}" class="h-[180px] bg-linear-to-tl from-rose-400 to-red-500 rounded-md shadow-xl p-5 grid grid-cols-2 text-white hover:scale-110 transition-transform">
+        {{-- <a href="{{route('train.index')}}" class="h-[180px] bg-linear-to-tl from-rose-400 to-red-500 rounded-md shadow-xl p-5 grid grid-cols-2 text-white hover:scale-110 transition-transform"> --}}
+        {{-- <a href="{{route('train.index')}}" class="h-[180px] bg-rose-400  rounded-md shadow-xl p-5 grid grid-cols-2 text-white hover:scale-110 transition-transform"> --}}
+        <a href="{{route('train.index')}}" class="h-[180px] bg-white  rounded-md shadow-xl p-5 grid grid-cols-2 text-amber-600 hover:scale-110 transition-transform">
             <div class="flex flex-col justify-between col-span-1 h-full">
                 <h3 class="text-2xl font-bold">IOB Trains done</h3>
                 <p><span class="font-bold text-4xl">{{ $iobTrains }}</span> <span class="text-xl">/ 56</span></p>
             </div>
-            <div class="col-span-1 flex justify-center items-center">
+            <div class="col-span-1 flex justify-center items-center text-white rounded-full bg-amber-400">
                 <i class="fa-solid fa-server text-8xl"></i>
             </div>
         </a>
