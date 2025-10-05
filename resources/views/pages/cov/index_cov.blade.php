@@ -10,18 +10,18 @@
     </div>
 
     @forelse ($covs as $date => $dailyReports)
-        <h3 class="bg-slate-200 w-[200px] p-2 rounded-sm font-semibold mt-7 shadow-xl border border-b-0 border-white">Giorno {{$date}}</h3>
+        <h3 class=" bg-slate-400 w-[200px] p-2 rounded-sm font-semibold mt-7 shadow-xl border border-b-0  border-slate-300">Giorno {{$date}}</h3>
         
-        <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 shadow-xl">
+        <div class="overflow-x-auto rounded-box border border-slate-300 bg-base-100 shadow-xl">
             <table class="table">
                 <!-- head -->
                 <thead>
-                    <tr class="bg-slate-200">
+                    <tr class="bg-slate-300">
                         <th class="w-1/12">Train</th>
                         <th class="w-1/12">Time</th>
                         <th class="w-2/12">Worker</th>
                         <th class="w-2/12">Request</th>
-                        <th class="w-1/12">Resolver</th>
+                        <th class="w-1/12">Resolved</th>
                         <th class="w-2/12">Ticket Number</th>
                         <th class="w-2/12">Note</th>
                         <th class="w-1/12">Action</th>
@@ -34,7 +34,12 @@
                             <td>{{$cov->datetime->format('H:i')}}</td>
                             <td>{{$cov->worker}}</td>
                             <td>{{$cov->request}}</td>
-                            <td>{{$cov->resolved}}</td>
+                            <td class="p-0"> 
+                                <div class="{{$cov->resolved == 'yes' ? 'bg-emerald-400' : ($cov->resolved == 'slow' ? 'bg-amber-300' : 'bg-rose-400')}} 
+                                            px-2 py-1 text-center m-0 rounded-md w-[60px]">
+                                    {{$cov->resolved == 'slow' ? 'todo' : $cov->resolved}}
+                                </div>
+                            </td>
                             <td>{{$cov->ticket}}</td>
                             <td>{{$cov->note}}</td>
                             <td class="text-center flex justify-around">

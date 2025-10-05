@@ -1,5 +1,5 @@
 <x-layout>
-    <a href="{{ route('italoupgrade.index') }}" class="btn btn-sm bg-slate-300 border-none hover:bg-slate-400 mb-5">
+    <a href="{{ route('italoupgrade.index') }}" class="btn btn-sm bg-slate-300 border-slate-400 hover:bg-slate-400 mb-5">
         <i class="fa-regular fa-circle-left me-2 text-lg"></i>
         <span class="text-lg">back</span>
     </a>
@@ -70,8 +70,12 @@
 
             <div class="flex flex-col text-slate-600">
                 <label>Commissioning Location</label>
-                <input type="text" name="location" placeholder="es. Nola"
+                <select name="location"
                     class="bg-slate-100 p-2 rounded-md outline-0 focus:outline-2 focus:outline-blue-500">
+                    <option value="nola">Nola</option>
+                    <option value="mestre">Mestre</option>
+                </select>
+                {{-- <input type="text" name="location" placeholder="es. Nola" class="bg-slate-100 p-2 rounded-md outline-0 focus:outline-2 focus:outline-blue-500"> --}}
                 @error('location')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror

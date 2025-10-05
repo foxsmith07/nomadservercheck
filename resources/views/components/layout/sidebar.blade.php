@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-between h-full bg-slate-700">
+<div class="flex flex-col justify-between h-full bg-slate-900">
 
     <div>
         <a href="{{ route('welcome') }}" class="h-[80px] flex justify-center items-center text-slate-200 mb-10">

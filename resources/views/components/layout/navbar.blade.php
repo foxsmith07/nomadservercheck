@@ -90,7 +90,7 @@
     @if (Auth::user()->role == 'admin')
         <div class="hidden md:block">
             <a href="{{ route('user.index') }}" class="hover:bg-slate-200 p-3 w-full rounded-md">
-                <i class="fa-solid fa-user me-2 text-[20px] text-slate-500"></i>
+                <i class="fa-solid fa-user-gear me-2 text-[20px] text-slate-500"></i>
                 <span class="text-slate-700">Team Management</span>
             </a>
         </div>
@@ -107,19 +107,19 @@
             <li>
                 @auth
 
-                    <details class="w-[180px] z-10">
+                    <details class="w-[210px] z-10">
                         <summary class="rounded-md active:bg-slate-300!">
                             <div class="avatar">
-                                <div class="w-[45px] rounded-full">
+                                {{-- <div class="w-[45px] rounded-full">
                                     @if (Auth::user()->email == 'vincenzo.gori@nomadrail.com')
                                         <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
                                     @elseif (Auth::user()->email == 'carla.napolitano@nomadrail.com')
                                         <img src="{{ asset('asset/avatar_woman.png') }}" alt="avatar_woman">
                                     @else
-                                        {{-- <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"/> --}}
                                         <img src="{{ asset('asset/avatar_man.png') }}" alt="avatar_man" />
-                                    @endif
-                                </div>
+                                        @endif
+                                </div> --}}
+                                <i class="fa-solid fa-circle-user text-[45px] me-3 text-transparent bg-clip-text bg-gradient-to-b from-red-700 to-slate-800"></i>
                             </div>
                             <span class="text-slate-100 lg:text-gray-700">{{ ucfirst(Auth::user()->name) }}</span>
                         </summary>
@@ -135,7 +135,7 @@
                             @if (Auth::user()->role == 'admin')
                                 <li>
                                     <a href="{{ route('user.index') }}" class="text-slate-100 lg:text-gray-700 active:bg-slate-300! active:text-black!">
-                                        <i class="fa-solid fa-user me-2 text-[20px]"></i>
+                                        <i class="fa-solid fa-user-gear me-2 text-[15px]"></i>
                                         Team management
                                     </a>
                                 </li>

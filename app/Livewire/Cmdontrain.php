@@ -57,7 +57,7 @@ class Cmdontrain extends Component
                 if ($train->tipology == 'iob') {
 
                     try {
-                        exec('ping -c 3 -w 5 10.226.' . $train->number . '.1', $output, $ping);
+                        exec('ping -c 3 -w 5 10.146.' . $train->number . '.1', $output, $ping);
                     } catch (\Throwable $e) {
                         Log::alert($e);
                     }
@@ -65,7 +65,7 @@ class Cmdontrain extends Component
                     if ($ping == 0) {
                         try {
 
-                            $result = Ssh::create('developer', '10.226.' . $train->number . '.1')
+                            $result = Ssh::create('developer', '10.146.' . $train->number . '.1')
                                 ->disableStrictHostKeyChecking()
                                 ->setTimeout(5)
                                 ->execute('timeout 5 ' . $this->cmd)
@@ -132,7 +132,7 @@ class Cmdontrain extends Component
                 $this->progress = 0;
 
                 try {
-                    exec('ping -c 3 -w 5 10.226.' . $train->number . '.1', $output, $ping);
+                    exec('ping -c 3 -w 5 10.146.' . $train->number . '.1', $output, $ping);
                 } catch (\Throwable $e) {
                     Log::alert($e);
                 }
@@ -140,7 +140,7 @@ class Cmdontrain extends Component
                 if ($ping == 0) {
                     try {
 
-                        $result = Ssh::create('developer', '10.226.' . $train->number . '.1')
+                        $result = Ssh::create('developer', '10.146.' . $train->number . '.1')
                             ->disableStrictHostKeyChecking()
                             ->setTimeout(10)
                             ->execute('timeout 5 ' . $this->cmd)
@@ -222,7 +222,7 @@ class Cmdontrain extends Component
 
 
                 try {
-                    exec('ping -c 3 -w 3 10.226.' . $this->train . '.1', $result, $ping);
+                    exec('ping -c 3 -w 3 10.146.' . $this->train . '.1', $result, $ping);
                 } catch (\Throwable $e) {
                     
                     Log::alert($e);
@@ -231,7 +231,7 @@ class Cmdontrain extends Component
                 }
                 
                 if ($ping == 0) {
-                    $this->output = Ssh::create('developer', '10.226.' . $this->train . '.1')
+                    $this->output = Ssh::create('developer', '10.146.' . $this->train . '.1')
                     ->disableStrictHostKeyChecking()
                     ->execute('timeout 5 ' . $this->cmd)
                     ->getOutput();

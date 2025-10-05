@@ -13,7 +13,7 @@
 
     {{-- <livewire:italoupgrade /> --}}
 
-    <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+    <div class="overflow-x-auto rounded-box border border-slate-300 shadow-lg bg-base-100">
         <table class="table">
             <!-- head -->
             <thead class="text-center">
@@ -31,11 +31,11 @@
             <tbody class="text-center">
                 <!-- row 1 -->
                 @forelse ($roadmap as $item)
-                    <tr class="hover:bg-slate-200">
+                    <tr class="hover:bg-blue-100">
                         <th>{{ $item->train->name }}</th>
 
                         <td class="m-0 p-0">
-                            {{ $item->serial }}
+                            {{ $item->serial == null ? '-' : $item->serial}}
                         </td>
 
                         <td class="m-0 p-0">
@@ -47,13 +47,13 @@
                         </td>
 
                         <td>
-                            {{ $item->location }}
+                            <span class="{{ $item->location == 'mestre' ? 'text-purple-700' : 'text-emerald-700'}} font-bold">{{ ucfirst($item->location) }}</span>
                         </td>
-                        <td>
-                            <span
-                                class="text-white p-2 rounded-sm {{ $item->fluke == 'done' ? 'bg-emerald-500' : 'bg-rose-400' }}">
+                        <td class="m-0 p-0 flex justify-center">
+                            <div
+                                class="text-white px-2 py-1 w-[60px] rounded-sm {{ $item->fluke == 'done' ? 'bg-emerald-500' : 'bg-rose-400' }}">
                                 {{ $item->fluke }}
-                            </span>
+                            </div>
                         </td>
                         <td>
                             {{ $item->note }}

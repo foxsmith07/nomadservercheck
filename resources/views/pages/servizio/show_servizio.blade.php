@@ -1,5 +1,5 @@
 <x-layout>
-    <a href="{{route('servizio.index')}}" class="btn btn-sm bg-slate-300 hover:bg-slate-400 mb-5">
+    <a href="{{route('servizio.index')}}" class="btn btn-sm border-slate-300 bg-slate-300 hover:bg-slate-400 mb-5">
         <i class="fa-regular fa-circle-left text-lg"></i>
         Torna indietro
     </a>
