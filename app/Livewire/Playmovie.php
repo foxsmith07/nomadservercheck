@@ -17,16 +17,19 @@ class Playmovie extends Component
     public $output;
     public $unreachable;
 
+//! MODIFICARE LA VARIABILE IOBCINEMA IN PLAY AND RUN MOMENTANEAMENTE FINCHE' NON DIVENTANO TUTTI IOB E CANCELLIAMO L'IF IN ARRAY
 
     public function play()
     {
 
-        $this->reset(['movies','output','unreachable','film']);
-        
+        $this->reset(['movies', 'output', 'unreachable', 'film']);
+
         $this->movies = null;
         $this->output = null;
         $this->unreachable = null;
         $this->film = null;
+        $iobcinema = [6, 12, 15, 21];
+
 
         // dd([$this->train , $this->search , $this->unreachable ]);
 
@@ -34,7 +37,12 @@ class Playmovie extends Component
 
             try {
 
-                exec('timeout 60s ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
+                if (in_array($this->train, $iobcinema)) {
+
+                    exec('timeout 60s ping -c 3 -w 5 10.146.' . $this->train . '.1', $output, $ping);
+                } else {
+                    exec('timeout 60s ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
+                }
             } catch (\Throwable $th) {
                 Log::alert($th);
                 $this->unreachable = $th->getMessage();
@@ -44,23 +52,37 @@ class Playmovie extends Component
 
                 $this->unreachable = null;
                 try {
-                    //code...
-                    $this->movies = Ssh::create('developer', '10.131.' . $this->train . '.1')
-                        ->disableStrictHostKeyChecking()
-                        ->setTimeout(10)
-                        ->execute('timeout 60s ls /media/movies')
-                        ->getOutput();
+                    if (in_array($this->train, $iobcinema)) {
+
+                        $this->movies = Ssh::create('developer', '10.146.' . $this->train . '.1')
+                            ->disableStrictHostKeyChecking()
+                            ->setTimeout(10)
+                            ->execute('timeout 60s ls /media/movies')
+                            ->getOutput();
+                        // $this->movies = 'E un treno iob';
+                    } else {
+                        $this->movies = Ssh::create('developer', '10.131.' . $this->train . '.1')
+                            ->disableStrictHostKeyChecking()
+                            ->setTimeout(10)
+                            ->execute('timeout 60s ls /media/movies')
+                            ->getOutput();
+                    }
                 } catch (\Throwable $th) {
                     $this->unreachable = $th->getMessage();
                 }
             } else {
-                $this->unreachable = "Train ". $this->train. " Unreachable";
+                $this->unreachable = "Train " . $this->train . " Unreachable";
             }
         } else {
 
             try {
 
-                exec('timeout 60s ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
+                if (in_array($this->train, $iobcinema)) {
+
+                    exec('timeout 60s ping -c 3 -w 5 10.146.' . $this->train . '.1', $output, $ping);
+                } else {
+                    exec('timeout 60s ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
+                }
             } catch (\Throwable $th) {
                 Log::alert($th);
             }
@@ -70,33 +92,54 @@ class Playmovie extends Component
                 # code...
                 try {
                     //code...
-                    $this->movies = Ssh::create('developer', '10.131.' . $this->train . '.1')
-                        ->disableStrictHostKeyChecking()
-                        ->setTimeout(10)
-                        ->execute('timeout 60s ls /media/movies | grep -i ' . $this->search)
-                        ->getOutput();
+                    if (in_array($this->train, $iobcinema)) {
+                    
+                        $this->movies = Ssh::create('developer', '10.146.' . $this->train . '.1')
+                            ->disableStrictHostKeyChecking()
+                            ->setTimeout(10)
+                            ->execute('timeout 60s ls /media/movies | grep -i ' . $this->search)
+                            ->getOutput();
+                        } else {
+                        $this->movies = Ssh::create('developer', '10.131.' . $this->train . '.1')
+                            ->disableStrictHostKeyChecking()
+                            ->setTimeout(10)
+                            ->execute('timeout 60s ls /media/movies | grep -i ' . $this->search)
+                            ->getOutput();
+                        }
+
                 } catch (\Throwable $th) {
                     $this->unreachable = $th->getMessage();
                 }
             } else {
                 # code...
-                $this->unreachable = "Train ".$this->train." Unreachable";
+                $this->unreachable = "Train " . $this->train . " Unreachable";
             }
         }
     }
 
     public function run()
     {
+        $iobcinema = [6, 12, 15, 21];
 
         try {
-            //code...
-            $this->output = Ssh::create('developer', '10.131.' . $this->train . '.1')
-                ->disableStrictHostKeyChecking()
-                ->setTimeout(20)
-                ->execute("timeout 60s curl -s --show-error http://localhost:2323/cinema/server/play/".$this->film)
-                ->getOutput();
+            
+            if (in_array($this->train, $iobcinema)) {
+
+                $this->output = Ssh::create('developer', '10.146.' . $this->train . '.1')
+                    ->disableStrictHostKeyChecking()
+                    ->setTimeout(20)
+                    ->execute("timeout 60s curl -s --show-error http://localhost:2323/cinema/server/play/" . $this->film)
+                    ->getOutput();
+            } else {
+
+                $this->output = Ssh::create('developer', '10.131.' . $this->train . '.1')
+                    ->disableStrictHostKeyChecking()
+                    ->setTimeout(20)
+                    ->execute("timeout 60s curl -s --show-error http://localhost:2323/cinema/server/play/" . $this->film)
+                    ->getOutput();
+            }
         } catch (\Throwable $th) {
-            $this->output = "ERRORE: ".$th->getMessage();
+            $this->output = "ERRORE: " . $th->getMessage();
         }
     }
 
