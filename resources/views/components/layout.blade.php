@@ -25,7 +25,7 @@
         {{-- <section class="hidden lg:block col-span-2 h-screen bg-[#242f40] shadow-xl min-w-[310px]"> old color = 282D3E --}}
         {{-- <nav class="hidden lg:block h-screen shadow-xl min-w-[310px]"> --}}
             {{--! modifica larghezza sidebar da testare su schermi piu piccoli --}}
-        <nav class="hidden lg:block h-screen shadow-xl min-w-[280px]">
+        <nav class="hidden lg:block h-screen shadow-xl min-w-[260px]">
             <x-layout.sidebar />
         </nav>
 

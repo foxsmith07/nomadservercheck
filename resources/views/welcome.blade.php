@@ -12,7 +12,7 @@
                 <p><span class="font-bold text-3xl"> {{ $covCount }} </span> call this month</p>
             </div>
             <div class="col-span-1 flex justify-center items-center rounded-full bg-blue-700 text-white">
-                <i class="fa-solid fa-phone-volume text-8xl"></i>
+                <i class="fa-solid fa-phone-volume text-7xl"></i>
             </div>
         </a>
 
@@ -24,8 +24,8 @@
                 <h3 class="text-2xl font-bold">Chiusure Servizio</h3>
                 <p><span class="font-bold text-3xl">{{ $servicesCount }}</span> servizi chiusi</p>
             </div>
-            <div class="col-span-1 flex justify-center items-center rounded-full bg-rose-400 text-white">
-                <i class="fa-solid fa-table-list text-8xl"></i>
+            <div class="col-span-1 flex justify-center items-center rounded-full bg-rose-400 text-white p-3">
+                <i class="fa-solid fa-table-list text-7xl"></i>
             </div>
         </a>
 
@@ -38,7 +38,7 @@
                 <p><span class="font-bold text-3xl">{{ $sivCount }}</span> requests intervention</p>
             </div>
             <div class="col-span-1 flex justify-center items-center rounded-full bg-green-700 text-white">
-                <i class="fa-solid fa-download text-8xl"></i>
+                <i class="fa-solid fa-download text-7xl"></i>
             </div>
         </a>
 
@@ -50,7 +50,7 @@
                 <p><span class="font-bold text-3xl">{{ $usersCount }}</span> users created</p>
             </div>
             <div class="col-span-1 flex justify-center items-center">
-                <i class="fa-regular fa-id-card text-8xl"></i>
+                <i class="fa-regular fa-id-card text-7xl"></i>
             </div>
         </a> --}}
         
@@ -63,7 +63,7 @@
                 <p><span class="font-bold text-4xl">{{ $iobTrains }}</span> <span class="text-xl">/ 56</span></p>
             </div>
             <div class="col-span-1 flex justify-center items-center text-white rounded-full bg-amber-400">
-                <i class="fa-solid fa-server text-8xl"></i>
+                <i class="fa-solid fa-server text-7xl"></i>
             </div>
         </a>
 

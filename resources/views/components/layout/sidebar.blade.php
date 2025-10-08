@@ -7,15 +7,17 @@
             <span class="text-xl font-bold text-rose-500 me-2">Nola</span>
             <span class="text-xl font-bold text-zinc-300 me-2"> Service Desk</span>
         </a>
-        
+
         <div class="flex flex-col items-start my-2 px-5 text-start text-slate-200 text-[15px]">
-            <a href="{{route('welcome')}}"  class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+            <a href="{{ route('welcome') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 <i class="fa-solid fa-house me-3"></i>
                 <span>Dashboard</span>
                 {{-- <span>Overview</span> --}}
             </a>
-            
-            <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">Serivce Desk</p>
+
+            <p
+                class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">
+                Serivce Desk</p>
 
             <a href="{{ route('siv.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
@@ -35,14 +37,16 @@
                 <i class="fa-solid fa-table-list me-3"></i>
                 Chiusure servizio
             </a>
-            
-            <a href="{{route('italoupgrade.index')}}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+
+            <a href="{{ route('italoupgrade.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
                 <i class="fa-solid fa-train-subway me-3"></i>
                 Italo Upgrade Roadmap
             </a>
-            
-            <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">Train Actions</p>
+
+            <p
+                class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">
+                Train Actions</p>
 
             <a href="{{ route('movie.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
@@ -56,21 +60,31 @@
                 OBN Train check
                 <i class="fa-solid fa-triangle-exclamation ms-3 text-2xl text-yellow-400"></i>
             </a> --}}
-            
+
             <a href="{{ route('cmd.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 <i class="fa-solid fa-terminal me-3"></i>
                 CMD on Trains
             </a>
 
-            <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">Stock management</p>
+            <p
+                class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">
+                Stock management</p>
 
-            <a href="{{ route('stock.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
-                {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
-                <i class="fa-solid fa-gear me-3"></i>
+            {{-- <a href="{{ route('stock.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+                <i class="fa-solid fa-dolly me-3"></i>
                 Inventory
-            </a>
+            </a> --}}
+            <div class=" px-3 py-2 m-0 rounded-md w-full tooltip cursor-pointer">
+                <div class="tooltip-content">
+                    <div class="animate-bounce text-orange-400 -rotate-10 text-2xl font-black">Work in Progress!!</div>
+                </div>
+                <i class="fa-solid fa-dolly me-3"></i>
+                Inventory
+            </div>
 
-            <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">Settings</p>
+            <p
+                class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">
+                Settings</p>
 
             <a href="{{ route('train.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 {{-- <i class="fa-solid fa-screwdriver-wrench me-2"></i> --}}
