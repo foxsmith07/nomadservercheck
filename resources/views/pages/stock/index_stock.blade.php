@@ -33,13 +33,15 @@
 
         {{--? SUMMARY CONTENT --}}
         <div class="tab-content bg-base-100 border-base-300 p-6">
-            
+            {{-- @dd($item_count) --}}
             <x-stock_tab.summary 
-                :count=$item_count 
+                :item_count="$item_count"
+                :esauriti_count=$esauriti_count 
+                :ordinati_count=$ordinati_count
+                :arrivo_count=$arrivo_count
                 :esauriti=$esauriti 
                 :ordinati=$ordinati 
                 :arrivo=$arrivo 
-                
             />
 
         </div>

@@ -70,17 +70,17 @@
                 class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">
                 Stock management</p>
 
-            {{-- <a href="{{ route('stock.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
+            <a href="{{ route('stock.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full">
                 <i class="fa-solid fa-dolly me-3"></i>
                 Inventory
-            </a> --}}
-            <div class=" px-3 py-2 m-0 rounded-md w-full tooltip cursor-pointer">
+            </a>
+            {{-- <div class=" px-3 py-2 m-0 rounded-md w-full tooltip cursor-pointer">
                 <div class="tooltip-content">
                     <div class="animate-bounce text-orange-400 -rotate-10 text-2xl font-black">Work in Progress!!</div>
                 </div>
                 <i class="fa-solid fa-dolly me-3"></i>
                 Inventory
-            </div>
+            </div> --}}
 
             <p
                 class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">

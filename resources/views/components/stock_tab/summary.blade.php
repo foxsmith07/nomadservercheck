@@ -1,23 +1,28 @@
     {{-- <h1>Dashboard</h1> --}}
 
+    @props(['item_count',
+            'esauriti_count',
+            'ordinati_count',
+            'arrivo_count',
+            'esauriti',
+            'ordinati',
+            'arrivo',
+    ])
+
     {{-- ? WIDGET -------------------------------------------------------------------------------------------------------------------------------- --}}
     <header class="grid grid-cols-4 gap-5">
 
         <x-stock_tab.widget color='bg-slate-50 border-2 border-blue-500 text-blue-500! shadow-xl hover:border-4' 
-            {{-- :count=$item_count  --}}
-            :count=$count
+            :count=$item_count
             text='Total items' icon='fa-solid fa-barcode' />
         <x-stock_tab.widget color='bg-slate-50 border-2 border-red-500 text-red-500! shadow-xl hover:border-4'
-            {{-- :count=$esauriti_count  --}}
-            :count='2'
+            :count=$esauriti_count
             text='Esauriti' icon='fa-solid fa-triangle-exclamation' />
         <x-stock_tab.widget color='bg-slate-50 border-2 border-yellow-500 text-yellow-500! shadow-xl hover:border-4'
-            {{-- :count=$ordinati_count  --}}
-            :count='3'
+            :count=$ordinati_count 
             text='Ordinati' icon='fa-solid fa-cart-arrow-down' />
         <x-stock_tab.widget color='bg-slate-50 border-2 border-sky-500 text-sky-500! shadow-xl hover:border-4'
-            {{-- :count=$arrivo_count  --}}
-            :count='4' 
+            :count=$arrivo_count 
             text='In arrivo' icon='fa-solid fa-truck-fast' />
 
     </header>
