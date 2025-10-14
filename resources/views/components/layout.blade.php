@@ -19,6 +19,8 @@
 {{-- <body class="bg-[#d9d9d9]">  --}}
     {{-- old color = F1F2F7--}}
 <body class=" bg-slate-200">
+    @include('sweetalert2::index')
+
 
     {{-- <div class="lg:grid lg:grid-cols-12 h-screen"> --}}
     <div class="lg:flex h-screen">

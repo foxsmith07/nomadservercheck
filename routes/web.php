@@ -94,5 +94,6 @@ Route::middleware(['auth'])->group(function(){
 
     //* STOCK MANAGEMENT
     Route::get('/stock-management',[StockController::class,'index'])->name('stock.index');
+    Route::get('/stock-management/{item}', [StockController::class,'show'])->name('stock.show');
 
 });

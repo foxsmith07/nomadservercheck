@@ -12,10 +12,10 @@
     {{-- ? WIDGET -------------------------------------------------------------------------------------------------------------------------------- --}}
     <header class="grid grid-cols-4 gap-5">
 
-        <x-stock_tab.widget color='bg-slate-50 border-2 border-blue-500 text-blue-500! shadow-xl hover:border-4' 
+        <x-stock_tab.widget color='bg-slate-50 border-2 border-emerald-500 text-emerald-500! shadow-xl hover:border-4' 
             :count=$item_count
             text='Total items' icon='fa-solid fa-barcode' />
-        <x-stock_tab.widget color='bg-slate-50 border-2 border-red-500 text-red-500! shadow-xl hover:border-4'
+        <x-stock_tab.widget color='bg-slate-50 border-2 border-rose-500 text-rose-500! shadow-xl hover:border-4'
             :count=$esauriti_count
             text='Esauriti' icon='fa-solid fa-triangle-exclamation' />
         <x-stock_tab.widget color='bg-slate-50 border-2 border-yellow-500 text-yellow-500! shadow-xl hover:border-4'
@@ -58,7 +58,7 @@
             <tbody>
 
                 @forelse ($esauriti as $item)
-                    <tr class="odd:bg-slate-200 even:bg-slate-100 hover:bg-slate-300">
+                    <tr class="odd:bg-slate-200 even:bg-slate-100 hover:bg-rose-200!">
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
@@ -112,15 +112,14 @@
             </thead>
             <tbody>
                 @forelse ($ordinati as $item)
-                    <tr class="odd:bg-slate-200 even:bg-slate-100 hover:bg-slate-300">
+                    <tr class="odd:bg-slate-200 even:bg-slate-100 hover:bg-yellow-100!">
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
                         <td>{{ $item->quantity_ordered }}</td>
                         <td>{{ $item->data_ordered->format('d M Y - H:i') }}</td>
                         <td class="text-center">
-                            {{-- <a href="{{ route('stock.show', compact('item')) }}" --}}
-                            <a href=""
+                            <a href="{{ route('stock.show', compact('item')) }}"
                                 class="btn btn-sm rounded-full p-4 border-2 border-slate-500 text-slate-500 bg-transparent hover:bg-amber-400 hover:border-amber-400 hover:text-white">
                                 <i class="fa-solid fa-circle-info me-1 text-lg"></i>
                                 <span>info</span>
@@ -168,7 +167,7 @@
             <tbody>
 
                 @forelse ($arrivo as $item)
-                    <tr class="odd:bg-slate-200 even:bg-slate-100 hover:bg-slate-300">
+                    <tr class="odd:bg-slate-200 even:bg-slate-100 hover:bg-sky-200!">
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
