@@ -5,7 +5,9 @@
     </a>
     {{-- <section class="grid grid-cols-2"> --}}
 
-    <section class="bg-white p-8 rounded-md shadow-lg flex flex-col gap-8 max-w-[800px]">
+
+    <form method="POST"
+            class="bg-white p-8 rounded-md shadow-lg flex flex-col gap-8 max-w-[800px]">
         <div class="flex justify-between mb-10">
             {{-- <label class="me-5 font-medium">Name: </label> --}}
             <span class="text-4xl text-blue-500">{{ strtoupper($item->name) }}</span>
@@ -18,7 +20,8 @@
 
         <div>
             <label class="me-5 font-medium">Description: </label>
-            <span>{{ $item->description }}</span>
+            <input type="text" name="description" value="{{$item->description}}">
+            {{-- <span>{{ $item->description }}</span> --}}
         </div>
 
         <div>
@@ -69,8 +72,10 @@
             </div>
         </div>
 
-
-    </section>
+        <button class="btn bg-amber-300 hover:bg-amber-400">
+            <span>Edit</span>
+        </button>
+    </form>
 
     {{-- </section> --}}
 </x-layout>

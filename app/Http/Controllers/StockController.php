@@ -53,9 +53,9 @@ class StockController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Item $item)
     {
-        //
+        return view('pages.stock.edit_stock', compact('item'));
     }
 
     /**

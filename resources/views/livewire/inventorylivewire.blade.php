@@ -30,18 +30,22 @@
                     <tr class="hover:bg-rose-200! odd:bg-slate-200 even:bg-slate-100">
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
-                        <td
-                            class="text-center text-lg {{ $item->quantity_stock == 0 ? 'text-red-500 font-bold' : ($item->quantity_stock > 0 && $item->quantity_stock < 4 ? 'text-yellow-400 font-bold' : '') }}">
+                        <td class="text-center text-lg {{ $item->quantity_stock == 0 ? 'text-red-500 font-bold' : ($item->quantity_stock > 0 && $item->quantity_stock < 4 ? 'text-yellow-400 font-bold' : '') }}">
                             {{ $item->quantity_stock }}</td>
                         <td class="text-center">{{ strtoupper($item->position) }}</td>
                         <td class="text-center">{{ $item->created_at->format('d M Y - H:i') }}</td>
                         <td class="text-center">
-                            {{-- <a href="" --}}
-                            <a href="{{ route('stock.show', compact('item')) }}"
+                            {{-- <a href="{{ route('stock.show', compact('item')) }}"
+                                class="btn btn-sm rounded-full p-4 border-slate-500 bg-transparent text-slate-500 hover:bg-rose-600 hover:text-white hover:border-rose-600">
+                                <i class="fa-solid fa-circle-info me-1 text-lg"></i>
+                                <span>info</span>
+                            </a> --}}
+                            <a href="{{ route('stock.edit', compact('item')) }}"
                                 class="btn btn-sm rounded-full p-4 border-slate-500 bg-transparent text-slate-500 hover:bg-rose-600 hover:text-white hover:border-rose-600">
                                 <i class="fa-solid fa-circle-info me-1 text-lg"></i>
                                 <span>info</span>
                             </a>
+
                         </td>
                     </tr>
 

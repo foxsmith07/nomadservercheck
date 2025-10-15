@@ -47,12 +47,12 @@
             <!-- head -->
             <thead>
                 <tr class="bg-slate-400! text-white">
-                    <th></th>
+                    <th class="w-[50px]"></th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Position</th>
-                    <th class="text-center">Info</th>
+                    <th class="w-[100px] text-center">Quantity</th>
+                    <th class="w-[120px] text-center">Position</th>
+                    <th class="w-[100px] text-center">Info</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,8 +62,8 @@
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
-                        <td>{{ $item->quantity_stock }}</td>
-                        <td>{{ strtoupper($item->position) }}</td>
+                        <td class="text-center">{{ $item->quantity_stock }}</td>
+                        <td class="text-center">{{ strtoupper($item->position) }}</td>
                         <td class="text-center">
                             <a href="{{ route('stock.show', compact('item')) }}"
                                 class="btn btn-sm rounded-full p-4 border-2 border-slate-500 text-slate-500 bg-transparent hover:bg-red-600 hover:border-red-600 hover:text-white">
@@ -102,12 +102,12 @@
             <!-- head -->
             <thead>
                 <tr class="bg-slate-400! text-white">
-                    <th></th>
+                    <th class="w-[50px]"></th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Quantity Ordered</th>
-                    <th>Data Ordered</th>
-                    <th class="text-center">Details</th>
+                    <th class="w-[100px] text-center">Quantity Ordered</th>
+                    <th class="w-[120px] text-center">Data Ordered</th>
+                    <th class="w-[100px] text-center">Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -116,8 +116,8 @@
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
-                        <td>{{ $item->quantity_ordered }}</td>
-                        <td>{{ $item->data_ordered->format('d M Y - H:i') }}</td>
+                        <td class="text-center">{{ $item->quantity_ordered }}</td>
+                        <td class="text-center">{{ $item->data_ordered->format('d M Y - H:i') }}</td>
                         <td class="text-center">
                             <a href="{{ route('stock.show', compact('item')) }}"
                                 class="btn btn-sm rounded-full p-4 border-2 border-slate-500 text-slate-500 bg-transparent hover:bg-amber-400 hover:border-amber-400 hover:text-white">
@@ -156,12 +156,12 @@
             <!-- head -->
             <thead>
                 <tr class="bg-slate-400! text-white">
-                    <th></th>
+                    <th class="w-[50px]"></th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Quantity Shipped</th>
-                    <th>Data Shipped</th>
-                    <th class="text-center">Details</th>
+                    <th class="w-[100px] text-center">Quantity Shipped</th>
+                    <th class="w-[120px] text-center">Data Shipped</th>
+                    <th class="w-[100px] text-center">Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -171,8 +171,8 @@
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
-                        <td>{{ $item->quantity_shipped }}</td>
-                        <td>{{ $item->data_shipped->format('d M Y - H:i') }}</td>
+                        <td class="text-center">{{ $item->quantity_shipped }}</td>
+                        <td class="text-center">{{ $item->data_shipped->format('d M Y - H:i') }}</td>
                         <td class="text-center">
                             <a href="{{ route('stock.show', compact('item')) }}"
                                 class="btn btn-sm rounded-full p-4 border-2 border-slate-500 text-slate-500 bg-transparent hover:bg-sky-600 hover:border-sky-600 hover:text-white">

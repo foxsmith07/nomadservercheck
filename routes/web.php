@@ -92,8 +92,10 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/user/delete/{user}',[UserController::class,'destroy'])->name('user.destroy')->middleware('admin');
     Route::put('/user/{user}/switch-to/',[UserController::class, 'update'])->name('user.update')->middleware('admin');
 
+
     //* STOCK MANAGEMENT
     Route::get('/stock-management',[StockController::class,'index'])->name('stock.index');
     Route::get('/stock-management/{item}', [StockController::class,'show'])->name('stock.show');
+    Route::get('/stock-management/edit/{item}', [StockController::class, 'edit'])->name('stock.edit');
 
 });
