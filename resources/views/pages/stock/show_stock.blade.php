@@ -6,13 +6,19 @@
     {{-- <section class="grid grid-cols-2"> --}}
 
     <section class="bg-white p-8 rounded-md shadow-lg flex flex-col gap-8 max-w-[800px]">
-        <div class="flex justify-between mb-10">
+        <div class="flex justify-between items-center mb-10">
             {{-- <label class="me-5 font-medium">Name: </label> --}}
             <span class="text-4xl text-blue-500">{{ strtoupper($item->name) }}</span>
-            <a href="" class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">
-                <i class="fa-solid fa-envelope-circle-check"></i>
-                <span>Request item</span>
-            </a>
+            <div class="flex flex-col gap-2">
+                <a href="" class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">
+                    <i class="fa-solid fa-envelope-circle-check text-lg"></i>
+                    <span>Request item</span>
+                </a>
+                <a href="{{route('stock.edit' , compact('item'))}}" class="btn btn-sm bg-yellow-400 hover:bg-yellow-500 text-white">
+                    <i class="fa-solid fa-file-pen me-1 text-lg"></i>
+                    <span>Edit Item</span>
+                </a>
+            </div>
 
         </div>
 
