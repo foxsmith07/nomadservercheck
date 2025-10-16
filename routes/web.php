@@ -97,5 +97,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/stock-management',[StockController::class,'index'])->name('stock.index');
     Route::get('/stock-management/{item}', [StockController::class,'show'])->name('stock.show');
     Route::get('/stock-management/edit/{item}', [StockController::class, 'edit'])->name('stock.edit');
+    Route::put('/stock-management/update/{item}',[StockController::class, 'update'])->name('stock.update');
+    Route::delete('/stock-management/delete/{item}',[StockController::class, 'destroy'])->name('stock.destroy');
 
 });

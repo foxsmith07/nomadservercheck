@@ -6,35 +6,37 @@
     {{-- <section class="grid grid-cols-2"> --}}
 
 
-    <form method="POST"
+    <form method="POST" action="{{route('stock.update', compact('item'))}}" x-data="{ loading: false }" @submit="loading = true"
             class="bg-white p-8 rounded-md shadow-lg flex flex-col gap-8 max-w-[800px]">
+            @csrf
+            @method('put')
         <div class="flex justify-between mb-10">
-            {{-- <label class="me-5 font-medium">Name: </label> --}}
-            <span class="text-4xl text-blue-500">{{ strtoupper($item->name) }}</span>
+            <input type="text" name="name" value="{{strtoupper($item->name)}}" 
+                    class="text-4xl text-blue-500 input-custom p-2! ">
             <a href="" class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">
                 <i class="fa-solid fa-envelope-circle-check"></i>
                 <span>Request item</span>
             </a>
-
         </div>
 
-        <div>
+        <div class="flex flex-col">
             <label class="me-5 font-medium">Description: </label>
-            <input type="text" name="description" value="{{$item->description}}">
-            {{-- <span>{{ $item->description }}</span> --}}
+            <textarea name="description" id="" cols="30" rows="10" class="input-custom">{{$item->description}}</textarea>
         </div>
 
-        <div>
-            <label class="me-5 font-medium">Quantity in stock: </label>
-            <span class="text-xl">{{ $item->quantity_stock }}</span>
+        <div class="flex justify-between gap-20">
+            <div class="flex flex-col w-full">
+                <label class="me-5 font-medium">Quantity in stock: </label>
+                <input type="text" value="{{ $item->quantity_stock }}" name="quantity_stock" class="input-custom">
+            </div>
+    
+            <div class="flex flex-col w-full">
+                <label class="me-5 font-medium">Position: </label>
+                <input type="text" value="{{ $item->position }}" name="position" class="input-custom">
+            </div>
         </div>
 
-        <div>
-            <label class="me-5 font-medium">Position: </label>
-            <span class="text-xl">{{ $item->position }}</span>
-        </div>
-
-        <div class="flex gap-7">
+        <div class="flex gap-20 mt-5">
             <div>
                 <label class="me-5 font-medium">created at: </label>
                 <span>{{ $item->created_at->format('d M Y') }}</span>
@@ -55,7 +57,8 @@
                 </div>
                 <div>
                     <label>Date order: </label>
-                    <span>{{ $item->data_ordered == null ? ' --- ' : $item->data_ordered->format('d M Y') }}</span>
+                    {{-- <span>{{ $item->data_ordered == null ? ' --- ' : $item->data_ordered->format('d M Y') }}</span> --}}
+                    <span>10 Mar 2025</span>
                 </div>
             </div>
 
@@ -72,8 +75,9 @@
             </div>
         </div>
 
-        <button class="btn bg-amber-300 hover:bg-amber-400">
-            <span>Edit</span>
+        <button type="submit" class="btn bg-amber-300 hover:bg-amber-400 mt-5" :disabled="loading">
+            <span x-show="!loading">Edit</span>
+            <span x-show="loading">Saving...</span>
         </button>
     </form>
 

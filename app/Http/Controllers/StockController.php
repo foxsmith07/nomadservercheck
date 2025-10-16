@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use SweetAlert2\Laravel\Swal;
+use App\Http\Requests\ItemRequest;
 
 class StockController extends Controller
 {
@@ -23,7 +25,7 @@ class StockController extends Controller
         $ordinati = Item::where('quantity_ordered', '>', 0)->get();
         $arrivo = Item::where('quantity_shipped', '>', 0)->get();
 
-        return view('pages.stock.index_stock', compact('item_count','esauriti_count','ordinati_count','arrivo_count','esauriti','ordinati','arrivo'));
+        return view('pages.stock.index_stock', compact('item_count', 'esauriti_count', 'ordinati_count', 'arrivo_count', 'esauriti', 'ordinati', 'arrivo'));
     }
 
     /**
@@ -47,7 +49,7 @@ class StockController extends Controller
      */
     public function show(Item $item)
     {
-        return view('pages.stock.show_stock',compact('item'));
+        return view('pages.stock.show_stock', compact('item'));
     }
 
     /**
@@ -61,16 +63,33 @@ class StockController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ItemRequest $request, Item $item)
     {
-        //
+        $item->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'quantity_stock' => $request->input('quantity_stock'),
+            'position' => $request->input('position'),
+        ]);
+        
+        Swal::fire([
+            'position' => "center",
+            'icon'=> "success",
+            'title' => 'Item successfully updated!!',
+            'showConfirmButton'=> false,
+            'timer'=> 1500,
+        ]);
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Item $item)
     {
-        //
+        $item->delete();
+
+        return redirect()->back()->with('success','Item successfully deleted!!');
     }
 }

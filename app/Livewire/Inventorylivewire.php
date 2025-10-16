@@ -56,7 +56,8 @@ class Inventorylivewire extends Component
     public function render()
     {
         if ($this->search == '') {
-            $inventory = Item::paginate(10);
+            // $inventory = Item::all()->sortBy(['name','desc'])->paginate(10);
+            $inventory = Item::orderBy('updated_at', 'desc')->paginate(10);
         } else {
             $inventory = Item::whereAny(['name', 'description', 'position'], 'LIKE', '%' . $this->search . '%')->paginate(10);
         }
