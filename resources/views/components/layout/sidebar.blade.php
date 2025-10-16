@@ -90,8 +90,12 @@
         </div>
     </div>
 
-    <div class="flex justify-center text-white h-[40px] items-center">
+    <div class="flex flex-col justify-center text-white h-[60px] items-center">
         {{-- <img src="{{asset('asset/logobig.png')}}" alt="" class="w-[200px]"> --}}
+        
+        <div class="tooltip-content">
+            <div class="animate-bounce text-orange-400 text-2xl font-black">STAGING!!</div>
+        </div>
         <span class="text-[13px]">© 2025 (v1.2) Copyright: Nomad Digital</span>
     </div>
 
