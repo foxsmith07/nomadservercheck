@@ -44,14 +44,14 @@
                             <td>{{$cov->note}}</td>
                             <td class="text-center flex justify-around">
                                 <a href="{{route('cov.edit', $cov->id)}}">
-                                    <i class="fa-regular fa-pen-to-square text-yellow-500 text-lg"></i>
+                                    <i class="fa-solid fa-file-pen text-yellow-500 text-lg"></i>
                                 </a>
                                 <form action="{{ route('cov.destroy', $cov->id) }}" method="POST" x-data class="inline hover:cursor-pointer">
                                     @csrf
                                     @method('delete')
                                     <button type="button" id="deleteButton" class="hover:cursor-pointer"
                                         @click.prevent="confirmDelete($event, $el.parentElement)">
-                                        <i class="fa-solid fa-trash-can text-lg text-red-500"></i>
+                                        <i class="fa-solid fa-trash-arrow-up text-lg text-red-500"></i>
                                     </button>
                                 </form>
                             </td>

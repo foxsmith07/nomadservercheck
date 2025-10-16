@@ -19,25 +19,26 @@
                         <th>Mail</th>
                         <th>Role</th>
                         <th>Created at</th>
-                        <th class="w-[200px]">Switch to</th>
+                        <th class="w-[200px] text-center">Switch to</th>
                         <th class="w-[50px]">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($users as $user)
-                        <tr class="bg-base-200 hover:bg-blue-200">
+                        <tr class="bg-base-200 hover:bg-blue-100">
                             <th>{{ $loop->iteration }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td class="{{ $user->role == 'admin' ? 'text-yellow-600' : '' }}">{{ ucfirst($user->role) }}
-                            </td>
+                            <td class="{{ $user->role == 'admin' ? 'text-yellow-600' : 'text-blue-600' }} font-bold">{{ ucfirst($user->role) }}</td>
                             <td>{{ $user->created_at->format('d M Y - H:i') }}</td>
-                            <td>
+                            <td class="text-center">
                                 <form action="{{ route('user.update', compact('user')) }}" method="POST">
                                     @csrf
                                     @method('put')
-                                    <button
-                                        class="btn btn-sm bg-{{ $user->role == 'admin' ? 'blue' : 'yellow' }}-500 text-white rounded-md border-none">{{ $user->role == 'admin' ? 'switch to collaborator' : 'switch to admin' }}</button>
+                                    {{-- <button class="btn btn-sm {{ $user->role == 'admin' ? 'bg-blue-500 hover:bg-blue-700' : 'bg-yellow-400 hover:bg-yellow-500' }} text-white rounded-md border-none"> --}}
+                                    <button class="btn btn-sm  border-2 {{ $user->role == 'admin' ? 'border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white' : 'border-amber-500 text-amber-500 hover:bg-amber-400 hover:text-white' }} rounded-md">
+                                        {{ $user->role == 'admin' ? 'switch to collaborator' : 'switch to admin' }}
+                                    </button>
                                 </form>
                             </td>
                             <td class="text-center">
@@ -47,7 +48,7 @@
                                     @method('delete')
                                     <button type="button" id="deleteButton" class="hover:cursor-pointer"
                                         @click.prevent="confirmDelete($event, $el.parentElement)">
-                                        <i class="fa-solid fa-trash-can text-2xl text-red-500"></i>
+                                        <i class="fa-solid fa-trash-arrow-up text-2xl text-red-500"></i>
                                     </button>
                                 </form>
                             </td>

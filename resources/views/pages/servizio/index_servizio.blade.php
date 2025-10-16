@@ -3,7 +3,7 @@
 
     <div class="flex justify-between mb-5">
         <h1 class="text-3xl">CHIUSURE SERVIZIO</h1>
-        <a href="{{ route('servizio.create') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md">
+        <a href="{{ route('servizio.create') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white rounded-md border-none">
             <i class="fa-solid fa-circle-plus me-2 text-lg"></i>
             New Chiusura servizio
         </a>
@@ -43,7 +43,7 @@
                                 @method('delete')
                                 <button type="button" id="deleteButton" class="hover:cursor-pointer"
                                     @click.prevent="confirmDelete($event, $el.parentElement)">
-                                    <i class="fa-solid fa-trash-can text-2xl text-red-500"></i>
+                                    <i class="fa-solid fa-trash-arrow-up text-2xl text-red-500"></i>
                                 </button>
                             </form>
                         </td>

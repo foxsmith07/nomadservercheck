@@ -27,14 +27,14 @@
                         <td>{{ $siv->description }}</td>
                         <td class="text-center flex justify-around">
                             <a href="{{route('siv.edit', $siv->id)}}">
-                                <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl"></i>
+                                <i class="fa-solid fa-file-pen text-yellow-500 text-2xl"></i>
                             </a>
                             <form action="{{ route('siv.destroy', $siv->id) }}" method="POST" x-data class="inline hover:cursor-pointer">
                                 @csrf
                                 @method('delete')
                                 <button type="button" id="deleteButton" class="hover:cursor-pointer"
                                     @click.prevent="confirmDelete($event, $el.parentElement)">
-                                    <i class="fa-solid fa-trash-can text-2xl text-red-500"></i>
+                                    <i class="fa-solid fa-trash-arrow-up text-2xl text-red-500"></i>
                                 </button>
                             </form>
                         </td>
