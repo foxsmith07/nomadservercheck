@@ -149,7 +149,7 @@
             buttonsStyling: false
         });
         swalWithBootstrapButtons.fire({
-            title: "Sei sicuro di cancellare la richiesta?",
+            title: "Sei sicuro di cancellare l'oggetto?",
             text: "Non puoi tornare indietro!",
             icon: "warning",
             showCancelButton: true,

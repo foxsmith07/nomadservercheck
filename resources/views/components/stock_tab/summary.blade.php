@@ -90,11 +90,11 @@
             <i class="fa-solid fa-cart-plus me-3 text-yellow-500"></i>
             <h2 class="text-yellow-500 font-bold">Ordinati</h2>
         </div>
-        <button
+        {{-- <button
             class="btn rounded-full bg-transparent border-slate-500 text-slate-500 hover:bg-yellow-500 hover:border-white hover:text-white">
             <i class="fa-solid fa-plus"></i>
             Aggiungi Ordine fatto
-        </button>
+        </button> --}}
     </div>
 
     <div class="overflow-x-auto">
@@ -144,11 +144,11 @@
             <i class="fa-solid fa-truck-fast me-3 text-sky-500"></i>
             <h2 class="text-sky-500 font-bold">Spediti</h2>
         </div>
-        <button
+        {{-- <button
             class="btn rounded-full bg-transparent text-slate-500 border-slate-500 hover:bg-sky-600 hover:text-white hover:border-white">
             <i class="fa-solid fa-plus"></i>
             Spedizione in arrivo
-        </button>
+        </button> --}}
     </div>
 
     <div class="overflow-x-auto">
