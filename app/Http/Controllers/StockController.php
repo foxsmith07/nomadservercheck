@@ -70,6 +70,7 @@ class StockController extends Controller
             'description' => $request->input('description'),
             'quantity_stock' => $request->input('quantity_stock'),
             'position' => $request->input('position'),
+            'nmid' => $request->input('nmid'),
         ]);
         
         Swal::fire([

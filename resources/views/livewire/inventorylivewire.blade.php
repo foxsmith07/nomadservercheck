@@ -104,6 +104,14 @@
                     @enderror
                 </div>
 
+                <div class="flex flex-col">
+                    <label for="" class="mb-3">NMID</label>
+                    <input type="text" wire:model="nmid" class="bg-white rounded-md p-3 focus:outline-2 focus:outline-rose-600 hover:outline-2 hover:outline-rose-300">
+                    @error('nmid')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
+                </div>
+
                 <div class="grid grid-cols-2 gap-10">
                     <div class="flex flex-col col-span-1">
                         <label for="" class="mb-3">Quantity in stock</label>

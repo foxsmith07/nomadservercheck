@@ -18,6 +18,7 @@ class Inventorylivewire extends Component
     public $description;
     public $quantity_stock;
     public $position;
+    public $nmid;
     
     public function save()
     {
@@ -36,6 +37,7 @@ class Inventorylivewire extends Component
             $new_item->description = $this->description;
             $new_item->quantity_stock = $this->quantity_stock;
             $new_item->position = $this->position;
+            $new_item->nmid = $this->nmid;
 
             $new_item->save();
 

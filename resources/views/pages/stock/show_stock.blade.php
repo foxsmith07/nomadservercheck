@@ -22,7 +22,7 @@
 
         </div>
 
-        <div>
+        <div class="flex flex-col gap-3">
             <label class="me-5 font-medium">Description: </label>
             <span>{{ $item->description }}</span>
         </div>
@@ -31,10 +31,15 @@
             <label class="me-5 font-medium">Quantity in stock: </label>
             <span class="text-xl">{{ $item->quantity_stock }}</span>
         </div>
+        
+        <div>
+            <label class="me-5 font-medium">NMID: </label>
+            <span class="text-xl">{{ $item->nmid }}</span>
+        </div>
 
         <div>
             <label class="me-5 font-medium">Position: </label>
-            <span class="text-xl">{{ $item->position }}</span>
+            <span class="text-xl">{{ strtoupper($item->position) }}</span>
         </div>
 
         <div class="flex gap-7">
@@ -49,8 +54,8 @@
             </div>
         </div>
 
-        <div class="flex gap-7">
-            <div class="border-2 border-yellow-400 rounded-md flex flex-col p-3">
+        <div class="grid grid-cols-2 gap-10">
+            <div class="border-2 border-yellow-400 rounded-md col-span-1 flex flex-col p-3">
                 <h5 class="text-yellow-500 mb-3">Ordered..</h5>
                 <div>
                     <label>Quantity order: </label>
@@ -62,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="border-2 border-sky-400 rounded-md flex flex-col p-3">
+            <div class="border-2 border-sky-400 rounded-md col-span-1 flex flex-col p-3">
                 <h5 class="text-sky-500 mb-3">Shipped..</h5>
                 <div>
                     <label>Quantity shipped: </label>
