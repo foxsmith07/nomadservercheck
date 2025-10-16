@@ -71,7 +71,8 @@
 
 
     <div class="p-3 bg-slate-400 rounded-xl mt-8">
-        <h1 class="text-center text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mb-3">Lavagna</h1>
+        {{-- <h1 class="text-center text-4xl font-bold text-transparent! bg-clip-text! bg-gradient-to-b! from-slate-100! to-blue-300! mb-3">Lavagna</h1> --}}
+        <h1 class="text-center text-4xl font-bold text-slate-700! mb-3">Lavagna</h1>
         <form action="{{route('welcome.save',compact('lavagna'))}}" method="POST">
             @csrf
             @method('put')
