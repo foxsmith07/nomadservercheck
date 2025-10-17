@@ -13,7 +13,7 @@
         <div class="flex justify-between mb-10">
             <input type="text" name="name" value="{{strtoupper($item->name)}}" 
                     class="text-4xl text-blue-500 input-custom p-2! ">
-            <a href="" class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">
+            <a href="{{route('stock.request', compact('item'))}}" class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">
                 <i class="fa-solid fa-envelope-circle-check"></i>
                 <span>Request item</span>
             </a>

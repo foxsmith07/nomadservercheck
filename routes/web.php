@@ -100,4 +100,7 @@ Route::middleware(['auth'])->group(function(){
     Route::put('/stock-management/update/{item}',[StockController::class, 'update'])->name('stock.update');
     Route::delete('/stock-management/delete/{item}',[StockController::class, 'destroy'])->name('stock.destroy');
 
+    Route::get('/stock-management/request-item/{item}',[StockController::class, 'requestItem'])->name('stock.request');
+    Route::post('/stock-management/request-item/store',[StockController::class,'sendRequestItem'])->name('stock.requeststore');
+
 });
