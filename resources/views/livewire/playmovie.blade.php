@@ -41,7 +41,8 @@
                 @if ($movies)
                     <h3 class="text-lg font-bold mb-7">Seleziona movies</h3>
                     @php
-                        $moviesArray = explode("\n", $movies);
+                        // $moviesArray = explode("\n", $movies);
+                        $moviesArray = array_filter(explode("\n", $movies));
                     @endphp
                     {{-- <small>trovati {{$moviesArray->count()}} film</small> --}}
                     <ul>
