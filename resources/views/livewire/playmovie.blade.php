@@ -63,7 +63,7 @@
 
                         <div class="mt-8">
                             <input type="text" id="selectedMovie" wire:model="film"
-                                class="shadow-xl border rounded-md p-2 w-full sm:w-96 input-custom" readonly
+                                class="shadow-lg rounded-md p-2 w-full sm:w-96 input-custom" readonly
                                 value="{{ trim($movie) }}" placeholder="Clicca sul film per selezionarlo">
                         </div>
 
