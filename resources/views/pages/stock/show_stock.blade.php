@@ -10,7 +10,7 @@
             {{-- <label class="me-5 font-medium">Name: </label> --}}
             <span class="text-4xl text-blue-500">{{ strtoupper($item->name) }}</span>
             <div class="flex flex-col gap-2">
-                <a href="" class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">
+                <a href="{{route('stock.request', compact('item'))}}" class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">
                     <i class="fa-solid fa-envelope-circle-check text-lg"></i>
                     <span>Request item</span>
                 </a>

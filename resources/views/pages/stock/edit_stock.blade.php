@@ -3,8 +3,6 @@
         <i class="fa-regular fa-circle-left me-2 text-lg"></i>
         back to the stock
     </a>
-    {{-- <section class="grid grid-cols-2"> --}}
-
 
     <form method="POST" action="{{route('stock.update', compact('item'))}}" x-data="{ loading: false }" @submit="loading = true"
             class="bg-white p-8 rounded-md shadow-lg flex flex-col gap-8 max-w-[800px]">

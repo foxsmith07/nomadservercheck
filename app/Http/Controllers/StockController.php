@@ -6,6 +6,8 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use SweetAlert2\Laravel\Swal;
 use App\Http\Requests\ItemRequest;
+use App\Http\Requests\ItemRequestMail;
+use App\Mail\RequestItemMail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -102,26 +104,27 @@ class StockController extends Controller
         return view('pages.stock.request_item_stock', compact('item'));
     }
 
-    public function sendRequestItem(Item $request)
+    public function sendRequestItem(ItemRequestMail $request)
     {
         $name = $request->input('name');
         $nmid = $request->input('nmid');
         $quantity = $request->input('quantity');
+        $description = $request->input('description');
         $user_name = Auth::user()->name;
         $user_mail = Auth::user()->email;
         
-        $mail = compact('name','nmid','quantity','user_name','user_mail');
+        $userData = compact('name','nmid','quantity','user_name','user_mail','description');
 
-        // dd($mail);
+        // dd($userData);
 
-        // try {
-        //     Mail::to('italo@service-now.com')->cc('nola@nomadrail.com')->send(new ServiceClosingMail($mail));
-        // } catch (\Exception $e) {
-        //     Log::error('Errore invio mail di test: ' . $e->getMessage());
-        //     return redirect()->route('servizio.index')->with('success',$e->getMessage());
-        // }
+        try {
+            Mail::to('nola@nomadrail.com')->send(new RequestItemMail($userData));
+            return redirect()->back()->with('success','Request successfully sent!!');
 
-        return redirect()->route('servizio.index')->with('success','Service closed and mail sent!');
+        } catch (\Exception $e) {
+            Log::error('Errore invio mail di test: ' . $e->getMessage());
+            return redirect()->route('servizio.index')->with('success',$e->getMessage());
+        }
             
     }
 }
