@@ -84,9 +84,14 @@
 
 </x-layout>
 
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.0.1/tinymce.min.js" referrerpolicy="origin"></script> --}}
 <script src="https://cdn.tiny.cloud/1/p2qn55zpsfbcrh7083xx18c1tufrb85xz58c2oeknodqte8t/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+{{-- <script src="{{ asset('tinymce/tinymce.min.js') }}"></script> --}}
 <script>
     tinymce.init({
+        // apiKey: 'p2qn55zpsfbcrh7083xx18c1tufrb85xz58c2oeknodqte8t',
+        // apiKey: 'gpl',
+        // license_key: 'gpl',
         selector: 'textarea#lavagna', // Replace this CSS selector to match the placeholder element for TinyMCE
         plugins: 'code table lists advlist link image autosave save',
         // autosave_interval: '20s',
