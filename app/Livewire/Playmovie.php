@@ -2,9 +2,12 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Spatie\Ssh\Ssh;
+
+use function Illuminate\Log\log;
 
 class Playmovie extends Component
 {
@@ -17,7 +20,7 @@ class Playmovie extends Component
     public $output;
     public $unreachable;
 
-//! MODIFICARE LA VARIABILE IOBCINEMA IN PLAY AND RUN MOMENTANEAMENTE FINCHE' NON DIVENTANO TUTTI IOB E CANCELLIAMO L'IF IN ARRAY
+    //! MODIFICARE LA VARIABILE IOBCINEMA IN PLAY AND RUN MOMENTANEAMENTE FINCHE' NON DIVENTANO TUTTI IOB E CANCELLIAMO L'IF IN ARRAY
 
     public function play()
     {
@@ -44,7 +47,7 @@ class Playmovie extends Component
                     exec('timeout 120s ping -c 3 -W 5 10.131.' . $this->train . '.1', $output, $ping);
                 }
             } catch (\Throwable $th) {
-                Log::alert($th);
+                Log::alert($th->getMessage());
                 $this->unreachable = $th->getMessage();
             }
 
@@ -71,6 +74,14 @@ class Playmovie extends Component
                     $this->unreachable = $th->getMessage();
                 }
             } else {
+                // Log::alert('Try to play movie on ' .$this->train . '.. but Train unreachable');
+                // Log::info('Utente loggato: ' . Auth::user()->name);
+                Log::warning('Train ' . $this->train . ' Unreachable', [
+                    'username' => strtoupper(Auth::user()->name),
+                    'mail' => Auth::user()->email,
+                    'amount' => now()->format('d M Y - H:i'),
+                ]);
+
                 $this->unreachable = "Train " . $this->train . " Unreachable";
             }
         } else {
@@ -93,25 +104,24 @@ class Playmovie extends Component
                 try {
                     //code...
                     if (in_array($this->train, $iobcinema)) {
-                    
+
                         $this->movies = Ssh::create('developer', '10.146.' . $this->train . '.1')
                             ->disableStrictHostKeyChecking()
-                            ->setTimeout(10)
+                            ->setTimeout(15)
                             ->execute('timeout 120s ls /media/movies | grep -i ' . $this->search)
                             ->getOutput();
-                        } else {
+                    } else {
                         $this->movies = Ssh::create('developer', '10.131.' . $this->train . '.1')
                             ->disableStrictHostKeyChecking()
-                            ->setTimeout(10)
+                            ->setTimeout(15)
                             ->execute('timeout 120s ls /media/movies | grep -i ' . $this->search)
                             ->getOutput();
-                        }
-
+                    }
                 } catch (\Throwable $th) {
                     $this->unreachable = $th->getMessage();
                 }
             } else {
-                # code...
+                Log::alert('Try to play movie on ' . $this->train . '.. but Train unreachable');
                 $this->unreachable = "Train " . $this->train . " Unreachable";
             }
         }
@@ -122,23 +132,30 @@ class Playmovie extends Component
         $iobcinema = [6, 12, 15, 16, 21];
 
         try {
-            
+
             if (in_array($this->train, $iobcinema)) {
 
                 $this->output = Ssh::create('developer', '10.146.' . $this->train . '.1')
                     ->disableStrictHostKeyChecking()
-                    ->setTimeout(20)
+                    ->setTimeout(25)
                     ->execute("timeout 120s curl -s --show-error http://localhost:2323/cinema/server/play/" . $this->film)
                     ->getOutput();
             } else {
 
                 $this->output = Ssh::create('developer', '10.131.' . $this->train . '.1')
                     ->disableStrictHostKeyChecking()
-                    ->setTimeout(20)
+                    ->setTimeout(25)
                     ->execute("timeout 120s curl -s --show-error http://localhost:2323/cinema/server/play/" . $this->film)
                     ->getOutput();
             }
         } catch (\Throwable $th) {
+
+            Log::warning('Train ' . $this->train, [
+                'username' => strtoupper(Auth::user()->name),
+                'mail' => Auth::user()->email,
+                'amount' => now()->format('d M Y - H:i'),
+            ]);
+            Log::error($th->getMessage());
             $this->output = "ERRORE: " . $th->getMessage();
         }
     }
