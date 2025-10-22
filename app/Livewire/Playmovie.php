@@ -39,9 +39,9 @@ class Playmovie extends Component
 
                 if (in_array($this->train, $iobcinema)) {
 
-                    exec('timeout 120s ping -c 3 -w 5 10.146.' . $this->train . '.1', $output, $ping);
+                    exec('timeout 120s ping -c 3 -W 5 10.146.' . $this->train . '.1', $output, $ping);
                 } else {
-                    exec('timeout 120s ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
+                    exec('timeout 120s ping -c 3 -W 5 10.131.' . $this->train . '.1', $output, $ping);
                 }
             } catch (\Throwable $th) {
                 Log::alert($th);
@@ -79,9 +79,9 @@ class Playmovie extends Component
 
                 if (in_array($this->train, $iobcinema)) {
 
-                    exec('timeout 120s ping -c 3 -w 5 10.146.' . $this->train . '.1', $output, $ping);
+                    exec('timeout 120s ping -c 3 -W 5 10.146.' . $this->train . '.1', $output, $ping);
                 } else {
-                    exec('timeout 120s ping -c 3 -w 5 10.131.' . $this->train . '.1', $output, $ping);
+                    exec('timeout 120s ping -c 3 -W 5 10.131.' . $this->train . '.1', $output, $ping);
                 }
             } catch (\Throwable $th) {
                 Log::alert($th);
