@@ -25,9 +25,11 @@ class PublicController extends Controller
         $users = User::all();
         $iobTrains = Train::where('tipology','iob')->count();
 
+        $percentuale = round((100 * $iobTrains) / 56);
+
         $lavagna = Lavagna::first();
 
-        return view('welcome',compact('usersCount','servicesCount','sivCount','covCount','users','lavagna','iobTrains'));
+        return view('welcome',compact('usersCount','servicesCount','sivCount','covCount','users','lavagna','iobTrains','percentuale'));
     }
 
     public function save(Request $request){
