@@ -95,7 +95,10 @@ in questo 'timezone' => 'Europe/Rome',, nel nel file env
     0 23 * * * pkill -f "composer run dev" && echo "Server stoppato! $(date)" >> storage/logs/server.lo
 
 
-
+### creati da valutare
+Model Supplier
+Migration Supplier
+Controller Supplier
 
 
 

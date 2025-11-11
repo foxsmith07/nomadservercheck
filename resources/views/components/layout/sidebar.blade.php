@@ -7,14 +7,17 @@
             <span class="text-xl font-bold text-rose-500 me-2">Nola</span>
             <span class="text-xl font-bold text-zinc-300 me-2"> Service Desk</span>
         </a>
-
+        
         <div class="flex flex-col items-start my-2 px-5 text-start text-slate-200 text-[15px]">
+            
+            {{--! DASHBOARD ----------------------------------------------}}
             <a href="{{ route('welcome') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full {{Route::is('welcome') ? 'font-extrabold text-rose-500 uppercase' : ''}}">
                 <i class="fa-solid fa-house me-3"></i>
                 <span>Dashboard</span>
                 {{-- <span>Overview</span> --}}
             </a>
 
+            {{--! SERVICE DESK --------------------------------------}}
             <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">
                 Serivce Desk</p>
 
@@ -42,7 +45,13 @@
                 <i class="fa-solid fa-train-subway me-3"></i>
                 Italo Upgrade Roadmap
             </a>
+            
+            <a href="{{ route('supplier.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full {{Route::is('supplier.*') ? 'font-extrabold text-rose-500 uppercase text-[13px]' : ''}}">
+                <i class="fa-solid fa-clipboard-list me-3 text-lg"></i>
+                Services Status
+            </a>
 
+            {{--! TRAIN ACTION --------------------------------------------------------}}
             <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">
                 Train Actions</p>
 
@@ -51,19 +60,25 @@
                 <i class="fa-solid fa-clapperboard me-3"></i>
                 Movie to send
             </a>
-
+            
             {{-- <a href="{{ route('obn.index') }}" class="hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full"> --}}
-            {{-- <a href="javascript:void(0)" class="pointer-events-none px-3 py-2 m-0 rounded-md w-full text-slate-500">
-                <i class="fa-solid fa-train-subway  me-3"></i>
-                OBN Train check
-                <i class="fa-solid fa-triangle-exclamation ms-3 text-2xl text-yellow-400"></i>
-            </a> --}}
+                {{-- <a href="javascript:void(0)" class="pointer-events-none px-3 py-2 m-0 rounded-md w-full text-slate-500">
+                    <i class="fa-solid fa-train-subway  me-3"></i>
+                    OBN Train check
+                    <i class="fa-solid fa-triangle-exclamation ms-3 text-2xl text-yellow-400"></i>
+                </a> --}}
+                
+                <a href="{{ route('cmd.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full {{Route::is('cmd.*') ? 'font-extrabold text-rose-500 uppercase' : ''}}">
+                    <i class="fa-solid fa-terminal me-3"></i>
+                    CMD on Trains
+                </a>
+                
+                <a href="{{ route('moxa.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full {{Route::is('moxa.*') ? 'font-extrabold text-rose-500 uppercase' : ''}}">
+                    <i class="fa-solid fa-gauge-high me-3"></i>
+                    Speed Port Check
+                </a>
 
-            <a href="{{ route('cmd.index') }}" class=" hover:bg-[#4D65D9] px-3 py-2 m-0 rounded-md w-full {{Route::is('cmd.*') ? 'font-extrabold text-rose-500 uppercase' : ''}}">
-                <i class="fa-solid fa-terminal me-3"></i>
-                CMD on Trains
-            </a>
-
+            {{--! STOCK MANAGEMENT ----------------------------------------------------------}}
             <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">
                 Stock management</p>
 
@@ -79,6 +94,7 @@
                 Inventory
             </div> --}}
 
+            {{--! SETTINGS --}}
             <p class="px-3 m-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mt-3 mb-1">
                 Settings</p>
 

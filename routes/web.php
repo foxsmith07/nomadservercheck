@@ -8,8 +8,10 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\CovreportController;
 use App\Http\Controllers\ItaloupgradeController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\MoxaController;
 use App\Http\Controllers\ObnController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Italoupgrade;
@@ -102,5 +104,14 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/stock-management/request-item/{item}',[StockController::class, 'requestItem'])->name('stock.request');
     Route::post('/stock-management/request-item/store',[StockController::class,'sendRequestItem'])->name('stock.requeststore');
+
+    
+    //* SPEED PORT CHECK
+    Route::get('/speed-port-check', [MoxaController::class, 'index'])->name('moxa.index');
+
+    
+    //* SERVICES CHECK
+    Route::get('/services-check', [SupplierController::class, 'index'])->name('supplier.index');
+
 
 });
