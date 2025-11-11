@@ -13,7 +13,7 @@ class Moxalivewire extends Component
 
     public $test;
     public $datas = [];
-    public $validate;
+    // public $validate;
 
     public function mount(){
 
@@ -21,13 +21,14 @@ class Moxalivewire extends Component
 
     public function check(){
 
-        $this->validate = Ssh::create('developer','10.146.6.1')
-            ->disableStrictHostKeyChecking()
-            ->setTimeout(5)
-            ->execute('pwd')
-            ->getOutput();
+        $validate = Process::run('ssh -o "StrictHostKeyChecking no" developer@10.146.6.1 "hostname"');
+        // $validate = Ssh::create('developer','10.146.6.1')
+        //     ->disableStrictHostKeyChecking()
+        //     ->setTimeout(5)
+        //     ->execute('pwd')
+        //     ->getOutput();
 
-        dd($this->validate);
+        dd($validate);
     }
 
     public function render()
