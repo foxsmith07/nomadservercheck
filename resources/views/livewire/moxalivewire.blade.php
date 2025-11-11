@@ -40,9 +40,10 @@
                                 <th>
                                     <div class="flex flex-col items-center gap-2">
                                         <span>{{ $train->name }}</span>
-                                        <button type="submit" wire:click="check" 
+                                        <button type="submit" wire:click="check({{$train->id}})" wire:loading.attr="disabled"
                                                 class="btn btn-sm bg-sky-500 text-white hover:bg-sky-700 border-none shadow-md">
-                                                check
+                                                <span wire:loading.remove>Check</span>
+                                                <span wire:loading>Checking</span>
                                         </button>
                                     </div>
                                 </th>

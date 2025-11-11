@@ -11,24 +11,28 @@ use Spatie\Ssh\Ssh;
 class Moxalivewire extends Component
 {
 
-    public $test;
-    public $datas = [];
+    // public $train;
+    // public $datas = [];
     // public $validate;
 
-    public function mount(){
+    // public function mount(){
 
-    }
+    // }
 
-    public function check(){
+    public function check($id){
 
-        $validate = Process::run('ssh -o "StrictHostKeyChecking no" developer@10.146.6.1 "hostname"');
-        // $validate = Ssh::create('developer','10.146.6.1')
-        //     ->disableStrictHostKeyChecking()
-        //     ->setTimeout(5)
-        //     ->execute('pwd')
-        //     ->getOutput();
+        $train = Train::findOrFail($id);
 
-        dd($validate);
+        // dd($train->number);
+        // $validate = Process::run('ssh -o "StrictHostKeyChecking no" developer@10.146.6.1 "hostname"');
+        $validate = Ssh::create('developer','10.146.{$train->number}.1')
+            ->disableStrictHostKeyChecking()
+            ->execute('hostname -f')
+            ->getOutput();
+
+        // dd($validate);
+
+        return $validate;
     }
 
     public function render()
