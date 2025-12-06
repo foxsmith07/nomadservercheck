@@ -28,7 +28,7 @@ class Playmovie extends Component
         $this->output = null;
         $this->unreachable = null;
         $this->film = null;
-        $iobcinema = [6, 12, 15, 21];
+        $iobcinema = [6, 12, 14, 15, 16, 17, 21, 23, 24];
 
 
         // dd([$this->train , $this->search , $this->unreachable ]);
