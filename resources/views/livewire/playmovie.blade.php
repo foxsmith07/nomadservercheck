@@ -5,7 +5,7 @@
     <form wire:submit="play" method="POST" class="bg-white p-8 max-w-[500px] rounded-md shadow-xl">
         <div class="mb-5">
             <label class="block mb-3">Train</label>
-            <select wire:model="train" class="rounded-md p-2 w-full bg-slate-100">
+            <select wire:model="train" class="rounded-md p-2 w-full bg-slate-100 input-custom">
                 <option value="">seleziona treno</option>
                 @foreach ($cinema as $train)
                     <option value="{{ $train }}">AGV {{ $train }}</option>
@@ -15,7 +15,7 @@
 
         <div class="my-10">
             <label class="block mb-3">Insert Movie to search</label>
-            <input type="text" wire:model="search" class="bg-slate-100 w-full p-2 rounded-sm"
+            <input type="text" wire:model="search" class="bg-slate-100 w-full p-2 rounded-sm input-custom"
                 placeholder="vuoto per lista completa">
         </div>
 
@@ -41,7 +41,8 @@
                 @if ($movies)
                     <h3 class="text-lg font-bold mb-7">Seleziona movies</h3>
                     @php
-                        $moviesArray = explode("\n", $movies);
+                        // $moviesArray = explode("\n", $movies);
+                        $moviesArray = array_filter(explode("\n", $movies));
                     @endphp
                     {{-- <small>trovati {{$moviesArray->count()}} film</small> --}}
                     <ul>
@@ -62,7 +63,7 @@
 
                         <div class="mt-8">
                             <input type="text" id="selectedMovie" wire:model="film"
-                                class="shadow-xl border rounded-md p-2 w-full sm:w-96" readonly
+                                class="shadow-lg rounded-md p-2 w-full sm:w-96 input-custom bg-slate-300!" readonly
                                 value="{{ trim($movie) }}" placeholder="Clicca sul film per selezionarlo">
                         </div>
 

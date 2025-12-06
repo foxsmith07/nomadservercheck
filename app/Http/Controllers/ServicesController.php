@@ -56,7 +56,7 @@ class ServicesController extends Controller
         try {
             Mail::to('italo@service-now.com')->cc('nola@nomadrail.com')->send(new ServiceClosingMail($mail));
         } catch (\Exception $e) {
-            \Log::error('Errore invio mail di test: ' . $e->getMessage());
+            Log::error('Errore invio mail di test: ' . $e->getMessage());
             return redirect()->route('servizio.index')->with('success',$e->getMessage());
         }
 

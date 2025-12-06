@@ -47,7 +47,7 @@
                         </td>
 
                         <td>
-                            <span class="{{ $item->location == 'mestre' ? 'text-purple-700' : 'text-emerald-700'}} font-bold">{{ ucfirst($item->location) }}</span>
+                            <span class="{{ strtolower($item->location) == 'mestre' ? 'text-purple-700' : 'text-emerald-700'}} font-bold">{{ ucfirst($item->location) }}</span>
                         </td>
                         <td class="m-0 p-0 flex justify-center">
                             <div

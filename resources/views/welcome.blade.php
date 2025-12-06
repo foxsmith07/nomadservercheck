@@ -60,7 +60,7 @@
         <a href="{{route('train.index')}}" class="h-[180px] bg-white  rounded-md shadow-xl p-5 grid grid-cols-2 text-amber-600 hover:scale-110 transition-transform">
             <div class="flex flex-col justify-between col-span-1 h-full">
                 <h3 class="text-2xl font-bold">IOB Trains done</h3>
-                <p><span class="font-bold text-4xl">{{ $iobTrains }}</span> <span class="text-xl">/ 56</span></p>
+                <p><span class="font-bold text-4xl">{{ $iobTrains }}</span> <span class="text-xl">/ 56 </span> <span class="text-amber-800">({{$percentuale}}%)</span></p>
             </div>
             <div class="col-span-1 flex justify-center items-center text-white rounded-full bg-amber-400">
                 <i class="fa-solid fa-server text-7xl"></i>
@@ -71,7 +71,8 @@
 
 
     <div class="p-3 bg-slate-400 rounded-xl mt-8">
-        <h1 class="text-center text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-blue-300 mb-3">Lavagna</h1>
+        {{-- <h1 class="text-center text-4xl font-bold text-transparent! bg-clip-text! bg-gradient-to-b! from-slate-100! to-blue-300! mb-3">Lavagna</h1> --}}
+        <h1 class="text-center text-4xl font-bold text-slate-700! mb-3">Lavagna</h1>
         <form action="{{route('welcome.save',compact('lavagna'))}}" method="POST">
             @csrf
             @method('put')
@@ -83,9 +84,14 @@
 
 </x-layout>
 
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.0.1/tinymce.min.js" referrerpolicy="origin"></script> --}}
 <script src="https://cdn.tiny.cloud/1/p2qn55zpsfbcrh7083xx18c1tufrb85xz58c2oeknodqte8t/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+{{-- <script src="{{ asset('tinymce/tinymce.min.js') }}"></script> --}}
 <script>
     tinymce.init({
+        // apiKey: 'p2qn55zpsfbcrh7083xx18c1tufrb85xz58c2oeknodqte8t',
+        // apiKey: 'gpl',
+        // license_key: 'gpl',
         selector: 'textarea#lavagna', // Replace this CSS selector to match the placeholder element for TinyMCE
         plugins: 'code table lists advlist link image autosave save',
         // autosave_interval: '20s',

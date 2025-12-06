@@ -19,10 +19,18 @@
         };
 }
 
-/* th, td {
-    border: 1px solid lightgray;
-} */
-
 .input-custom {
     @apply bg-slate-100 p-3 rounded-md outline-0 focus:outline-2 focus:outline-blue-500;
+}
+
+h1 {
+    font-weight: 600;
+    color: #62748e;
+}
+
+body {
+    color: #314158;
+    /* 700 = #314158 */
+    /* 600 = #45556c */
+    /* 500 = #62748e */
 }

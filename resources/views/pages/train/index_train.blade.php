@@ -26,14 +26,14 @@
                         <td class="{{$train->tipology == 'iob' ? 'font-bold text-green-600' : ''}}">{{ $train->tipology == 'iob' ? 'IoB solution' : 'Debian 10'}}</td>
                         <td class="text-center">
                             <a href="{{route('train.edit', $train->id)}}">
-                                <i class="fa-regular fa-pen-to-square text-yellow-500 text-2xl me-4"></i>
+                                <i class="fa-solid fa-file-pen text-yellow-500 text-2xl me-4"></i>
                             </a>
                             <form action="{{ route('train.destroy', $train->id) }}" method="POST" x-data class="inline ms-4 hover:cursor-pointer">
                                 @csrf
                                 @method('delete')
                                 <button type="button" id="deleteButton" class="hover:cursor-pointer"
                                     @click.prevent="confirmDelete($event, $el.parentElement)">
-                                    <i class="fa-solid fa-trash-can text-2xl text-red-500"></i>
+                                    <i class="fa-solid fa-trash-arrow-up text-2xl text-red-500"></i>
                                 </button>
                             </form>
                             {{-- <a href="">

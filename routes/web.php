@@ -92,7 +92,15 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/user/delete/{user}',[UserController::class,'destroy'])->name('user.destroy')->middleware('admin');
     Route::put('/user/{user}/switch-to/',[UserController::class, 'update'])->name('user.update')->middleware('admin');
 
+
     //* STOCK MANAGEMENT
     Route::get('/stock-management',[StockController::class,'index'])->name('stock.index');
+    Route::get('/stock-management/{item}', [StockController::class,'show'])->name('stock.show');
+    Route::get('/stock-management/edit/{item}', [StockController::class, 'edit'])->name('stock.edit');
+    Route::put('/stock-management/update/{item}',[StockController::class, 'update'])->name('stock.update');
+    Route::delete('/stock-management/delete/{item}',[StockController::class, 'destroy'])->name('stock.destroy');
+
+    Route::get('/stock-management/request-item/{item}',[StockController::class, 'requestItem'])->name('stock.request');
+    Route::post('/stock-management/request-item/store',[StockController::class,'sendRequestItem'])->name('stock.requeststore');
 
 });

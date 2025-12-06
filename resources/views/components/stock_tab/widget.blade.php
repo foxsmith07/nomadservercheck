@@ -1,3 +1,4 @@
+
 <div class="flex justify-between p-5 {{$color}} text-white rounded-lg h-[150px]">
     <div class="flex flex-col justify-around">
         <span class="text-5xl font-bold">{{$count}}</span>
