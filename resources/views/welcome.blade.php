@@ -60,7 +60,7 @@
         <a href="{{route('train.index')}}" class="h-[180px] bg-white  rounded-md shadow-xl p-5 grid grid-cols-2 text-amber-600 hover:scale-110 transition-transform">
             <div class="flex flex-col justify-between col-span-1 h-full">
                 <h3 class="text-2xl font-bold">IOB Trains done</h3>
-                <p><span class="font-bold text-4xl">{{ $iobTrains }}</span> <span class="text-xl">/ 56 </span> <span class="text-amber-800">({{$percentuale}}%)</span></p>
+                <p><span class="font-bold text-4xl">{{ $iobTrains }}</span> <span class="text-xl">/ 51 </span> <span class="text-amber-800">({{$percentuale}}%)</span></p>
             </div>
             <div class="col-span-1 flex justify-center items-center text-white rounded-full bg-amber-400">
                 <i class="fa-solid fa-server text-7xl"></i>
