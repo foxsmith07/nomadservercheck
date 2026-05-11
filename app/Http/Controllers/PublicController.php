@@ -25,7 +25,7 @@ class PublicController extends Controller
         $users = User::all();
         $iobTrains = Train::where('tipology','iob')->count();
 
-        $percentuale = round((100 * $iobTrains) / 56);
+        $percentuale = round((100 * $iobTrains) / 51);
 
         $lavagna = Lavagna::first();
 
