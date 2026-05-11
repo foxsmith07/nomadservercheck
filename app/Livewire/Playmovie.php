@@ -31,7 +31,7 @@ class Playmovie extends Component
         $this->output = null;
         $this->unreachable = null;
         $this->film = null;
-        $iobcinema = [6, 12, 14, 15, 16, 17, 21, 23, 24];
+        $iobcinema = [1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 23, 24, 25]; //missing: 8,10,19,22
 
 
         // dd([$this->train , $this->search , $this->unreachable ]);
